@@ -3,13 +3,72 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Personal portfolio." />
-    <title>Portfolio</title>
+    <meta name="description" content="Thomas Beer's portfolio and work." />
+    <meta name="theme-color" content="#f8f6f1" />
+    <title>Thomas Beer</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main>
-      <h1>Portfolio</h1>
-      <p>This site is in progress.</p>
-    </main>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="Thomas Beer, back to top">
+          Thomas Beer<span class="wordmark-cursor" aria-hidden="true">_</span>
+        </a>
+        <div class="site-nav">
+          <span class="nav-item" title="Coming soon">Work</span>
+          <span class="nav-item" title="Coming soon">About</span>
+          <span class="nav-item" title="Coming soon">CV</span>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="intro-title">
+          <p class="intro-label">
+            <span class="intro-label-rule"></span> Hello, I'm Thomas
+          </p>
+          <h1 id="intro-title">
+            I build
+            <span class="visually-hidden">apps, tools, and libraries.</span>
+            <span class="word-reel" aria-hidden="true">
+              <span class="word-reel-track">
+                <span>apps<span class="period">.</span></span>
+                <span>tools<span class="period">.</span></span>
+                <span>libraries<span class="period">.</span></span>
+                <span>apps<span class="period">.</span></span>
+              </span>
+            </span>
+          </h1>
+
+          <nav class="social-links" aria-label="Find me online">
+            <a
+              class="social-link"
+              href="https://github.com/Thomasssb1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub (opens in a new tab)"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.13c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.71-1.49-2.47-.28-5.07-1.24-5.07-5.49 0-1.21.43-2.2 1.14-2.98-.12-.28-.5-1.41.11-2.94 0 0 .93-.3 3.05 1.14A10.6 10.6 0 0 1 12 6.47c.94 0 1.88.13 2.76.37 2.12-1.44 3.05-1.14 3.05-1.14.61 1.53.23 2.66.11 2.94.71.78 1.14 1.77 1.14 2.98 0 4.26-2.61 5.2-5.09 5.48.4.35.76 1.03.76 2.08v2.81c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"
+                />
+              </svg>
+            </a>
+            <a
+              class="social-link"
+              href="https://www.linkedin.com/in/thomas-beer04/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn (opens in a new tab)"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M20.45 2H3.55A1.55 1.55 0 0 0 2 3.55v16.9A1.55 1.55 0 0 0 3.55 22h16.9A1.55 1.55 0 0 0 22 20.45V3.55A1.55 1.55 0 0 0 20.45 2ZM7.93 18.75H4.97V9.2h2.96v9.55ZM6.45 7.89a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.3 10.86h-2.96V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.49V9.2h2.84v1.3h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.58 1.98 3.58 4.55v5.25Z"
+                />
+              </svg>
+            </a>
+          </nav>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
