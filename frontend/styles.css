@@ -123,9 +123,9 @@ h1 {
   animation: word-reel-scroll 10s cubic-bezier(0.76, 0, 0.24, 1) infinite;
 }
 .word-reel-track > span {
-  display: flex;
-  align-items: center;
+  display: block;
   height: 1.24em;
+  line-height: 1.24;
   white-space: nowrap;
 }
 .period {
