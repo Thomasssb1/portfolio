@@ -111,7 +111,9 @@ h1 {
   position: relative;
   top: 0.1em;
   display: inline-block;
+  width: max-content;
   height: 1.24em;
+  padding-right: 0.12em;
   overflow: hidden;
   vertical-align: bottom;
   color: var(--accent);
@@ -163,18 +165,34 @@ h1 {
   color: var(--ink);
   transition:
     border-color 180ms ease,
-    color 180ms ease,
     transform 180ms ease;
 }
 .social-link:hover {
   border-color: var(--accent);
-  color: var(--accent);
   transform: translateY(-2px);
 }
-.social-link svg {
+.social-icon-pair {
+  position: relative;
+  display: block;
   width: 21px;
   height: 21px;
-  fill: currentColor;
+}
+.social-icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 21px;
+  height: 21px;
+  transition: opacity 180ms ease;
+}
+.social-icon-hover {
+  opacity: 0;
+}
+.social-link:is(:hover, :focus-visible) .social-icon:not(.social-icon-hover) {
+  opacity: 0;
+}
+.social-link:is(:hover, :focus-visible) .social-icon-hover {
+  opacity: 1;
 }
 @media (max-width: 640px) {
   .page-shell {
@@ -212,6 +230,9 @@ h1 {
     scroll-behavior: auto;
   }
   .social-link {
+    transition: none;
+  }
+  .social-icon {
     transition: none;
   }
   .word-reel-track {
