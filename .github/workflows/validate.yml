@@ -48,7 +48,7 @@ jobs:
         run: terraform -chdir=terraform fmt -check -recursive
 
       - name: Initialize Terraform without remote state
-        run: terraform -chdir=terraform init -backend=false -input=false
+        run: terraform -chdir=terraform init -backend=false -input=false -lockfile=readonly
 
       - name: Validate Terraform
         run: terraform -chdir=terraform validate

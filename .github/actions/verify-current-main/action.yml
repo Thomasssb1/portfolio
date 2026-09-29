@@ -1,0 +1,56 @@
+name: Verify current main commit
+description: Check whether a validated commit is still the head of main.
+
+inputs:
+  expected-sha:
+    description: Commit SHA that completed validation.
+    required: true
+  github-token:
+    description: Token with permission to read repository contents.
+    required: true
+  fail-on-stale:
+    description: Mark the step as failed when main has moved on.
+    required: false
+    default: "false"
+
+outputs:
+  current:
+    description: Whether expected-sha is the current head of main.
+    value: ${{ steps.verify.outputs.current }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check main
+      id: verify
+      uses: actions/github-script@v8
+      env:
+        EXPECTED_SHA: ${{ inputs.expected-sha }}
+        FAIL_ON_STALE: ${{ inputs.fail-on-stale }}
+      with:
+        github-token: ${{ inputs.github-token }}
+        script: |
+          const expectedSha = process.env.EXPECTED_SHA;
+          const failOnStale = process.env.FAIL_ON_STALE === "true";
+          const { data: branch } = await github.rest.repos.getBranch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            branch: "main",
+          });
+          const currentSha = branch.commit.sha;
+          const current = currentSha === expectedSha;
+
+          core.setOutput("current", String(current));
+
+          if (current) {
+            core.notice(`Deploying current main commit ${expectedSha}.`);
+          } else {
+            const message =
+              `Stale deployment: validated ${expectedSha}, but main is now ${currentSha}.`;
+
+            if (failOnStale) {
+              core.setFailed(message);
+            } else {
+              core.notice(`Skipping ${message}`);
+            }
+          }
