@@ -306,11 +306,15 @@ h2 {
   letter-spacing: -0.065em;
   line-height: 0.98;
 }
-.project-info > p:last-child {
+.project-info > p:last-child,
+.project-description {
   max-width: 25ch;
   margin: 0;
   font-size: 1rem;
   line-height: 1.55;
+}
+.project-repo {
+  margin-top: 22px;
 }
 .project-card {
   border: 1px solid var(--line);

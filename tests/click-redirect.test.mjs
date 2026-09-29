@@ -7,6 +7,7 @@ const destinations = {
   github: "https://github.com/Thomasssb1",
   linkedin: "https://www.linkedin.com/in/thomas-beer04/",
   idbs: "https://www.idbs.com/",
+  "reddit-2-video": "https://github.com/Thomasssb1/reddit-2-video",
   "meta-research":
     "https://communityforums.atmeta.com/discussions/News_and_Announcements/calling-all-unity-and-unreal-developers-%E2%80%94join-meta%E2%80%99s-arvr-research-panel/1351027",
 };
