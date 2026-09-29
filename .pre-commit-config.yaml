@@ -44,21 +44,14 @@ repos:
 
       - id: terraform_fmt
         name: Terraform fmt
-        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-fmt.ps1
+        entry: terraform -chdir=terraform fmt -check -recursive
         language: system
         pass_filenames: false
         files: ^terraform/.*\.tf$
 
       - id: terraform_validate
         name: Terraform validate
-        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-validate.ps1
-        language: system
-        pass_filenames: false
-        files: ^terraform/.*\.tf$
-
-      - id: terraform_docs
-        name: Terraform docs
-        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-docs.ps1
+        entry: sh -c 'terraform -chdir=terraform init -backend=false -input=false && terraform -chdir=terraform validate'
         language: system
         pass_filenames: false
         files: ^terraform/.*\.tf$
