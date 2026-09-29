@@ -23,6 +23,7 @@
       type="module"
       src="./components/site-button/site-button.js"
     ></script>
+    <script type="module" src="./components/experience-carousel.js"></script>
   </head>
   <body>
     <div class="page-shell">
@@ -32,47 +33,134 @@
           <span class="wordmark-cursor" aria-hidden="true">_</span>
         </a>
         <div class="site-nav">
-          <site-button variant="transparent" disabled title="Coming soon"
-            >Work</site-button
+          <site-button variant="transparent" href="#work">Work</site-button>
+          <site-button variant="transparent" href="#experience"
+            >Experience</site-button
           >
-          <site-button variant="transparent" disabled title="Coming soon"
-            >About</site-button
-          >
-          <site-button variant="transparent" disabled title="Coming soon"
-            >CV</site-button
+          <site-button variant="transparent" href="#contact"
+            >Contact</site-button
           >
         </div>
       </header>
 
       <main id="top">
         <section class="intro" aria-labelledby="intro-title">
-          <p class="intro-label">
-            <span class="intro-label-rule"></span> Hello, I'm Thomas
-          </p>
-          <h1 id="intro-title">
-            I build
-            <scroll-words words="apps,tools,libraries">apps.</scroll-words>
-          </h1>
+          <div class="intro-copy">
+            <p class="intro-label">
+              <span class="intro-label-rule"></span> Software developer /
+              computer science student
+            </p>
+            <h1 id="intro-title">
+              I build
+              <scroll-words words="apps,tools,libraries">apps.</scroll-words>
+            </h1>
+            <nav class="social-links" aria-label="Find me online">
+              <icon-button
+                icon="github"
+                href="https://github.com/Thomasssb1"
+                target="_blank"
+                label="GitHub"
+                >GitHub</icon-button
+              >
+              <icon-button
+                icon="linkedin"
+                href="https://www.linkedin.com/in/thomas-beer04/"
+                target="_blank"
+                label="LinkedIn"
+                >LinkedIn</icon-button
+              >
+            </nav>
+          </div>
 
-          <nav class="social-links" aria-label="Find me online">
-            <icon-button
-              icon="github"
-              href="https://github.com/Thomasssb1"
-              target="_blank"
-              label="GitHub"
-              >GitHub</icon-button
-            >
-            <icon-button
-              icon="linkedin"
-              href="https://www.linkedin.com/in/thomas-beer04/"
-              target="_blank"
-              label="LinkedIn"
-              >LinkedIn</icon-button
-            >
-          </nav>
+          <div class="intro-details">
+            <section class="experience" id="experience" aria-label="Experience">
+              <div class="experience-carousel" data-experience-carousel>
+                <div
+                  class="experience-track"
+                  id="experience-track"
+                  data-experience-track
+                  tabindex="0"
+                >
+                  <article class="experience-card">
+                    <p class="experience-role">Software Developer Intern</p>
+                    <h2>
+                      <a
+                        href="https://www.idbs.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >IDBS</a
+                      >
+                    </h2>
+                    <p class="experience-meta">
+                      <span>Woking, UK</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Aug 2025 - Aug 2026</span>
+                    </p>
+                    <p class="experience-description">
+                      Built production features for Polar, a GxP-compliant
+                      enterprise SaaS platform, across TypeScript and Python
+                      services, GraphQL, user interfaces, and AWS
+                      infrastructure. Also delivered access control for data
+                      integrations and vulnerability-remediation tooling.
+                    </p>
+                  </article>
+
+                  <article class="experience-card">
+                    <p class="experience-role">
+                      Game Developer Research Panelist
+                    </p>
+                    <h2>Good Gamer Group / Meta Research Panels</h2>
+                    <p class="experience-meta">
+                      <span>Remote</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Mar 2025 - Present</span>
+                    </p>
+                    <p class="experience-description">
+                      Selected for Meta-commissioned game developer and
+                      invite-only
+                      <a
+                        href="https://communityforums.atmeta.com/discussions/News_and_Announcements/calling-all-unity-and-unreal-developers-%E2%80%94join-meta%E2%80%99s-arvr-research-panel/1351027"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >AR/VR research panels</a
+                      >. I provide structured feedback on pre-release tooling,
+                      developer workflows, and usability.
+                    </p>
+                  </article>
+                </div>
+              </div>
+              <button
+                class="experience-next"
+                type="button"
+                aria-label="Show next experience"
+                aria-controls="experience-track"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </section>
+
+            <address class="contact" id="contact">
+              <p class="detail-label">Contact</p>
+              <div class="contact-links">
+                <a href="mailto:thomas.beer04@outlook.com">Email</a>
+                <a
+                  href="https://github.com/Thomasssb1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/thomas-beer04/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </div>
+            </address>
+          </div>
         </section>
 
-        <section class="work" aria-labelledby="work-title">
+        <section class="work" id="work" aria-labelledby="work-title">
           <div class="work-heading">
             <p class="section-label">
               <span class="section-label-rule"></span> Selected work
