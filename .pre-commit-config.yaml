@@ -1,0 +1,64 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: check-case-conflict
+        entry: python -m pre_commit_hooks.check_case_conflict
+      - id: check-json
+        exclude: ^frontend/tsconfig\.json$
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: check-yaml
+      - id: mixed-line-ending
+        entry: python -m pre_commit_hooks.mixed_line_ending
+        args: ["--fix=lf"]
+
+  - repo: local
+    hooks:
+      - id: lint
+        name: lint
+        entry: npm run lint
+        language: system
+        pass_filenames: false
+        files: ^(frontend/.*\.html|package(-lock)?\.json)$
+
+      - id: typecheck
+        name: typecheck
+        entry: npm run typecheck
+        language: system
+        pass_filenames: false
+        files: ^(frontend|backend)/(src|package(-lock)?\.json|tsconfig\.json)
+        types_or: [ts, tsx, json]
+
+      - id: frontend-lit-analyzer
+        name: frontend lit analyzer
+        entry: npm run frontend:analyze
+        language: system
+        pass_filenames: false
+        files: ^frontend/(src|package(-lock)?\.json|tsconfig\.json)
+        types_or: [ts, tsx, json]
+
+      - id: terraform_fmt
+        name: Terraform fmt
+        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-fmt.ps1
+        language: system
+        pass_filenames: false
+        files: ^terraform/.*\.tf$
+
+      - id: terraform_validate
+        name: Terraform validate
+        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-validate.ps1
+        language: system
+        pass_filenames: false
+        files: ^terraform/.*\.tf$
+
+      - id: terraform_docs
+        name: Terraform docs
+        entry: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/terraform-docs.ps1
+        language: system
+        pass_filenames: false
+        files: ^terraform/.*\.tf$
