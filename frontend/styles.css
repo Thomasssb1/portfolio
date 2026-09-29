@@ -341,6 +341,26 @@ h2 {
 .project-card--sage {
   background: #d9e5d1;
 }
+.site-footer {
+  margin-top: clamp(72px, 9vw, 120px);
+  padding: 24px 0 36px;
+  border-top: 1px solid var(--line);
+  color: #52606c;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.site-footer summary {
+  width: fit-content;
+  cursor: pointer;
+}
+.site-footer summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.site-footer p {
+  max-width: 65ch;
+  margin: 12px 0 0;
+}
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 40px, 1240px);

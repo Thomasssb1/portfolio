@@ -1,0 +1,77 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import { onRequest } from "../functions/go/[slug].js";
+
+const destinations = {
+  github: "https://github.com/Thomasssb1",
+  linkedin: "https://www.linkedin.com/in/thomas-beer04/",
+  idbs: "https://www.idbs.com/",
+  "meta-research":
+    "https://communityforums.atmeta.com/discussions/News_and_Announcements/calling-all-unity-and-unreal-developers-%E2%80%94join-meta%E2%80%99s-arvr-research-panel/1351027",
+};
+
+for (const [slug, destination] of Object.entries(destinations)) {
+  test(`${slug} redirects and records only its name`, () => {
+    const writes = [];
+    const response = onRequest({
+      request: new Request(`https://example.com/go/${slug}`),
+      env: { CLICKS: { writeDataPoint: (point) => writes.push(point) } },
+      params: { slug },
+    });
+
+    assert.equal(response.status, 302);
+    assert.equal(response.headers.get("Location"), destination);
+    assert.equal(response.headers.get("Cache-Control"), "no-store");
+    assert.equal(response.headers.get("Referrer-Policy"), "no-referrer");
+    assert.deepEqual(writes, [{ blobs: [slug] }]);
+  });
+}
+
+test("unknown paths do not redirect or record a click", () => {
+  const writes = [];
+  const response = onRequest({
+    request: new Request("https://example.com/go/__proto__"),
+    env: { CLICKS: { writeDataPoint: (point) => writes.push(point) } },
+    params: { slug: "__proto__" },
+  });
+
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get("Location"), null);
+  assert.deepEqual(writes, []);
+});
+
+test("local development redirects without an Analytics Engine binding", () => {
+  const response = onRequest({
+    request: new Request("https://example.com/go/github"),
+    env: {},
+    params: { slug: "github" },
+  });
+  assert.equal(response.status, 302);
+});
+
+test("HEAD redirects without recording a click", () => {
+  const writes = [];
+  const response = onRequest({
+    request: new Request("https://example.com/go/github", { method: "HEAD" }),
+    env: { CLICKS: { writeDataPoint: (point) => writes.push(point) } },
+    params: { slug: "github" },
+  });
+
+  assert.equal(response.status, 302);
+  assert.equal(response.headers.get("Location"), destinations.github);
+  assert.deepEqual(writes, []);
+});
+
+test("unsupported methods cannot record clicks", () => {
+  const writes = [];
+  const response = onRequest({
+    request: new Request("https://example.com/go/github", { method: "POST" }),
+    env: { CLICKS: { writeDataPoint: (point) => writes.push(point) } },
+    params: { slug: "github" },
+  });
+
+  assert.equal(response.status, 405);
+  assert.equal(response.headers.get("Allow"), "GET, HEAD");
+  assert.deepEqual(writes, []);
+});

@@ -31,6 +31,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Test analytics functions
+        run: npm test
+
   terraform:
     name: Validate Terraform
     runs-on: ubuntu-latest
