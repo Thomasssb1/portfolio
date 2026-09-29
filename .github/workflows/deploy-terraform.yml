@@ -1,0 +1,61 @@
+name: Deploy Terraform
+
+on:
+  workflow_run:
+    workflows:
+      - Validate
+    branches:
+      - main
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+concurrency:
+  group: terraform-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Apply production infrastructure
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.TF_STATE_R2_ACCESS_KEY_ID }}
+      AWS_REGION: auto
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_STATE_R2_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      TF_STATE_BUCKET: ${{ secrets.TF_STATE_BUCKET }}
+      TF_STATE_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+      TF_STATE_KEY: portfolio/production.tfstate
+      TF_VAR_cloudflare_account_id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      TF_VAR_cloudflare_zone_name: ${{ secrets.CLOUDFLARE_ZONE_NAME }}
+
+    steps:
+      - name: Check out the validated commit
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.13.3
+
+      - name: Initialize Terraform state
+        run: >-
+          terraform -chdir=terraform init -input=false
+          -backend-config=r2.backend.json
+          -backend-config="bucket=$TF_STATE_BUCKET"
+          -backend-config="key=$TF_STATE_KEY"
+          -backend-config="endpoints={s3=\"$TF_STATE_ENDPOINT\"}"
+
+      - name: Create Terraform plan
+        run: terraform -chdir=terraform plan -input=false -out=tfplan
+
+      - name: Apply Terraform plan
+        run: terraform -chdir=terraform apply -input=false -auto-approve tfplan
