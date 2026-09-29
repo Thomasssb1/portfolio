@@ -7,19 +7,40 @@
     <meta name="theme-color" content="#f8f6f1" />
     <title>Thomas Beer</title>
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./main.js" defer></script>
+    <script
+      type="module"
+      src="./components/scramble-text/scramble-text.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/scroll-words/scroll-words.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/icon-button/icon-button.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/site-button/site-button.js"
+    ></script>
   </head>
   <body>
     <div class="page-shell">
       <header class="site-header">
         <a class="wordmark" href="#top" aria-label="Thomas Beer, back to top">
-          <span class="wordmark-text" aria-hidden="true">Thomas Beer</span
-          ><span class="wordmark-cursor" aria-hidden="true">_</span>
+          <scramble-text>Thomas Beer</scramble-text>
+          <span class="wordmark-cursor" aria-hidden="true">_</span>
         </a>
         <div class="site-nav">
-          <span class="nav-item" title="Coming soon">Work</span>
-          <span class="nav-item" title="Coming soon">About</span>
-          <span class="nav-item" title="Coming soon">CV</span>
+          <site-button variant="transparent" disabled title="Coming soon"
+            >Work</site-button
+          >
+          <site-button variant="transparent" disabled title="Coming soon"
+            >About</site-button
+          >
+          <site-button variant="transparent" disabled title="Coming soon"
+            >CV</site-button
+          >
         </div>
       </header>
 
@@ -30,66 +51,24 @@
           </p>
           <h1 id="intro-title">
             I build
-            <span class="visually-hidden">apps, tools, and libraries.</span>
-            <span class="word-reel" aria-hidden="true">
-              <span class="word-reel-track">
-                <span>apps<span class="period">.</span></span>
-                <span>tools<span class="period">.</span></span>
-                <span>libraries<span class="period">.</span></span>
-                <span>apps<span class="period">.</span></span>
-              </span>
-            </span>
+            <scroll-words words="apps,tools,libraries">apps.</scroll-words>
           </h1>
 
           <nav class="social-links" aria-label="Find me online">
-            <a
-              class="social-link"
+            <icon-button
+              icon="github"
               href="https://github.com/Thomasssb1"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub (opens in a new tab)"
+              label="GitHub"
+              >GitHub</icon-button
             >
-              <span class="social-icon-pair" aria-hidden="true">
-                <img
-                  class="social-icon"
-                  src="./icons/github.svg"
-                  alt=""
-                  width="21"
-                  height="21"
-                />
-                <img
-                  class="social-icon social-icon-hover"
-                  src="./icons/github-blue.svg"
-                  alt=""
-                  width="21"
-                  height="21"
-                />
-              </span>
-            </a>
-            <a
-              class="social-link"
+            <icon-button
+              icon="linkedin"
               href="https://www.linkedin.com/in/thomas-beer04/"
               target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn (opens in a new tab)"
+              label="LinkedIn"
+              >LinkedIn</icon-button
             >
-              <span class="social-icon-pair" aria-hidden="true">
-                <img
-                  class="social-icon"
-                  src="./icons/linkedin.svg"
-                  alt=""
-                  width="21"
-                  height="21"
-                />
-                <img
-                  class="social-icon social-icon-hover"
-                  src="./icons/linkedin-blue.svg"
-                  alt=""
-                  width="21"
-                  height="21"
-                />
-              </span>
-            </a>
           </nav>
         </section>
       </main>
