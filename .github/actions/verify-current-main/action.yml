@@ -24,11 +24,14 @@ runs:
     - name: Check main
       id: verify
       uses: actions/github-script@v8
+      env:
+        EXPECTED_SHA: ${{ inputs.expected-sha }}
+        FAIL_ON_STALE: ${{ inputs.fail-on-stale }}
       with:
         github-token: ${{ inputs.github-token }}
         script: |
-          const expectedSha = core.getInput("expected-sha", { required: true });
-          const failOnStale = core.getInput("fail-on-stale") === "true";
+          const expectedSha = process.env.EXPECTED_SHA;
+          const failOnStale = process.env.FAIL_ON_STALE === "true";
           const { data: branch } = await github.rest.repos.getBranch({
             owner: context.repo.owner,
             repo: context.repo.repo,

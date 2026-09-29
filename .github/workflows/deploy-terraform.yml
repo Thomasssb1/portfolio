@@ -89,8 +89,22 @@ jobs:
       - name: Create Terraform plan
         run: terraform -chdir=terraform plan -input=false -out=tfplan
 
+      - name: Confirm main is current before applying
+        uses: ./.github/actions/verify-current-main
+        with:
+          expected-sha: ${{ github.event.workflow_run.head_sha }}
+          fail-on-stale: "true"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Apply Terraform plan
         run: terraform -chdir=terraform apply -input=false -auto-approve tfplan
+
+      - name: Confirm main is current before uploading
+        uses: ./.github/actions/verify-current-main
+        with:
+          expected-sha: ${{ github.event.workflow_run.head_sha }}
+          fail-on-stale: "true"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload frontend to Pages
         uses: cloudflare/wrangler-action@v4
