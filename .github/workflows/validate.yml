@@ -51,3 +51,10 @@ jobs:
 
       - name: Validate Terraform
         run: terraform -chdir=terraform validate
+
+      - name: Check Terraform documentation
+        uses: terraform-docs/gh-actions@v1.4.1
+        with:
+          config-file: .terraform-docs.yml
+          fail-on-diff: "true"
+          working-dir: terraform
