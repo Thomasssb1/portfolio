@@ -7,12 +7,13 @@ Pages serves the frontend through Cloudflare's CDN. The deployment workflow stor
 ## Prerequisites
 
 - The DNS zone must already exist in the specified Cloudflare account.
-- Set `CLOUDFLARE_API_TOKEN` to an API token with **Zone:Read**, **DNS:Edit**,
-  **Pages:Read**, and **Pages:Edit** for that account and zone.
+- Set `CLOUDFLARE_API_TOKEN` to an API token with **Pages:Write** for the
+  account, plus **DNS:Edit** and **Zone:Read** for the zone.
 - Create an R2 bucket for Terraform state before the first deployment. Terraform
   cannot create the bucket that stores its own state.
 - Install Terraform 1.13 or later.
 - Install terraform-docs 0.20 or later to update the generated documentation.
+- Install Node.js 22 or later for Wrangler and frontend checks.
 
 ## First apply
 
@@ -24,26 +25,59 @@ terraform init -backend=false
 terraform apply
 ```
 
+This creates a Direct Upload Pages project. The deployment workflow uploads `frontend/` with Wrangler.
+
 ## GitHub Actions
 
 `.github/workflows/validate.yml` runs on pull requests and pushes to `main`. It
 checks HTML linting, formatting, and Terraform configuration.
 
 `.github/workflows/deploy-terraform.yml` runs only after a successful validation
-of a push to `main`. It checks out that validated commit, uses the `production`
-GitHub environment, and applies Terraform with the remote R2 state backend.
+of a push to `main` or a manually dispatched validation. It checks out that
+validated commit, uses the `production` GitHub environment, applies Terraform
+with the remote R2 state backend, then uploads `frontend/` to Pages with Wrangler.
 
-Add these production environment secrets before the first deployment:
+Add these `production` environment secrets before the first deployment:
 
-- `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ZONE_NAME`
-- `TF_STATE_BUCKET`
 - `TF_STATE_R2_ACCESS_KEY_ID`
 - `TF_STATE_R2_SECRET_ACCESS_KEY`
 
-When the site later needs separately managed content, add an R2 bucket and
-custom domain, for example `content.example.com`, rather than mixing those assets with the Pages deployment.
+Add these `production` environment variables:
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_ZONE_NAME`
+- `TF_STATE_BUCKET`
+
+## Before the first deployment
+
+1. Add the domain as an active Cloudflare zone and delegate its nameservers to
+   Cloudflare. Remove or import an existing apex DNS record that would conflict
+   with the Terraform-managed Pages CNAME.
+2. In Cloudflare R2, create an empty state bucket such as `portfolio-tf-state`.
+   Create an R2 API token with **Object Read & Write** limited to that bucket.
+   Copy its Access Key ID and Secret Access Key. The secret is shown once.
+3. Create a Cloudflare API token scoped to this account and zone. Grant
+   **Account: Pages: Write**, **Zone: DNS: Edit**, and **Zone: Zone: Read**.
+4. In GitHub, open **Settings > Environments > production**, and add
+   the three secrets and three variables listed above.
+5. Commit the workflows to `main`. A push to `main` runs validation, then
+   Terraform and the Wrangler upload after validation passes.
+
+## Manual deployment
+
+In GitHub Actions, open **Validate**, select **Run workflow**, and choose `main`.
+After it passes, the deployment workflow starts automatically and uploads the
+same validated commit. This is the manual route because it keeps the validation
+gate in place.
+
+For a local frontend upload after the Pages project already exists, authenticate
+with `npx wrangler login`, then run:
+
+```sh
+npm ci
+npm run deploy:frontend -- --project-name=portfolio --branch=main
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

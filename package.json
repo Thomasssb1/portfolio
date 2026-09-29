@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy:frontend": "wrangler pages deploy frontend",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "npm run lint:html && npm run format:check",
-    "lint:html": "html-validate frontend/main.html"
+    "lint:html": "html-validate frontend/index.html"
   },
   "devDependencies": {
     "html-validate": "^10.8.0",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "wrangler": "^4.0.0"
   }
 }
