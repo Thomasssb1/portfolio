@@ -1,0 +1,134 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:host {
+  position: absolute;
+  z-index: 2;
+  top: var(--terminal-y, 62%);
+  left: var(--terminal-x, 5%);
+  display: block;
+  width: min(395px, 90%);
+  overflow: hidden;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #1f1f1f;
+  color: #eee;
+  box-shadow: 0 16px 32px rgb(0 0 0 / 32%);
+}
+
+.bar {
+  position: relative;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 48px;
+  border: 0;
+  border-bottom: 1px solid #171717;
+  background: #393939;
+  color: #d0d0d0;
+  font:
+    600 0.66rem "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  text-align: center;
+  cursor: grab;
+  touch-action: none;
+}
+
+.bar:active {
+  cursor: grabbing;
+}
+
+.bar:disabled {
+  color: #d0d0d0;
+  cursor: default;
+  opacity: 1;
+}
+
+.bar:focus-visible {
+  outline: 2px solid #2764a4;
+  outline-offset: -3px;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff6059;
+  box-shadow:
+    13px 0 #ffbd2e,
+    26px 0 #28c840;
+  transform: translateY(-50%);
+}
+
+.title {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder {
+  position: relative;
+  display: inline-block;
+  width: 11px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 1px;
+  background: #64b8e8;
+}
+
+.folder::before {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 5px;
+  height: 3px;
+  border-radius: 1px 1px 0 0;
+  background: #64b8e8;
+  content: "";
+}
+
+.code {
+  max-height: 130px;
+  min-height: 96px;
+  margin: 0;
+  padding: 13px 15px 17px;
+  overflow-y: auto;
+  color: #f1f1f1;
+  font:
+    0.68rem/1.6 "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.prompt {
+  color: #77d5a3;
+}
+
+@media (max-width: 640px) {
+  :host {
+    position: static;
+    width: 100%;
+    box-shadow: 0 9px 18px rgb(6 22 39 / 14%);
+  }
+
+  .bar {
+    cursor: default;
+  }
+}

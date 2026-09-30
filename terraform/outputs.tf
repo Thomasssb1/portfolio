@@ -12,3 +12,13 @@ output "pages_subdomain" {
   description = "Cloudflare-generated Pages subdomain."
   value       = cloudflare_pages_project.site.subdomain
 }
+
+output "asset_bucket_name" {
+  description = "R2 bucket for public assets."
+  value       = cloudflare_r2_bucket.assets.name
+}
+
+output "asset_cdn_base_url" {
+  description = "Public base URL for the asset CDN."
+  value       = "https://${cloudflare_r2_custom_domain.assets.domain}"
+}

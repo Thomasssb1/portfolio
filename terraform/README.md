@@ -5,12 +5,15 @@ attaches the apex custom domain, and creates the proxied CNAME required by Pages
 Pages serves the frontend through Cloudflare's CDN. The deployment workflow stores Terraform state in an existing R2 bucket.
 The project also binds a Workers Analytics Engine dataset to Pages Functions
 that count homepage views and outbound-link redirects. These counters do not use R2.
+A separate R2 bucket serves public assets through `assets.<zone-name>`.
+Upload the seven Reddit video examples to that bucket manually.
 
 ## Prerequisites
 
 - The DNS zone must already exist in the specified Cloudflare account.
-- Set `CLOUDFLARE_API_TOKEN` to an API token with **Pages:Write** for the
-  account, plus **DNS:Edit** and **Zone:Read** for the zone.
+- Set `CLOUDFLARE_API_TOKEN` to an API token with **Pages:Write** and
+  **Workers R2 Storage:Write** for the account, plus **DNS:Edit** and
+  **Zone:Read** for the zone.
 - Create an R2 bucket for Terraform state before the first deployment. Terraform
   cannot create the bucket that stores its own state.
 - Install Terraform 1.13 or later.
@@ -27,7 +30,9 @@ terraform init -backend=false
 terraform apply
 ```
 
-This creates a Direct Upload Pages project. The deployment workflow uploads `frontend/` with Wrangler.
+This creates a Direct Upload Pages project and the public R2 asset domain.
+The deployment workflow uploads `frontend/` with Wrangler. Upload the videos
+to R2 manually after Terraform creates the bucket.
 
 ## GitHub Actions
 
@@ -55,12 +60,14 @@ Add these `production` environment variables:
 
 1. Add the domain as an active Cloudflare zone and delegate its nameservers to
    Cloudflare. Remove or import an existing apex DNS record that would conflict
-   with the Terraform-managed Pages CNAME.
+   with the Terraform-managed Pages CNAME. Remove any existing
+   `assets.<zone-name>` record before attaching the R2 custom domain.
 2. In Cloudflare R2, create an empty state bucket such as `portfolio-tf-state`.
    Create an R2 API token with **Object Read & Write** limited to that bucket.
    Copy its Access Key ID and Secret Access Key. The secret is shown once.
 3. Create a Cloudflare API token scoped to this account and zone. Grant
-   **Account: Pages: Write**, **Zone: DNS: Edit**, and **Zone: Zone: Read**.
+   **Account: Pages: Write**, **Account: Workers R2 Storage: Write**,
+   **Zone: DNS: Edit**, and **Zone: Zone: Read**.
 4. In GitHub, open **Settings > Environments > production**, and add
    the three secrets and three variables listed above.
 5. Commit the workflows to `main`. A push to `main` runs validation, then
@@ -80,6 +87,19 @@ with `npx wrangler login`, then run:
 npm ci
 npm run deploy:frontend -- --project-name=portfolio --branch=main
 ```
+
+## Reddit video assets
+
+After Terraform creates the asset bucket, `assets-portfolio` by default,
+download these files from the [reddit-2-video v1.1.0 release](https://github.com/Thomasssb1/reddit-2-video/releases/tag/v1.1.0) and upload them to the bucket under `reddit-videos/v1.1.0/`:
+
+- `example-1.mp4`
+- `example-2.mp4`
+- `example-3-1.mp4`, `example-3-2.mp4`, `example-3-3.mp4`
+- `example-4.mp4`
+- `example-5.mp4`.
+
+Keep the filenames and path exact, and serve each object as `video/mp4`. For example, the first file should load at `https://assets.<zone-name>/reddit-videos/v1.1.0/example-1.mp4`. Production videos will fail to load until the objects are present. Local development and `pages.dev` previews continue to use the GitHub release. Cloudflare may take a few minutes to activate a new R2 custom domain.
 
 Run `npm run dev` to preview the site with Pages Functions locally. The
 Analytics Engine binding does not record local views or clicks.
@@ -153,6 +173,8 @@ No modules.
 | [cloudflare_dns_record.site](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/dns_record) | resource |
 | [cloudflare_pages_domain.site](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pages_domain) | resource |
 | [cloudflare_pages_project.site](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pages_project) | resource |
+| [cloudflare_r2_bucket.assets](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_bucket) | resource |
+| [cloudflare_r2_custom_domain.assets](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_custom_domain) | resource |
 | [cloudflare_zone.site](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zone) | data source |
 
 ## Inputs
@@ -168,6 +190,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_asset_bucket_name"></a> [asset\_bucket\_name](#output\_asset\_bucket\_name) | R2 bucket for public assets. |
+| <a name="output_asset_cdn_base_url"></a> [asset\_cdn\_base\_url](#output\_asset\_cdn\_base\_url) | Public base URL for the asset CDN. |
 | <a name="output_pages_domain"></a> [pages\_domain](#output\_pages\_domain) | Production custom domain attached to the Pages project. |
 | <a name="output_pages_project_name"></a> [pages\_project\_name](#output\_pages\_project\_name) | Cloudflare Pages project name. |
 | <a name="output_pages_subdomain"></a> [pages\_subdomain](#output\_pages\_subdomain) | Cloudflare-generated Pages subdomain. |
