@@ -313,8 +313,26 @@ h2 {
   font-size: 1rem;
   line-height: 1.55;
 }
-.project-repo {
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
   margin-top: 22px;
+}
+.project-links a {
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.24em;
+}
+.project-links a:hover {
+  color: var(--accent);
+}
+.project-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 .project-card {
   border: 1px solid var(--line);
