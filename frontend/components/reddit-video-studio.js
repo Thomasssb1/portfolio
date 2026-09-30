@@ -1,5 +1,6 @@
 import "./app-window/app-window.js";
 import "./app-terminal/app-terminal.js";
+import { redditVideoUrl } from "./reddit-video-assets.js";
 
 const examples = {
   "example-1": {
@@ -38,9 +39,6 @@ const examples = {
       "reddit-2-video --subreddit https://www.reddit.com/r/TrueOffMyChest/comments/1sfywpl/my_husband_has_started_wearing_makeup_and_i_hate/ --end-card assets/end-cards/thanks-for-watching.gif -v --output example-5",
   },
 };
-
-const releaseBase =
-  "https://github.com/Thomasssb1/reddit-2-video/releases/download/v1.1.0/";
 
 const studio = document.querySelector("[data-video-studio]");
 
@@ -232,7 +230,7 @@ if (studio) {
       loadingLabel.textContent = "Loading clip...";
       generateButton.disabled = true;
       status.textContent = "Loading clip...";
-      video.src = `${releaseBase}${selectedExample}.mp4`;
+      video.src = redditVideoUrl(selectedExample);
       video.load();
       updateTransport();
     });
@@ -302,7 +300,7 @@ if (studio) {
     generateButton.textContent = "Generating...";
     status.textContent = "Generating...";
     video.preload = "auto";
-    video.src = `${releaseBase}${selectedExample}.mp4`;
+    video.src = redditVideoUrl(selectedExample);
     video.load();
     terminal.output = "";
     startVerboseOutput(thisGeneration);

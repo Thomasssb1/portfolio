@@ -44,3 +44,19 @@ resource "cloudflare_dns_record" "site" {
   ttl     = 1
   proxied = true
 }
+
+resource "cloudflare_r2_bucket" "assets" {
+  account_id    = var.cloudflare_account_id
+  name          = "assets-${var.cloudflare_pages_project_name}"
+  storage_class = "Standard"
+}
+
+resource "cloudflare_r2_custom_domain" "assets" {
+  account_id  = var.cloudflare_account_id
+  bucket_name = cloudflare_r2_bucket.assets.name
+  domain      = "assets.${var.cloudflare_zone_name}"
+  enabled     = true
+  min_tls     = "1.2"
+  zone_id     = data.cloudflare_zone.site.id
+}
+
