@@ -26,7 +26,9 @@
     ></script>
     <script type="module" src="./components/experience-carousel.js"></script>
     <script type="module" src="./components/reddit-video-studio.js"></script>
+    <script type="module" src="./components/avatar-outfit-shop.js"></script>
   </head>
+
   <body>
     <div class="page-shell">
       <header class="site-header">
@@ -429,15 +431,155 @@
               </div>
             </article>
 
-            <article class="featured-project featured-project--reverse">
+            <article
+              class="featured-project featured-project--reverse roblox-project"
+              id="avatar-outfit-shop"
+            >
               <div
-                class="project-card project-card--featured project-card--green"
-                aria-hidden="true"
-              ></div>
+                class="project-card project-card--featured project-card--roblox"
+              >
+                <div class="roblox-video-frame" data-roblox-video-frame>
+                  <img
+                    class="roblox-video-poster"
+                    src="./assets/avatar-outfit-shop/gameplay-poster.webp"
+                    alt=""
+                    data-roblox-poster
+                  />
+                  <video
+                    class="roblox-video"
+                    data-roblox-video
+                    controls
+                    inert
+                    playsinline
+                    preload="metadata"
+                    poster="./assets/avatar-outfit-shop/gameplay-poster.webp"
+                    aria-label="Avatar Outfit Shop gameplay walkthrough"
+                  >
+                    <source
+                      src="./assets/avatar-outfit-shop/gameplay.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
               <div class="project-info">
-                <p>02 / Featured project</p>
-                <h3>Project two</h3>
-                <p>A short placeholder for a future case study.</p>
+                <h3>Avatar Outfit Shop</h3>
+                <div
+                  class="roblox-results"
+                  role="group"
+                  aria-label="Project results"
+                >
+                  <p><strong>100,000+</strong><span>visits</span></p>
+                  <p><strong>~£3,500</strong><span>revenue</span></p>
+                </div>
+                <p class="project-description">
+                  A Roblox experience that groups creator-made avatar items into
+                  complete, purchasable outfits. I built the custom interface,
+                  purchase tracking, and analytics behind it.
+                </p>
+                <nav
+                  class="roblox-project-actions"
+                  aria-label="Avatar Outfit Shop links"
+                >
+                  <a
+                    class="roblox-play-button"
+                    href="https://www.roblox.com/games/start?placeId=4878804776"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Launch Avatar Outfit Shop in Roblox"
+                  >
+                    <span class="roblox-play-icon" aria-hidden="true"></span>
+                    <span>Play</span>
+                  </a>
+                  <a
+                    href="https://www.roblox.com/games/4878804776/Avatar-Outfit-Shop"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Game page</a
+                  >
+                  <a href="#avatar-outfit-shop-story">How it works</a>
+                </nav>
+              </div>
+              <div class="roblox-case-study" id="avatar-outfit-shop-story">
+                <div class="roblox-story-heading">
+                  <h4>Built around what players did.</h4>
+                  <p>
+                    Players could shop complete looks assembled from matching
+                    creator-made items. Funnel analytics showed where they
+                    dropped off, while telemetry exposed latency from fetching
+                    assets through the catalog API.
+                  </p>
+                </div>
+                <div class="roblox-engineering">
+                  <p>
+                    <strong>Persistent data and purchases</strong>
+                    DataStore kept player data across sessions. I also built
+                    atomic purchase tracking and funnel analytics to measure
+                    player engagement and revenue.
+                  </p>
+                  <p>
+                    <strong>Asset delivery</strong>
+                    I started with live API requests, then cached the responses.
+                    When caching still left noticeable latency, I pre-baked the
+                    assets into the game so clients could load them as needed
+                    without live catalog requests for those assets.
+                  </p>
+                </div>
+                <div
+                  class="roblox-gallery"
+                  role="group"
+                  aria-label="Avatar Outfit Shop images"
+                >
+                  <figure class="roblox-gallery-item">
+                    <div class="roblox-image-frame" data-roblox-image-frame>
+                      <img
+                        src="./assets/avatar-outfit-shop/outfit-browser.webp"
+                        alt="Avatar Outfit Shop interface showing complete outfits"
+                        loading="lazy"
+                        data-roblox-image
+                      />
+                      <span class="roblox-image-placeholder"
+                        >Outfit browser image coming soon</span
+                      >
+                    </div>
+                    <figcaption>
+                      <span>Interface</span><strong>Outfit discovery</strong>
+                    </figcaption>
+                  </figure>
+                  <figure class="roblox-gallery-item">
+                    <div class="roblox-image-frame" data-roblox-image-frame>
+                      <img
+                        src="./assets/avatar-outfit-shop/purchase-flow.webp"
+                        alt="Avatar Outfit Shop view showing the items in an outfit"
+                        loading="lazy"
+                        data-roblox-image
+                      />
+                      <span class="roblox-image-placeholder"
+                        >Purchase flow image coming soon</span
+                      >
+                    </div>
+                    <figcaption>
+                      <span>Shopping flow</span
+                      ><strong>Matching items and purchase path</strong>
+                    </figcaption>
+                  </figure>
+                  <figure class="roblox-gallery-item">
+                    <div class="roblox-image-frame" data-roblox-image-frame>
+                      <img
+                        src="./assets/avatar-outfit-shop/creator-dashboard.webp"
+                        alt="Dated Roblox Creator Dashboard evidence for visits and revenue"
+                        loading="lazy"
+                        data-roblox-image
+                      />
+                      <span class="roblox-image-placeholder"
+                        >Results image coming soon</span
+                      >
+                    </div>
+                    <figcaption>
+                      <span>Results</span><strong>Creator Dashboard</strong>
+                    </figcaption>
+                  </figure>
+                </div>
               </div>
             </article>
           </div>
@@ -462,13 +604,13 @@
         <details>
           <summary>Privacy</summary>
           <p>
-            This site counts page loads and clicks on external links. A page
+            This site counts page loads and some external-link clicks. A page
             link can carry a short source tag, such as ?cv. The counters store
             the tag or link name and time, not the full URL or visitor
             identifiers. They use no analytics cookies or browser tracking
             script. Cloudflare hosts the site and processes requests to deliver
-            it. Email links bypass the click counter. Playing a project video
-            loads it from GitHub.
+            it. Email links bypass the click counter. Project videos load from
+            this site or GitHub.
           </p>
         </details>
       </footer>
