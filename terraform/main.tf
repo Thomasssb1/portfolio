@@ -14,8 +14,12 @@ resource "cloudflare_pages_project" "site" {
   production_branch = var.cloudflare_pages_production_branch
 
   deployment_configs = {
+    preview = {
+      fail_open = true
+    }
     production = {
       compatibility_date = "2026-09-29"
+      fail_open          = true
       analytics_engine_datasets = {
         CLICKS = {
           dataset = "portfolio_clicks"
