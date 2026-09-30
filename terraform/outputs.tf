@@ -8,11 +8,6 @@ output "pages_domain" {
   value       = cloudflare_pages_domain.site.name
 }
 
-output "pages_subdomain" {
-  description = "Cloudflare-generated Pages subdomain."
-  value       = cloudflare_pages_project.site.subdomain
-}
-
 output "asset_bucket_name" {
   description = "R2 bucket for public assets."
   value       = cloudflare_r2_bucket.assets.name

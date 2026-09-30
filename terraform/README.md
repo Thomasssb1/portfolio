@@ -43,6 +43,8 @@ checks HTML linting, formatting, analytics tests, and Terraform configuration.
 of a push to `main` or a manually dispatched validation. It checks out that
 validated commit, uses the `production` GitHub environment, applies Terraform
 with the remote R2 state backend, then uploads `frontend/` to Pages with Wrangler.
+The production domain is `https://thomasbeer.uk`. The workflow suppresses
+Wrangler's generated deployment URL and does not create its job summary.
 
 Add these `production` environment secrets before the first deployment:
 
@@ -194,5 +196,4 @@ No modules.
 | <a name="output_asset_cdn_base_url"></a> [asset\_cdn\_base\_url](#output\_asset\_cdn\_base\_url) | Public base URL for the asset CDN. |
 | <a name="output_pages_domain"></a> [pages\_domain](#output\_pages\_domain) | Production custom domain attached to the Pages project. |
 | <a name="output_pages_project_name"></a> [pages\_project\_name](#output\_pages\_project\_name) | Cloudflare Pages project name. |
-| <a name="output_pages_subdomain"></a> [pages\_subdomain](#output\_pages\_subdomain) | Cloudflare-generated Pages subdomain. |
 <!-- END_TF_DOCS -->
