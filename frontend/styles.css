@@ -122,11 +122,10 @@ h1 {
   letter-spacing: 0.02em;
   line-height: 1.4;
 }
-.experience-next {
+.carousel-next {
   display: grid;
   width: 38px;
   height: 38px;
-  margin: 16px 0 0 auto;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 50%;
@@ -141,12 +140,15 @@ h1 {
     color 180ms ease,
     transform 180ms ease;
 }
-.experience-next:is(:hover, :focus-visible) {
+.experience-next {
+  margin: 16px 0 0 auto;
+}
+.carousel-next:is(:hover, :focus-visible) {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateX(2px);
 }
-.experience-next:focus-visible {
+.carousel-next:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
@@ -550,22 +552,552 @@ h2 {
   display: none;
 }
 .roblox-gallery-item figcaption {
-  display: grid;
-  gap: 4px;
   margin-top: 12px;
   color: #52606c;
   font-size: 0.78rem;
   line-height: 1.4;
 }
-.roblox-gallery-item figcaption span {
-  color: var(--accent);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.7rem;
-}
 .roblox-gallery-item figcaption strong {
   color: var(--ink);
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.roblox-analytics-preview {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: clamp(14px, 2vw, 22px);
+  border: 1px solid #bfd2c8;
+  border-radius: 8px;
+  background: #f6faf7;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease;
+}
+.roblox-analytics-preview:hover {
+  border-color: var(--accent);
+}
+.roblox-analytics-preview:focus-visible,
+.roblox-analytics-close:focus-visible,
+.roblox-analytics-table-wrap:focus-visible {
+  outline: 2px solid #7da5ff;
+  outline-offset: 3px;
+}
+.roblox-preview-period,
+.roblox-analytics-period {
+  margin: 0;
+  color: #52606c;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.roblox-preview-period {
+  color: var(--ink);
+}
+.roblox-preview-window {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.roblox-preview-slide {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.roblox-preview-title {
+  display: block;
+  margin: 10px 0;
+  font-size: clamp(0.92rem, 1.3vw, 1.14rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+.roblox-preview-chart {
+  display: grid;
+  gap: 6px;
+  margin: auto 0;
+}
+.roblox-preview-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  overflow: hidden;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background: #a74045;
+  color: #fff;
+  font-size: clamp(0.62rem, 0.9vw, 0.75rem);
+}
+.roblox-preview-bar
+  > span:not(.roblox-preview-bar-fill):not(.roblox-preview-after),
+.roblox-preview-bar strong {
+  z-index: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.roblox-preview-bar strong {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-preview-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  background: #238457;
+}
+.roblox-preview-after {
+  position: absolute;
+  inset: 2px auto 2px 2px;
+  z-index: 1;
+  display: block;
+  width: calc(var(--after) - 4px);
+  border: 2px solid #fff;
+  border-radius: 1px;
+  pointer-events: none;
+}
+.roblox-preview-trend {
+  display: grid;
+  gap: 2px;
+  padding: 4px 6px;
+  border: 1px solid #bfd2c8;
+  border-radius: 3px;
+  background: #f6faf7;
+}
+.roblox-preview-trend-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  text-align: center;
+}
+.roblox-preview-trend-stages > span {
+  display: grid;
+  gap: 1px;
+}
+.roblox-preview-trend-stages strong {
+  color: #17553b;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-preview-trend-stages small {
+  overflow: hidden;
+  color: #52645a;
+  font-size: 0.6rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.roblox-preview-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: clamp(0.61rem, 0.85vw, 0.75rem);
+  font-weight: 600;
+}
+.roblox-preview-footer [data-roblox-preview-note] {
+  color: #52606c;
+}
+.roblox-preview-action {
+  color: var(--accent);
+}
+.roblox-analytics-dialog {
+  width: min(1120px, calc(100vw - 36px));
+  max-width: none;
+  max-height: min(92vh, 920px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #d5dfd9;
+  border-radius: 15px;
+  background: #fbfcfa;
+  color: var(--ink);
+  box-shadow: 0 28px 95px #12292b73;
+}
+.roblox-analytics-dialog::backdrop {
+  background: #152d36a3;
+}
+.roblox-analytics-dialog-inner {
+  padding: clamp(20px, 3vw, 34px);
+}
+.roblox-analytics-header,
+.roblox-analytics-navigation {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.roblox-analytics-header {
+  justify-content: flex-end;
+}
+.roblox-analytics-close {
+  display: grid;
+  flex: none;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #d2dcd6;
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.roblox-analytics-close:hover {
+  border-color: var(--accent);
+}
+.roblox-analytics-navigation {
+  align-items: center;
+  margin: 8px 0 20px;
+}
+.roblox-analytics-navigation h2 {
+  margin: 8px 0 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.9rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+.roblox-analytics-next-wrap {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  color: #52606c;
+  font-size: 0.77rem;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-analytics-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.roblox-analytics-kpis p {
+  display: grid;
+  align-content: start;
+  grid-template-rows: 16px minmax(34px, auto) 16px;
+  gap: 5px;
+  min-width: 160px;
+  margin: 0;
+  padding: 15px 18px;
+  border-radius: 9px;
+  background: #edf3ef;
+}
+.roblox-analytics-kpis span {
+  color: #53665b;
+  font-size: 0.78rem;
+}
+.roblox-analytics-kpis strong {
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.roblox-analytics-kpis small {
+  color: #52645a;
+  font-size: 0.72rem;
+}
+.roblox-analytics-kpi-wide {
+  min-width: 270px !important;
+}
+.roblox-analytics-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 0 0 13px;
+  color: #47594e;
+  font-size: 0.76rem;
+}
+.roblox-analytics-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.roblox-analytics-legend i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+.roblox-analytics-legend-solid {
+  background: #2e9c6b;
+}
+.roblox-analytics-legend-outline {
+  border: 2px solid #215f43;
+}
+.roblox-analytics-table-hint {
+  display: none;
+}
+.roblox-analytics-table-wrap {
+  overflow-x: auto;
+}
+.roblox-analytics-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.roblox-analytics-table th,
+.roblox-analytics-table td {
+  border-bottom: 1px solid #dce5df;
+}
+.roblox-analytics-table thead th {
+  padding: 13px 12px;
+  color: #435549;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+.roblox-analytics-table thead th:first-child {
+  width: 32%;
+}
+.roblox-analytics-table thead th:nth-child(2) {
+  width: 13%;
+  text-align: right;
+}
+.roblox-analytics-table thead th:nth-child(n + 3) {
+  width: 18.33%;
+  text-align: center;
+}
+.roblox-analytics-table tbody th {
+  padding: 15px 12px;
+  font-weight: 500;
+  text-align: left;
+}
+.roblox-analytics-user-count {
+  padding: 15px 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.roblox-analytics-value {
+  padding: 0;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-analytics-comparison {
+  position: relative;
+  min-height: 64px;
+  overflow: hidden;
+  background: var(--remainder-color);
+  white-space: nowrap;
+}
+.roblox-analytics-comparison--complete {
+  --metric-color: #2e9c6b;
+  --outline-color: #17553b;
+  --remainder-color: #e4f2e9;
+}
+.roblox-analytics-comparison--churn {
+  --metric-color: #c86769;
+  --outline-color: #803b3e;
+  --remainder-color: #f8e8e7;
+}
+.roblox-analytics-comparison--total {
+  --metric-color: #5284e2;
+  --outline-color: #244e9b;
+  --remainder-color: #e7eeff;
+}
+.roblox-analytics-comparison-values {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  min-height: 64px;
+  padding: 6px 8px;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-analytics-comparison-values span,
+.roblox-analytics-comparison-values strong {
+  padding: 2px 5px;
+  background: #fffffff0;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.roblox-analytics-comparison-values strong {
+  border: 1px solid var(--outline-color);
+  color: var(--outline-color);
+}
+.roblox-analytics-comparison-before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--before);
+  background: var(--metric-color);
+}
+.roblox-analytics-comparison-after {
+  position: absolute;
+  inset: 3px auto 3px 0;
+  width: var(--after);
+  border: 2px solid var(--outline-color);
+  border-radius: 1px;
+  pointer-events: none;
+}
+.roblox-trend-graph {
+  margin: 16px 0 18px;
+  padding: 14px 16px 12px;
+  border: 1px solid #d6e0da;
+  border-radius: 4px;
+  background: #f3f7f4;
+}
+.roblox-trend-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+.roblox-trend-heading h4,
+.roblox-latency-heading {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+.roblox-trend-heading p {
+  margin: 0;
+  color: #53665b;
+  font-size: 0.7rem;
+}
+.roblox-trend-svg {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: 4px auto 0;
+}
+.roblox-trend-svg--preview {
+  margin: 0;
+  max-width: none;
+}
+.roblox-trend-gridline {
+  stroke: #ccd9d0;
+  stroke-width: 1;
+}
+.roblox-trend-axis-label {
+  fill: #53665b;
+  font-size: 10px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+.roblox-trend-line {
+  fill: none;
+  stroke: #238457;
+  stroke-width: 2.5;
+}
+.roblox-trend-point {
+  fill: #fff;
+  stroke: #17553b;
+  stroke-width: 2;
+}
+.roblox-trend-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.roblox-trend-stages > div {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+}
+.roblox-trend-stages span {
+  color: #43574c;
+  font-size: 0.72rem;
+}
+.roblox-trend-stages strong {
+  color: #17553b;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-trend-stages small {
+  color: #53665b;
+  font-size: 0.65rem;
+}
+.roblox-latency-heading {
+  margin-bottom: 10px;
+}
+.roblox-latency-graph {
+  display: grid;
+  gap: 17px;
+  margin: 0 0 29px;
+  padding: 22px;
+  border: 1px solid #d6e0da;
+  border-radius: 4px;
+  background: #f3f7f4;
+}
+.roblox-latency-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 112px;
+  margin-right: 76px;
+  color: #53665b;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+.roblox-latency-row {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) 64px;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+.roblox-latency-row strong {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.roblox-latency-track {
+  height: 24px;
+  border-right: 1px solid #c7d5cd;
+  background:
+    repeating-linear-gradient(to right, #c7d5cd 0 1px, transparent 1px 25%),
+    #e3ebe5;
+}
+.roblox-latency-bar {
+  display: block;
+  height: 100%;
+  min-width: 3px;
+  background: #6aa8ff;
+}
+.roblox-latency-bar--p95 {
+  background: #55bea1;
+}
+.roblox-latency-bar--p99 {
+  background: #f1a35d;
+}
+.roblox-latency-bar--maximum {
+  border: 2px solid var(--ink);
+  background: transparent;
+}
+.roblox-analytics-work {
+  margin-top: 26px;
+  padding: 17px 20px;
+  border-left: 3px solid #6d95ff;
+  background: #edf4f0;
+}
+.roblox-analytics-work h4 {
+  margin: 0 0 7px;
+  font-size: 0.9rem;
+}
+.roblox-analytics-work p {
+  margin: 0;
+  color: #43574c;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+.roblox-analytics-note {
+  margin: 20px 0 0;
+  color: #53665b;
+  font-size: 0.71rem;
+  line-height: 1.5;
 }
 .studio-window {
   height: 100%;
@@ -970,6 +1502,15 @@ h2 {
   max-width: 65ch;
   margin: 12px 0 0;
 }
+@media (max-width: 900px) {
+  .roblox-gallery {
+    grid-template-columns: 1fr;
+  }
+  .roblox-analytics-preview {
+    min-height: 220px;
+    aspect-ratio: auto;
+  }
+}
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 40px, 1240px);
@@ -1036,8 +1577,43 @@ h2 {
   .roblox-case-study {
     grid-template-columns: 1fr;
   }
-  .roblox-gallery {
-    grid-template-columns: 1fr;
+  .roblox-analytics-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+  }
+  .roblox-analytics-dialog-inner {
+    padding: 20px;
+  }
+  .roblox-analytics-navigation {
+    align-items: flex-end;
+  }
+  .roblox-analytics-kpis p {
+    min-width: 0;
+    flex: 1 1 115px;
+    padding: 12px;
+  }
+  .roblox-analytics-kpi-wide {
+    flex-basis: 100% !important;
+  }
+  .roblox-analytics-table-hint {
+    display: block;
+    margin: 0 0 7px;
+    color: #aeb8ca;
+    font-size: 0.7rem;
+  }
+  .roblox-latency-graph {
+    gap: 13px;
+    padding: 14px 10px;
+  }
+  .roblox-latency-axis {
+    margin-left: 74px;
+    margin-right: 55px;
+    font-size: 0.58rem;
+  }
+  .roblox-latency-row {
+    grid-template-columns: 66px minmax(0, 1fr) 48px;
+    gap: 8px;
+    font-size: 0.68rem;
   }
   .project-card--featured,
   .project-card--wide,

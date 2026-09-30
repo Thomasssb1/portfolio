@@ -134,7 +134,7 @@
                 </div>
               </div>
               <button
-                class="experience-next"
+                class="carousel-next experience-next"
                 type="button"
                 aria-label="Show next experience"
                 aria-controls="experience-track"
@@ -518,6 +518,13 @@
                     player engagement and revenue.
                   </p>
                   <p>
+                    <strong>Shopping flow</strong>
+                    I made mannequins clickable for individual try-ons, kept
+                    Quick Buy visible on mobile, and added basket feedback and
+                    safeguards after tracking empty checkout attempts. Players
+                    could also buy a whole outfit while exploring the world.
+                  </p>
+                  <p>
                     <strong>Asset delivery</strong>
                     I started with live API requests, then cached the responses.
                     When caching still left noticeable latency, I pre-baked the
@@ -542,9 +549,7 @@
                         >Outfit browser image coming soon</span
                       >
                     </div>
-                    <figcaption>
-                      <span>Interface</span><strong>Outfit discovery</strong>
-                    </figcaption>
+                    <figcaption><strong>Outfit discovery</strong></figcaption>
                   </figure>
                   <figure class="roblox-gallery-item">
                     <div class="roblox-image-frame" data-roblox-image-frame>
@@ -559,24 +564,51 @@
                       >
                     </div>
                     <figcaption>
-                      <span>Shopping flow</span
-                      ><strong>Matching items and purchase path</strong>
+                      <strong>Matching items and purchase path</strong>
                     </figcaption>
                   </figure>
                   <figure class="roblox-gallery-item">
-                    <div class="roblox-image-frame" data-roblox-image-frame>
-                      <img
-                        src="./assets/avatar-outfit-shop/creator-dashboard.webp"
-                        alt="Dated Roblox Creator Dashboard evidence for visits and revenue"
-                        loading="lazy"
-                        data-roblox-image
-                      />
-                      <span class="roblox-image-placeholder"
-                        >Results image coming soon</span
+                    <button
+                      class="roblox-analytics-preview"
+                      type="button"
+                      data-roblox-analytics-open
+                      aria-haspopup="dialog"
+                      aria-controls="roblox-analytics-dialog"
+                      aria-label="Open Avatar Outfit Shop analytics"
+                    >
+                      <span class="roblox-preview-period"
+                        >P99 change · 15–21 Mar 2026 export</span
                       >
-                    </div>
+                      <span class="roblox-preview-window">
+                        <span
+                          class="roblox-preview-slide"
+                          data-roblox-preview-slide
+                        >
+                          <span
+                            class="roblox-preview-title"
+                            data-roblox-preview-title
+                            >How asset delivery cut p99 load time</span
+                          >
+                          <span
+                            class="roblox-preview-chart"
+                            data-roblox-preview-chart
+                          >
+                            <span
+                              >Live API 100% → Cached 80% → Pre-baked 30%</span
+                            >
+                          </span>
+                        </span>
+                      </span>
+                      <span class="roblox-preview-footer"
+                        ><span data-roblox-preview-count>1 / 5</span
+                        ><span data-roblox-preview-note>P99 · 70% lower</span
+                        ><span class="roblox-preview-action"
+                          >Expand <span aria-hidden="true">↗</span></span
+                        ></span
+                      >
+                    </button>
                     <figcaption>
-                      <span>Results</span><strong>Creator Dashboard</strong>
+                      <strong>Performance and funnels</strong>
                     </figcaption>
                   </figure>
                 </div>
@@ -615,5 +647,52 @@
         </details>
       </footer>
     </div>
+    <dialog
+      class="roblox-analytics-dialog"
+      id="roblox-analytics-dialog"
+      aria-labelledby="roblox-analytics-view-title"
+      data-roblox-analytics-dialog
+    >
+      <div class="roblox-analytics-dialog-inner">
+        <div class="roblox-analytics-header">
+          <button
+            class="roblox-analytics-close"
+            type="button"
+            aria-label="Close analytics"
+            data-roblox-analytics-close
+          >
+            ×
+          </button>
+        </div>
+        <div class="roblox-analytics-navigation">
+          <div>
+            <p class="roblox-analytics-period" data-roblox-analytics-period>
+              P99 change · 15 Mar – 21 Mar 2026 timing export
+            </p>
+            <h2
+              id="roblox-analytics-view-title"
+              data-roblox-analytics-view-title
+            >
+              How asset delivery cut p99 load time
+            </h2>
+          </div>
+          <div class="roblox-analytics-next-wrap">
+            <span data-roblox-analytics-count></span>
+            <button
+              class="carousel-next"
+              type="button"
+              data-roblox-analytics-next
+              aria-label="Next analytics view"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="roblox-analytics-content"
+          data-roblox-analytics-content
+        ></div>
+      </div>
+    </dialog>
   </body>
 </html>
