@@ -467,8 +467,9 @@
             the tag or link name and time, not the full URL or visitor
             identifiers. They use no analytics cookies or browser tracking
             script. Cloudflare hosts the site and processes requests to deliver
-            it. Email links bypass the click counter. Playing a project video
-            loads it from GitHub.
+            it. Email links bypass the click counter. On the production custom
+            domain, project videos load from Cloudflare R2; during local
+            development and pages.dev previews, they load from GitHub Releases.
           </p>
         </details>
       </footer>
