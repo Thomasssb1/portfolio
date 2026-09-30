@@ -3,6 +3,8 @@
 This stack provisions the production Cloudflare Pages project for the portfolio,
 attaches the apex custom domain, and creates the proxied CNAME required by Pages.
 Pages serves the frontend through Cloudflare's CDN. The deployment workflow stores Terraform state in an existing R2 bucket.
+The project also binds a Workers Analytics Engine dataset to Pages Functions
+that count homepage views and outbound-link redirects. These counters do not use R2.
 
 ## Prerequisites
 
@@ -30,7 +32,7 @@ This creates a Direct Upload Pages project. The deployment workflow uploads `fro
 ## GitHub Actions
 
 `.github/workflows/validate.yml` runs on pull requests and pushes to `main`. It
-checks HTML linting, formatting, and Terraform configuration.
+checks HTML linting, formatting, analytics tests, and Terraform configuration.
 
 `.github/workflows/deploy-terraform.yml` runs only after a successful validation
 of a push to `main` or a manually dispatched validation. It checks out that
@@ -77,6 +79,53 @@ with `npx wrangler login`, then run:
 ```sh
 npm ci
 npm run deploy:frontend -- --project-name=portfolio --branch=main
+```
+
+Run `npm run dev` to preview the site with Pages Functions locally. The
+Analytics Engine binding does not record local views or clicks.
+
+## Views and link click counts
+
+External links use `/go/<name>` redirects. The Pages Function writes only the
+link name to the `portfolio_clicks` dataset. Homepage loads write `pageview`
+and a source tag to the same dataset. Cloudflare adds an event timestamp. The
+dataset is created automatically after the first recorded event. Email links
+stay as direct `mailto:` links and are not counted.
+
+The accepted tags are `cv` and `linkedin`. Use `/?cv` for the link in your CV
+or `/?linkedin` for LinkedIn. To add another tag, edit `ACCEPTED_TAGS` in
+`functions/index.js` and redeploy. The URL must have exactly one bare tag, with
+no value. Unknown tags, values, and multiple parameters count as `untagged`.
+Only the tag is written to Analytics Engine, not the full query string. Do not
+put names, email addresses, or unique identifiers in tags. Views and clicks may
+include automated traffic, and repeat loads count again. Tags show which link
+was used, not who visited, so treat the totals as approximate.
+
+To read counts, create a separate Cloudflare API token with **Account Analytics:
+Read** permission. This token is for querying data, not for deployment, and
+does not need to be added to GitHub. Query the
+[Workers Analytics Engine SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/):
+
+```sh
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/analytics_engine/sql" \
+  --header "Authorization: Bearer <ACCOUNT_ANALYTICS_READ_TOKEN>" \
+  --data "SELECT blob2 AS source, SUM(_sample_interval) AS views FROM portfolio_clicks WHERE blob1 = 'pageview' GROUP BY source ORDER BY views DESC"
+```
+
+To see whether views are rising, group the last 30 days by day and source:
+
+```sh
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/analytics_engine/sql" \
+  --header "Authorization: Bearer <ACCOUNT_ANALYTICS_READ_TOKEN>" \
+  --data "SELECT toStartOfDay(timestamp) AS day, blob2 AS source, SUM(_sample_interval) AS views FROM portfolio_clicks WHERE blob1 = 'pageview' AND timestamp >= NOW() - INTERVAL '30' DAY GROUP BY day, source ORDER BY day DESC, source ASC"
+```
+
+For outbound click counts:
+
+```sh
+curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/analytics_engine/sql" \
+  --header "Authorization: Bearer <ACCOUNT_ANALYTICS_READ_TOKEN>" \
+  --data "SELECT blob1 AS link, SUM(_sample_interval) AS clicks FROM portfolio_clicks WHERE blob1 != 'pageview' GROUP BY link ORDER BY clicks DESC"
 ```
 
 <!-- BEGIN_TF_DOCS -->

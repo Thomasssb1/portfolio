@@ -3,13 +3,221 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Personal portfolio." />
-    <title>Portfolio</title>
+    <meta name="description" content="Thomas Beer's portfolio and work." />
+    <meta name="theme-color" content="#f8f6f1" />
+    <title>Thomas Beer</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script
+      type="module"
+      src="./components/scramble-text/scramble-text.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/scroll-words/scroll-words.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/icon-button/icon-button.js"
+    ></script>
+    <script
+      type="module"
+      src="./components/site-button/site-button.js"
+    ></script>
+    <script type="module" src="./components/experience-carousel.js"></script>
   </head>
   <body>
-    <main>
-      <h1>Portfolio</h1>
-      <p>This site is in progress.</p>
-    </main>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="Thomas Beer, back to top">
+          <scramble-text>Thomas Beer</scramble-text>
+          <span class="wordmark-cursor" aria-hidden="true">_</span>
+        </a>
+        <div class="site-nav">
+          <site-button variant="transparent" href="#work">Work</site-button>
+          <site-button variant="transparent" href="#experience"
+            >Experience</site-button
+          >
+          <site-button variant="transparent" href="#contact"
+            >Contact</site-button
+          >
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="intro-title">
+          <div class="intro-copy">
+            <p class="intro-label">
+              <span class="intro-label-rule"></span> Software developer /
+              computer science student
+            </p>
+            <h1 id="intro-title">
+              I build
+              <scroll-words words="apps,tools,libraries">apps.</scroll-words>
+            </h1>
+            <nav class="social-links" aria-label="Find me online">
+              <icon-button
+                icon="github"
+                href="/go/github"
+                target="_blank"
+                label="GitHub"
+                >GitHub</icon-button
+              >
+              <icon-button
+                icon="linkedin"
+                href="/go/linkedin"
+                target="_blank"
+                label="LinkedIn"
+                >LinkedIn</icon-button
+              >
+            </nav>
+          </div>
+
+          <div class="intro-details">
+            <section class="experience" id="experience" aria-label="Experience">
+              <div class="experience-carousel" data-experience-carousel>
+                <div
+                  class="experience-track"
+                  id="experience-track"
+                  data-experience-track
+                  tabindex="0"
+                >
+                  <article class="experience-card">
+                    <p class="experience-role">Software Developer Intern</p>
+                    <h2>
+                      <a
+                        href="/go/idbs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >IDBS</a
+                      >
+                    </h2>
+                    <p class="experience-meta">
+                      <span>Woking, UK</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Aug 2025 - Aug 2026</span>
+                    </p>
+                    <p class="experience-description">
+                      Built production features for Polar, a GxP-compliant
+                      enterprise SaaS platform, across TypeScript and Python
+                      services, GraphQL, user interfaces, and AWS
+                      infrastructure. Also delivered access control for data
+                      integrations and vulnerability-remediation tooling.
+                    </p>
+                  </article>
+
+                  <article class="experience-card">
+                    <p class="experience-role">
+                      Game Developer Research Panelist
+                    </p>
+                    <h2>Good Gamer Group / Meta Research Panels</h2>
+                    <p class="experience-meta">
+                      <span>Remote</span>
+                      <span aria-hidden="true">·</span>
+                      <span>Mar 2025 - Present</span>
+                    </p>
+                    <p class="experience-description">
+                      Selected for Meta-commissioned game developer and
+                      invite-only
+                      <a
+                        href="/go/meta-research"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >AR/VR research panels</a
+                      >. I provide structured feedback on pre-release tooling,
+                      developer workflows, and usability.
+                    </p>
+                  </article>
+                </div>
+              </div>
+              <button
+                class="experience-next"
+                type="button"
+                aria-label="Show next experience"
+                aria-controls="experience-track"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </section>
+
+            <address class="contact" id="contact">
+              <p class="detail-label">Contact</p>
+              <div class="contact-links">
+                <a href="mailto:thomas.beer04@outlook.com">Email</a>
+                <a href="/go/github" target="_blank" rel="noopener noreferrer"
+                  >GitHub</a
+                >
+                <a href="/go/linkedin" target="_blank" rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </div>
+            </address>
+          </div>
+        </section>
+
+        <section class="work" id="work" aria-labelledby="work-title">
+          <div class="work-heading">
+            <p class="section-label">
+              <span class="section-label-rule"></span> Selected work
+            </p>
+            <h2 id="work-title">A few things I have been making.</h2>
+          </div>
+
+          <div class="featured-projects">
+            <article class="featured-project">
+              <div
+                class="project-card project-card--featured project-card--blue"
+                aria-hidden="true"
+              ></div>
+              <div class="project-info">
+                <p>01 / Featured project</p>
+                <h3>Project one</h3>
+                <p>A short placeholder for a future case study.</p>
+              </div>
+            </article>
+
+            <article class="featured-project featured-project--reverse">
+              <div
+                class="project-card project-card--featured project-card--green"
+                aria-hidden="true"
+              ></div>
+              <div class="project-info">
+                <p>02 / Featured project</p>
+                <h3>Project two</h3>
+                <p>A short placeholder for a future case study.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="project-grid">
+            <div
+              class="project-card project-card--wide project-card--dark"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="project-card project-card--small project-card--peach"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="project-card project-card--small project-card--sage"
+              aria-hidden="true"
+            ></div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <details>
+          <summary>Privacy</summary>
+          <p>
+            This site counts page loads and clicks on external links. A page
+            link can carry a short source tag, such as ?cv. The counters store
+            the tag or link name and time, not the full URL or visitor
+            identifiers. They use no analytics cookies or browser tracking
+            script. Cloudflare hosts the site and processes requests to deliver
+            it. Email links bypass the click counter.
+          </p>
+        </details>
+      </footer>
+    </div>
   </body>
 </html>

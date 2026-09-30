@@ -1,0 +1,68 @@
+:host,
+.mount {
+  display: inline-flex;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--accent, #2764a4);
+  border-radius: 8px;
+  background: var(--accent, #2764a4);
+  color: var(--background, #f8f6f1);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--accent, #2764a4);
+  outline-offset: 5px;
+}
+
+.control:not(:disabled):hover {
+  background: #1f548e;
+  border-color: #1f548e;
+}
+
+.control:disabled {
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+  cursor: default;
+}
+
+:host([variant="transparent"]) .control {
+  padding: 0;
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink, #1b2732);
+}
+
+:host([variant="transparent"]) .control:not(:disabled):hover {
+  background: transparent;
+  border-color: transparent;
+  color: var(--accent, #2764a4);
+}
+
+@media (max-width: 640px) {
+  .control {
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control {
+    transition: none;
+  }
+}

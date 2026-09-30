@@ -24,7 +24,7 @@ repos:
         entry: npm run lint
         language: system
         pass_filenames: false
-        files: ^(frontend/.*\.html|package(-lock)?\.json)$
+        files: ^(frontend/.*|functions/.*|tests/.*|package(-lock)?\.json)$
 
       - id: typecheck
         name: typecheck
