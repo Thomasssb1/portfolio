@@ -9,25 +9,13 @@ import {
   renderWorkPanel,
 } from "./analytics-components.js";
 import { createAutoCycleCard } from "./auto-cycle-card.js";
+import { setupCaseStudyArrow } from "./case-study-arrow.js";
+import { setupCaseStudyVideoPlayer } from "./case-study-video-player.js";
 
-const video = document.querySelector("[data-case-study-video]");
-const videoFrame = document.querySelector("[data-case-study-video-frame]");
-const poster = document.querySelector("[data-case-study-poster]");
-
-if (poster && videoFrame) {
-  const showPoster = () => videoFrame.classList.add("has-poster");
-  poster.addEventListener("load", showPoster, { once: true });
-  if (poster.complete && poster.naturalWidth > 0) showPoster();
-}
-
-if (video && videoFrame) {
-  const showVideo = () => {
-    videoFrame.classList.add("has-media");
-    video.inert = false;
-  };
-  video.addEventListener("loadedmetadata", showVideo, { once: true });
-  if (video.readyState >= HTMLMediaElement.HAVE_METADATA) showVideo();
-}
+setupCaseStudyArrow(document.querySelector("#avatar-outfit-shop-story"));
+setupCaseStudyVideoPlayer(
+  document.querySelector("[data-case-study-video-frame]"),
+);
 
 for (const image of document.querySelectorAll("[data-case-study-image]")) {
   const showImage = () =>

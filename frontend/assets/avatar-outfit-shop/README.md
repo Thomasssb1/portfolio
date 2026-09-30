@@ -1,13 +1,13 @@
 # Avatar Outfit Shop assets
 
-Add the following files to this directory. The portfolio picks them up automatically; missing files show a quiet placeholder.
+The portfolio uses these files. The video and screenshots are now present; a missing image shows a placeholder.
 
-| File                   | What to capture                                                                                                                    | Suggested export                                                           |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `gameplay.mp4`         | A 20–30 second walkthrough of the real player flow: browse outfits, open one, inspect matching items, and reach a purchase prompt. | 1920×1080, H.264 MP4, muted or with clean game audio, ideally under 15 MB. |
-| `gameplay-poster.webp` | A clear frame from the walkthrough to show before playback.                                                                        | 1600×900 WebP, ideally under 300 KB.                                       |
-| `outfit-browser.webp`  | The custom outfit discovery interface.                                                                                             | 1600×1000 WebP or larger, with readable UI.                                |
-| `purchase-flow.webp`   | The item list or purchase path for one complete outfit.                                                                            | 1600×1000 WebP or larger, with readable UI.                                |
+| File                  | What to capture                                                                                                                    | Suggested export                                                           |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `gameplay.mp4`        | A 20–30 second walkthrough of the real player flow: browse outfits, open one, inspect matching items, and reach a purchase prompt. | 1920×1080, H.264 MP4, muted or with clean game audio, ideally under 15 MB. |
+| `gameplay-poster.png` | The poster shown before the gameplay video loads.                                                                                  | 1920×1080 PNG.                                                             |
+| `outfit-browser.webp` | The custom outfit discovery interface.                                                                                             | 1600×1000 WebP or larger, with readable UI.                                |
+| `purchase-flow.webp`  | The item list or purchase path for one complete outfit.                                                                            | 1600×1000 WebP or larger, with readable UI.                                |
 
 The third gallery slot cycles through five analytics views built from the CSV exports. Hovering over it pauses the cycle. Clicking it opens the current view; the arrow advances through the views. It needs no image asset. Use the real aspect ratio for the two screenshots; the page fits each image in its frame without cropping.
 
