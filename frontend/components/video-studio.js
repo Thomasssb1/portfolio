@@ -1,6 +1,6 @@
 import "./app-window/app-window.js";
 import "./app-terminal/app-terminal.js";
-import { redditVideoUrl } from "./reddit-video-assets.js";
+import { videoUrl } from "./video-assets.js";
 
 const examples = {
   "example-1": {
@@ -230,7 +230,7 @@ if (studio) {
       loadingLabel.textContent = "Loading clip...";
       generateButton.disabled = true;
       status.textContent = "Loading clip...";
-      video.src = redditVideoUrl(selectedExample);
+      video.src = videoUrl(selectedExample);
       video.load();
       updateTransport();
     });
@@ -300,7 +300,7 @@ if (studio) {
     generateButton.textContent = "Generating...";
     status.textContent = "Generating...";
     video.preload = "auto";
-    video.src = redditVideoUrl(selectedExample);
+    video.src = videoUrl(selectedExample);
     video.load();
     terminal.output = "";
     startVerboseOutput(thisGeneration);

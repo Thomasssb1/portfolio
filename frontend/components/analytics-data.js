@@ -1,4 +1,4 @@
-// Before counts come from Roblox Analytics CSV exports in Downloads, inspected
+// Before counts come from analytics CSV exports in Downloads, inspected
 // 30 Sep 2026. After step completion rates are approximate project recollections;
 // no post-change export is available. Do not derive after user counts from them.
 // The user supplied the 15–21 Mar 2026 funnel date range; the funnel CSVs omit it.
