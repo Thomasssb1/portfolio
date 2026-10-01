@@ -133,6 +133,13 @@ jobs:
       - name: Build frontend for Pages
         run: npm run build:frontend
 
+      - name: Confirm main is current before deploying Pages
+        uses: ./.github/actions/verify-current-main
+        with:
+          expected-sha: ${{ github.event.workflow_run.head_sha }}
+          fail-on-stale: "true"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload frontend to Pages
         uses: cloudflare/wrangler-action@v4
         with:
