@@ -105,10 +105,38 @@ jobs:
           fail-on-stale: "true"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set asset deployment outputs
+        run: |
+          echo "ASSET_R2_BUCKET=$(terraform -chdir=terraform output -raw asset_bucket_name)" >> "$GITHUB_ENV"
+          echo "ASSET_CDN_BASE_URL=$(terraform -chdir=terraform output -raw asset_cdn_base_url)" >> "$GITHUB_ENV"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install AWS CLI
+        run: |
+          python3 -m venv /tmp/portfolio-awscli
+          /tmp/portfolio-awscli/bin/pip install 'awscli>=1.42,<2'
+          echo /tmp/portfolio-awscli/bin >> "$GITHUB_PATH"
+
+      - name: Upload changed media to R2
+        env:
+          ASSET_R2_ENDPOINT: https://${{ vars.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          AWS_ACCESS_KEY_ID: ${{ secrets.ASSET_R2_ACCESS_KEY_ID }}
+          AWS_DEFAULT_REGION: auto
+          AWS_EC2_METADATA_DISABLED: "true"
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ASSET_R2_SECRET_ACCESS_KEY }}
+        run: npm run sync:assets
+
+      - name: Build frontend for Pages
+        run: npm run build:frontend
+
       - name: Upload frontend to Pages
         uses: cloudflare/wrangler-action@v4
         with:
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy frontend --project-name=portfolio --branch=main
+          command: pages deploy .pages-dist --project-name=portfolio --branch=main
           quiet: true

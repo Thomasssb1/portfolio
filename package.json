@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler pages dev frontend --compatibility-date=2026-09-29",
-    "deploy:frontend": "wrangler pages deploy frontend",
+    "build:frontend": "node scripts/build-frontend.mjs",
+    "sync:assets": "node scripts/sync-assets.mjs",
+    "deploy:frontend": "npm run build:frontend && wrangler pages deploy .pages-dist",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "npm run lint:html && npm run format:check",

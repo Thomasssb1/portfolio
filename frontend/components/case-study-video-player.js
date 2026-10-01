@@ -31,6 +31,30 @@ export function setupCaseStudyVideoPlayer(frame) {
   )
     return;
 
+  const source = video.querySelector?.("source[data-src]");
+  let sourceObserver;
+  function loadVideo() {
+    if (!source?.dataset?.src) return;
+    source.src = source.dataset.src;
+    delete source.dataset.src;
+    video.preload = "metadata";
+    video.load();
+    sourceObserver?.disconnect();
+  }
+  if (source?.dataset?.src) {
+    if (typeof IntersectionObserver === "function") {
+      sourceObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) loadVideo();
+        },
+        { rootMargin: "400px" },
+      );
+      sourceObserver.observe(frame);
+    } else {
+      loadVideo();
+    }
+  }
+
   const duration = () =>
     Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 0;
   let scrubPreview = null;
@@ -131,6 +155,7 @@ export function setupCaseStudyVideoPlayer(frame) {
       return;
     }
     if (video.ended) video.currentTime = 0;
+    loadVideo();
     try {
       video.play()?.catch((error) => {
         if (error?.name !== "AbortError") fallBackToNativeControls();

@@ -60,3 +60,42 @@ resource "cloudflare_r2_custom_domain" "assets" {
   zone_id     = data.cloudflare_zone.site.id
 }
 
+resource "cloudflare_r2_bucket_cors" "assets" {
+  account_id  = var.cloudflare_account_id
+  bucket_name = cloudflare_r2_bucket.assets.name
+  rules = [{
+    allowed = {
+      methods = ["GET", "HEAD"]
+      origins = ["https://${var.cloudflare_zone_name}", "https://*.pages.dev"]
+    }
+    id = "Portfolio media playback"
+  }]
+}
+
+resource "cloudflare_ruleset" "asset_cache" {
+  zone_id = data.cloudflare_zone.site.id
+  name    = "Asset CDN cache"
+  kind    = "zone"
+  phase   = "http_request_cache_settings"
+
+  rules = [{
+    ref         = "cache_r2_assets"
+    description = "Cache public R2 assets on the asset domain"
+    expression  = "(http.host eq \"assets.${var.cloudflare_zone_name}\")"
+    action      = "set_cache_settings"
+    action_parameters = {
+      cache = true
+      edge_ttl = {
+        mode    = "override_origin"
+        default = 3600
+        status_code_ttl = [{
+          status_code = 404
+          value       = 0
+        }]
+      }
+      browser_ttl = {
+        mode = "respect_origin"
+      }
+    }
+  }]
+}

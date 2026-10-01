@@ -117,3 +117,85 @@ test("custom gameplay controls play, seek, pause and mute", () => {
   assert.equal(video.muted, true);
   assert.equal(mute.attributes.get("aria-label"), "Unmute gameplay video");
 });
+
+test("the poster stays visible while video loading waits until the card is near", () => {
+  const previousObserver = globalThis.IntersectionObserver;
+  let intersection;
+  let disconnected = false;
+  globalThis.IntersectionObserver = class {
+    constructor(callback, options) {
+      intersection = callback;
+      assert.equal(options.rootMargin, "400px");
+    }
+    observe() {}
+    disconnect() {
+      disconnected = true;
+    }
+  };
+
+  try {
+    const source = { dataset: { src: "/gameplay.mp4" } };
+    const video = Object.assign(element(), {
+      poster: "/gameplay-poster.png",
+      preload: "none",
+      duration: NaN,
+      currentTime: 0,
+      paused: true,
+      ended: false,
+      volume: 1,
+      loadCount: 0,
+      playCount: 0,
+      querySelector: () => source,
+      load() {
+        this.loadCount++;
+      },
+      play() {
+        this.playCount++;
+        return Promise.resolve();
+      },
+    });
+    const main = element();
+    const controls = {
+      video,
+      "[data-video-ui]": element(),
+      ".case-study-player-main": main,
+      "[data-video-main-label]": element(),
+      "[data-video-seek]": Object.assign(element(), {
+        style: { setProperty() {} },
+      }),
+      "[data-video-time]": element(),
+      "[data-video-mute]": element(),
+      "[data-video-fullscreen]": element(),
+    };
+    const frame = {
+      querySelector: (selector) => controls[selector],
+      querySelectorAll: () => [main, element()],
+      classList: {
+        add() {},
+        remove() {},
+        toggle() {},
+      },
+    };
+
+    setupCaseStudyVideoPlayer(frame);
+    assert.equal(video.poster, "/gameplay-poster.png");
+    assert.equal(source.src, undefined);
+    assert.equal(video.loadCount, 0);
+
+    intersection([{ isIntersecting: false }]);
+    assert.equal(video.loadCount, 0);
+    intersection([{ isIntersecting: true }]);
+    assert.equal(source.src, "/gameplay.mp4");
+    assert.equal(video.preload, "metadata");
+    assert.equal(video.loadCount, 1);
+    assert.equal(video.playCount, 0);
+    assert.equal(disconnected, true);
+
+    main.emit("click");
+    assert.equal(video.loadCount, 1);
+    assert.equal(video.playCount, 1);
+  } finally {
+    if (previousObserver === undefined) delete globalThis.IntersectionObserver;
+    else globalThis.IntersectionObserver = previousObserver;
+  }
+});
