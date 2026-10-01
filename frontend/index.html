@@ -27,6 +27,7 @@
     <script type="module" src="./components/experience-carousel.js"></script>
     <script type="module" src="./components/video-studio.js"></script>
     <script type="module" src="./components/case-study.js"></script>
+    <script type="module" src="./components/extension-demo.js"></script>
   </head>
 
   <body>
@@ -701,21 +702,392 @@
                 </div>
               </div>
             </article>
-          </div>
-
-          <div class="project-grid">
-            <div
-              class="project-card project-card--wide project-card--dark"
-              aria-hidden="true"
-            ></div>
-            <div
-              class="project-card project-card--small project-card--peach"
-              aria-hidden="true"
-            ></div>
-            <div
-              class="project-card project-card--small project-card--sage"
-              aria-hidden="true"
-            ></div>
+            <article
+              class="featured-project extension-project"
+              id="bird-tracker-tools"
+            >
+              <hr class="project-divider" />
+              <div class="project-info">
+                <h3>Browser collection tools</h3>
+                <p class="project-description">
+                  Two cross-browser extensions for collecting page images and
+                  exporting tables. I built them alongside a Python and Selenium
+                  pipeline for Bird Tracker, which used a 100,000+ image
+                  dataset.
+                </p>
+                <div class="extension-details">
+                  <p class="extension-result">
+                    <strong>8,700+</strong>
+                    <span>cumulative extension downloads</span>
+                  </p>
+                  <nav
+                    class="project-links"
+                    aria-label="Browser collection tool links"
+                  >
+                    <a
+                      href="/go/mass-image-downloader"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><img
+                        src="./assets/extension-demo/mass-image-logo.webp"
+                        alt=""
+                        width="24"
+                        height="24"
+                      />Image downloader ↗</a
+                    >
+                    <a
+                      href="/go/table-to-csv"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><img
+                        src="./assets/extension-demo/table-to-text-logo.webp"
+                        alt=""
+                        width="24"
+                        height="24"
+                      />Table exporter ↗</a
+                    >
+                  </nav>
+                </div>
+              </div>
+              <div
+                class="project-card extension-card"
+                data-extension-demo
+                data-mode="images"
+                data-open="false"
+              >
+                <div class="extension-browser">
+                  <div class="extension-browser-tabs" aria-hidden="true">
+                    <span class="extension-browser-dots"
+                      ><i></i><i></i><i></i
+                    ></span>
+                    <span class="extension-browser-tab"
+                      ><img
+                        src="./assets/extension-demo/mass-image-logo.webp"
+                        alt=""
+                        data-extension-tab-icon
+                      />
+                      <span>Garden birds | Bird Atlas</span><b>×</b></span
+                    >
+                    <span class="extension-browser-plus">+</span>
+                  </div>
+                  <div class="extension-browser-bar">
+                    <span class="extension-browser-nav" aria-hidden="true"
+                      >←</span
+                    >
+                    <span class="extension-browser-nav" aria-hidden="true"
+                      >→</span
+                    >
+                    <span class="extension-browser-nav" aria-hidden="true"
+                      >↻</span
+                    >
+                    <span class="extension-address"
+                      ><svg
+                        class="extension-address-lock"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 7V5a3 3 0 0 1 6 0v2" />
+                        <rect x="3.5" y="7" width="9" height="7" rx="1.3" />
+                      </svg>
+                      https://birdatlas.example/garden-birds</span
+                    >
+                    <span class="extension-invite" data-extension-invite
+                      >Try tools <span aria-hidden="true">→</span></span
+                    >
+                    <div
+                      class="extension-launchers"
+                      role="group"
+                      aria-label="Try a browser extension"
+                    >
+                      <button
+                        class="extension-launch"
+                        type="button"
+                        data-extension-launch="images"
+                        aria-label="Open Mass Image Downloader"
+                        title="Mass Image Downloader"
+                        aria-controls="extension-popup"
+                        aria-expanded="false"
+                        aria-pressed="true"
+                      >
+                        <img
+                          src="./assets/extension-demo/mass-image-logo.webp"
+                          alt=""
+                        />
+                      </button>
+                      <button
+                        class="extension-launch"
+                        type="button"
+                        data-extension-launch="tables"
+                        aria-label="Open Table to CSV"
+                        title="Table to CSV"
+                        aria-controls="extension-popup"
+                        aria-expanded="false"
+                        aria-pressed="false"
+                      >
+                        <img
+                          src="./assets/extension-demo/table-to-text-logo.webp"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <section
+                    class="extension-browser-body"
+                    aria-label="Sample bird webpage, scroll to see the image gallery and both tables"
+                    tabindex="0"
+                    data-extension-page
+                  >
+                    <div class="extension-page-heading">
+                      <h4>Garden birds</h4>
+                      <p>Scroll this sample page to see both tables.</p>
+                    </div>
+                    <div
+                      class="extension-gallery"
+                      role="group"
+                      aria-label="Sample webpage images"
+                    >
+                      <figure data-demo-image="robin">
+                        <img
+                          src="./assets/extension-demo/robin.webp"
+                          alt="Photograph of a robin"
+                        />
+                        <figcaption>Robin</figcaption>
+                      </figure>
+                      <figure data-demo-image="blue-tit">
+                        <img
+                          src="./assets/extension-demo/blue-tit.webp"
+                          alt="Photograph of a blue tit"
+                        />
+                        <figcaption>Blue tit</figcaption>
+                      </figure>
+                      <figure data-demo-image="goldfinch">
+                        <img
+                          src="./assets/extension-demo/goldfinch.webp"
+                          alt="Photograph of a goldfinch"
+                        />
+                        <figcaption>Goldfinch</figcaption>
+                      </figure>
+                      <figure data-demo-image="robin">
+                        <img
+                          src="./assets/extension-demo/robin.webp"
+                          alt="Second copy of the robin photograph"
+                        />
+                        <figcaption>Robin</figcaption>
+                      </figure>
+                    </div>
+                    <div class="extension-page-table-wrap">
+                      <table
+                        class="extension-page-table"
+                        data-demo-table="sightings"
+                      >
+                        <caption>
+                          Recent sightings
+                        </caption>
+                        <thead>
+                          <tr>
+                            <th>Species</th>
+                            <th>Location</th>
+                            <th>Count</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Robin</td>
+                            <td>Sheffield</td>
+                            <td>2</td>
+                          </tr>
+                          <tr>
+                            <td>Blue tit</td>
+                            <td>York</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>Goldfinch</td>
+                            <td>Leeds</td>
+                            <td>3</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="extension-page-table-wrap">
+                      <table
+                        class="extension-page-table"
+                        data-demo-table="species"
+                      >
+                        <caption>
+                          Species reference
+                        </caption>
+                        <thead>
+                          <tr>
+                            <th>Species</th>
+                            <th>Family</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Robin</td>
+                            <td>Flycatcher</td>
+                            <td>Resident</td>
+                          </tr>
+                          <tr>
+                            <td>Blue tit</td>
+                            <td>Tit</td>
+                            <td>Resident</td>
+                          </tr>
+                          <tr>
+                            <td>Goldfinch</td>
+                            <td>Finch</td>
+                            <td>Resident</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                </div>
+                <section
+                  class="extension-popup"
+                  id="extension-popup"
+                  aria-label="Browser extension demo"
+                  data-extension-popup
+                  hidden
+                >
+                  <div class="extension-popup-heading">
+                    <img
+                      class="extension-popup-mark"
+                      src="./assets/extension-demo/mass-image-logo.webp"
+                      data-image-src="./assets/extension-demo/mass-image-logo.webp"
+                      data-table-src="./assets/extension-demo/table-to-text-logo.webp"
+                      alt=""
+                      data-extension-logo
+                    />
+                    <strong data-extension-title>Mass Image Downloader</strong>
+                    <button
+                      class="extension-popup-close"
+                      type="button"
+                      aria-label="Close extension panel"
+                      data-extension-close
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div
+                    class="extension-tabs"
+                    role="tablist"
+                    aria-label="Collection tool"
+                  >
+                    <button
+                      type="button"
+                      role="tab"
+                      id="extension-images-tab"
+                      aria-controls="extension-images-panel"
+                      aria-selected="true"
+                      data-extension-tab="images"
+                    >
+                      Image downloader
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      id="extension-tables-tab"
+                      aria-controls="extension-tables-panel"
+                      aria-selected="false"
+                      tabindex="-1"
+                      data-extension-tab="tables"
+                    >
+                      Table exporter
+                    </button>
+                  </div>
+                  <div
+                    class="extension-panel"
+                    id="extension-images-panel"
+                    role="tabpanel"
+                    aria-labelledby="extension-images-tab"
+                    data-extension-panel="images"
+                  >
+                    <p class="extension-panel-intro">
+                      Choose images from the sample page.
+                    </p>
+                    <label class="extension-check extension-dedupe"
+                      ><input type="checkbox" data-extension-dedupe checked />
+                      Remove duplicates <span data-extension-image-count></span
+                    ></label>
+                    <div
+                      class="extension-image-list"
+                      data-extension-image-list
+                    ></div>
+                    <div class="extension-output">
+                      <span>Output</span
+                      ><strong data-extension-image-output></strong>
+                    </div>
+                    <button
+                      class="extension-download"
+                      type="button"
+                      data-extension-image-download
+                    >
+                      Download images (.zip)
+                    </button>
+                  </div>
+                  <div
+                    class="extension-panel"
+                    id="extension-tables-panel"
+                    role="tabpanel"
+                    aria-labelledby="extension-tables-tab"
+                    data-extension-panel="tables"
+                    hidden
+                  >
+                    <p class="extension-panel-intro">
+                      Export a table from the sample page.
+                    </p>
+                    <label class="extension-field"
+                      >Table
+                      <select data-extension-table-select>
+                        <option value="sightings">Recent sightings</option>
+                        <option value="species">Species reference</option>
+                      </select>
+                    </label>
+                    <div
+                      class="extension-format"
+                      role="group"
+                      aria-label="Export format"
+                    >
+                      <button
+                        type="button"
+                        aria-pressed="true"
+                        data-extension-format="csv"
+                      >
+                        CSV
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed="false"
+                        data-extension-format="json"
+                      >
+                        JSON
+                      </button>
+                    </div>
+                    <div class="extension-output-heading">
+                      <span>Output preview</span
+                      ><span data-extension-filename></span>
+                    </div>
+                    <pre class="extension-code" data-extension-preview></pre>
+                    <button
+                      class="extension-download"
+                      type="button"
+                      data-extension-table-download
+                    >
+                      Download CSV
+                    </button>
+                  </div>
+                  <p
+                    class="extension-status"
+                    role="status"
+                    aria-live="polite"
+                    data-extension-status
+                  ></p>
+                </section>
+              </div>
+            </article>
           </div>
         </section>
       </main>
