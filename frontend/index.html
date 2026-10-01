@@ -25,8 +25,10 @@
       src="./components/site-button/site-button.js"
     ></script>
     <script type="module" src="./components/experience-carousel.js"></script>
-    <script type="module" src="./components/reddit-video-studio.js"></script>
+    <script type="module" src="./components/video-studio.js"></script>
+    <script type="module" src="./components/case-study.js"></script>
   </head>
+
   <body>
     <div class="page-shell">
       <header class="site-header">
@@ -132,7 +134,7 @@
                 </div>
               </div>
               <button
-                class="experience-next"
+                class="carousel-next experience-next"
                 type="button"
                 aria-label="Show next experience"
                 aria-controls="experience-track"
@@ -429,15 +431,274 @@
               </div>
             </article>
 
-            <article class="featured-project featured-project--reverse">
+            <article
+              class="featured-project featured-project--reverse case-study-project"
+              id="avatar-outfit-shop"
+            >
               <div
-                class="project-card project-card--featured project-card--green"
-                aria-hidden="true"
-              ></div>
+                class="project-card project-card--featured project-card--media"
+              >
+                <div class="case-study-video-frame" data-case-study-video-frame>
+                  <video
+                    id="case-study-gameplay-video"
+                    class="case-study-video"
+                    controls
+                    playsinline
+                    preload="none"
+                    poster="./assets/avatar-outfit-shop/gameplay-poster.png"
+                    aria-label="Avatar Outfit Shop gameplay walkthrough"
+                  >
+                    <source
+                      data-src="./assets/avatar-outfit-shop/gameplay.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <div class="case-study-player-ui" data-video-ui>
+                    <button
+                      class="case-study-player-main"
+                      type="button"
+                      data-video-toggle
+                      aria-controls="case-study-gameplay-video"
+                      aria-label="Play gameplay video"
+                    >
+                      <span
+                        class="case-study-play-glyph"
+                        aria-hidden="true"
+                      ></span>
+                      <span data-video-main-label>Watch gameplay</span>
+                    </button>
+                    <div
+                      class="case-study-player-controls"
+                      role="group"
+                      aria-label="Gameplay video controls"
+                    >
+                      <button
+                        class="case-study-player-control case-study-player-toggle"
+                        type="button"
+                        data-video-toggle
+                        aria-controls="case-study-gameplay-video"
+                        aria-label="Play gameplay video"
+                      ></button>
+                      <span class="case-study-player-time" data-video-time
+                        >0:00 / 0:00</span
+                      >
+                      <input
+                        class="case-study-player-seek"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                        value="0"
+                        disabled
+                        data-video-seek
+                        aria-label="Seek in gameplay video"
+                      />
+                      <button
+                        class="case-study-player-control case-study-player-mute"
+                        type="button"
+                        data-video-mute
+                        aria-controls="case-study-gameplay-video"
+                        aria-label="Mute gameplay video"
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M4 9h4l5-4v14l-5-4H4z"></path>
+                          <path
+                            class="case-study-sound-wave"
+                            d="M16 8c2 2 2 6 0 8"
+                          ></path>
+                          <path
+                            class="case-study-sound-wave"
+                            d="M19 5c4 4 4 10 0 14"
+                          ></path>
+                          <path
+                            class="case-study-mute-mark"
+                            d="M17 9l5 6m0-6-5 6"
+                          ></path>
+                        </svg>
+                      </button>
+                      <button
+                        class="case-study-player-control case-study-player-fullscreen"
+                        type="button"
+                        data-video-fullscreen
+                        aria-controls="case-study-gameplay-video"
+                        aria-label="Enter fullscreen"
+                      >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="project-info">
-                <p>02 / Featured project</p>
-                <h3>Project two</h3>
-                <p>A short placeholder for a future case study.</p>
+                <h3>Avatar Outfit Shop</h3>
+                <div
+                  class="case-study-results"
+                  role="group"
+                  aria-label="Project results"
+                >
+                  <p><strong>100,000+</strong><span>visits</span></p>
+                  <p><strong>~£3,500</strong><span>revenue</span></p>
+                </div>
+                <p class="project-description">
+                  A Roblox experience that groups creator-made avatar items into
+                  complete, purchasable outfits. I built the custom interface,
+                  purchase tracking, and analytics behind it.
+                </p>
+                <nav
+                  class="case-study-actions"
+                  aria-label="Avatar Outfit Shop links"
+                >
+                  <a
+                    class="case-study-play-button"
+                    href="https://www.roblox.com/games/start?placeId=4878804776"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Launch Avatar Outfit Shop in Roblox"
+                  >
+                    <span
+                      class="case-study-play-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span>Play</span>
+                  </a>
+                  <a
+                    href="https://www.roblox.com/games/4878804776/Avatar-Outfit-Shop"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Game page</a
+                  >
+                  <a href="#avatar-outfit-shop-story">How it works</a>
+                </nav>
+              </div>
+              <div class="case-study" id="avatar-outfit-shop-story">
+                <div class="case-study-heading">
+                  <h4>Built around what players did.</h4>
+                  <p>
+                    Players could shop complete looks assembled from matching
+                    creator-made items. Funnel analytics showed where they
+                    dropped off, while telemetry exposed latency from fetching
+                    assets through the catalog API.
+                  </p>
+                </div>
+                <svg
+                  class="case-study-arrow"
+                  aria-hidden="true"
+                  data-case-study-arrow
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path class="case-study-arrow-curve" fill="none" />
+                  <path class="case-study-arrow-head" fill="none" />
+                </svg>
+                <div class="case-study-engineering">
+                  <p>
+                    <strong>Persistent data and purchases</strong>
+                    DataStore kept player data across sessions. I also built
+                    atomic purchase tracking and funnel analytics to measure
+                    player engagement and revenue.
+                  </p>
+                  <p>
+                    <strong>Shopping flow</strong>
+                    I made mannequins clickable for individual try-ons, kept
+                    Quick Buy visible on mobile, and added basket feedback and
+                    safeguards after tracking empty checkout attempts. Players
+                    could also buy a whole outfit while exploring the world.
+                  </p>
+                  <p>
+                    <strong>Asset delivery</strong>
+                    I started with live API requests, then cached the responses.
+                    When caching still left noticeable latency, I pre-baked the
+                    assets into the game so clients could load them as needed
+                    without live catalog requests for those assets.
+                  </p>
+                </div>
+                <div
+                  class="case-study-gallery"
+                  role="group"
+                  aria-label="Avatar Outfit Shop images"
+                >
+                  <figure class="case-study-gallery-item">
+                    <div
+                      class="case-study-image-frame"
+                      data-case-study-image-frame
+                    >
+                      <img
+                        src="./assets/avatar-outfit-shop/outfit-browser.webp"
+                        alt="Avatar Outfit Shop interface showing complete outfits"
+                        loading="lazy"
+                        data-case-study-image
+                      />
+                      <span class="case-study-image-placeholder"
+                        >Outfit browser preview unavailable</span
+                      >
+                    </div>
+                    <figcaption><strong>Outfit discovery</strong></figcaption>
+                  </figure>
+                  <figure class="case-study-gallery-item">
+                    <div
+                      class="case-study-image-frame"
+                      data-case-study-image-frame
+                    >
+                      <img
+                        src="./assets/avatar-outfit-shop/purchase-flow.webp"
+                        alt="Avatar Outfit Shop view showing the items in an outfit"
+                        loading="lazy"
+                        data-case-study-image
+                      />
+                      <span class="case-study-image-placeholder"
+                        >Purchase flow preview unavailable</span
+                      >
+                    </div>
+                    <figcaption>
+                      <strong>Matching items and purchase path</strong>
+                    </figcaption>
+                  </figure>
+                  <figure class="case-study-gallery-item">
+                    <button
+                      class="analytics-preview"
+                      type="button"
+                      data-analytics-open
+                      aria-haspopup="dialog"
+                      aria-controls="analytics-dialog"
+                      aria-label="Open analytics"
+                    >
+                      <span class="analytics-preview-period"
+                        >P99 change · 15–21 Mar 2026 export</span
+                      >
+                      <span class="analytics-preview-window">
+                        <span
+                          class="analytics-preview-slide"
+                          data-analytics-preview-slide
+                        >
+                          <span
+                            class="analytics-preview-title"
+                            data-analytics-preview-title
+                            >How asset delivery cut p99 load time</span
+                          >
+                          <span
+                            class="analytics-preview-chart"
+                            data-analytics-preview-chart
+                          >
+                            <span
+                              >Live API 100% → Cached 80% → Pre-baked 30%</span
+                            >
+                          </span>
+                        </span>
+                      </span>
+                      <span class="analytics-preview-footer"
+                        ><span data-analytics-preview-count>1 / 5</span
+                        ><span data-analytics-preview-note>P99 · 70% lower</span
+                        ><span class="analytics-preview-action"
+                          >Expand <span aria-hidden="true">↗</span></span
+                        ></span
+                      >
+                    </button>
+                    <figcaption>
+                      <strong>Performance and funnels</strong>
+                    </figcaption>
+                  </figure>
+                </div>
               </div>
             </article>
           </div>
@@ -462,16 +723,57 @@
         <details>
           <summary>Privacy</summary>
           <p>
-            This site counts page loads and clicks on external links. A page
+            This site counts page loads and some external-link clicks. A page
             link can carry a short source tag, such as ?cv. The counters store
             the tag or link name and time, not the full URL or visitor
             identifiers. They use no analytics cookies or browser tracking
             script. Cloudflare hosts the site and processes requests to deliver
             it. Email links bypass the click counter. Project assets load from
-            Cloudflare R2.
+            this site, Cloudflare R2, or GitHub.
           </p>
         </details>
       </footer>
     </div>
+    <dialog
+      class="analytics-dialog"
+      id="analytics-dialog"
+      aria-labelledby="analytics-view-title"
+      data-analytics-dialog
+    >
+      <div class="analytics-dialog-inner">
+        <div class="analytics-navigation">
+          <div>
+            <p class="analytics-period" data-analytics-period>
+              P99 change · 15 Mar – 21 Mar 2026 timing export
+            </p>
+            <h2 id="analytics-view-title" data-analytics-view-title>
+              How asset delivery cut p99 load time
+            </h2>
+          </div>
+          <div class="analytics-actions">
+            <button
+              class="analytics-close"
+              type="button"
+              aria-label="Close analytics"
+              data-analytics-close
+            >
+              ×
+            </button>
+            <div class="analytics-next-wrap">
+              <span data-analytics-count></span>
+              <button
+                class="carousel-next"
+                type="button"
+                data-analytics-next
+                aria-label="Next analytics view"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="analytics-content" data-analytics-content></div>
+      </div>
+    </dialog>
   </body>
 </html>
