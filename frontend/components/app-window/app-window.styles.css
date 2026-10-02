@@ -36,22 +36,22 @@ slot {
 
 .traffic-lights {
   display: flex;
-  gap: 7px;
+  gap: var(--window-dot-gap, 7px);
 }
 
 .traffic-lights span {
-  width: 9px;
-  height: 9px;
+  width: var(--window-dot-size, 9px);
+  height: var(--window-dot-size, 9px);
   border-radius: 50%;
-  background: #ff6059;
+  background: var(--window-dot-red, #ff6059);
 }
 
 .traffic-lights span:nth-child(2) {
-  background: #ffbd2e;
+  background: var(--window-dot-yellow, #ffbd2e);
 }
 
 .traffic-lights span:nth-child(3) {
-  background: #28c840;
+  background: var(--window-dot-green, #28c840);
 }
 
 .title {

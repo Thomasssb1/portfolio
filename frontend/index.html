@@ -31,10 +31,10 @@
     <div class="page-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Main navigation">
-          <site-button variant="transparent" href="#work">Work</site-button>
           <site-button variant="transparent" href="#experience"
             >Experience</site-button
           >
+          <site-button variant="transparent" href="#work">Work</site-button>
           <site-button variant="transparent" href="#contact"
             >Contact</site-button
           >
@@ -51,30 +51,41 @@
       <main id="top">
         <section class="intro" aria-labelledby="intro-title">
           <div class="intro-copy">
-            <p class="intro-label">
-              <span class="intro-label-rule"></span> Software developer /
-              computer science student
-            </p>
-            <h1 id="intro-title">
-              <scramble-text tabindex="0">Thomas Beer</scramble-text
-              ><span class="wordmark-cursor" aria-hidden="true">_</span>
-            </h1>
-            <nav class="social-links" aria-label="Find me online">
-              <icon-button
-                icon="github"
-                href="/go/github"
-                target="_blank"
-                label="GitHub"
-                >GitHub</icon-button
-              >
-              <icon-button
-                icon="linkedin"
-                href="/go/linkedin"
-                target="_blank"
-                label="LinkedIn"
-                >LinkedIn</icon-button
-              >
-            </nav>
+            <div class="intro-identity">
+              <p class="intro-label">
+                <span class="intro-label-rule"></span> Software developer /
+                computer science student
+              </p>
+              <h1 id="intro-title">
+                <scramble-text tabindex="0">Thomas Beer</scramble-text
+                ><span class="wordmark-cursor" aria-hidden="true">_</span>
+              </h1>
+            </div>
+
+            <div class="intro-contact">
+              <address class="contact" id="contact">
+                <p class="detail-label">Contact</p>
+                <a class="contact-email" href="mailto:thomas.beer04@outlook.com"
+                  >thomas.beer04@outlook.com ↗</a
+                >
+              </address>
+              <nav class="social-links" aria-label="Find me online">
+                <icon-button
+                  icon="github"
+                  href="/go/github"
+                  target="_blank"
+                  label="GitHub"
+                  >GitHub</icon-button
+                >
+                <icon-button
+                  icon="linkedin"
+                  href="/go/linkedin"
+                  target="_blank"
+                  label="LinkedIn"
+                  >LinkedIn</icon-button
+                >
+              </nav>
+            </div>
           </div>
 
           <div class="intro-details">
@@ -143,19 +154,6 @@
                 <span aria-hidden="true">→</span>
               </button>
             </section>
-
-            <address class="contact" id="contact">
-              <p class="detail-label">Contact</p>
-              <div class="contact-links">
-                <a href="mailto:thomas.beer04@outlook.com">Email</a>
-                <a href="/go/github" target="_blank" rel="noopener noreferrer"
-                  >GitHub</a
-                >
-                <a href="/go/linkedin" target="_blank" rel="noopener noreferrer"
-                  >LinkedIn</a
-                >
-              </div>
-            </address>
           </div>
         </section>
 

@@ -57,18 +57,28 @@
   outline-offset: -3px;
 }
 
-.dot {
+.traffic-lights {
   position: absolute;
   top: 50%;
   left: 10px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ff6059;
-  box-shadow:
-    13px 0 #ffbd2e,
-    26px 0 #28c840;
+  display: flex;
+  gap: var(--window-dot-gap, 7px);
   transform: translateY(-50%);
+}
+
+.traffic-lights span {
+  width: var(--window-dot-size, 9px);
+  height: var(--window-dot-size, 9px);
+  border-radius: 50%;
+  background: var(--window-dot-red, #ff6059);
+}
+
+.traffic-lights span:nth-child(2) {
+  background: var(--window-dot-yellow, #ffbd2e);
+}
+
+.traffic-lights span:nth-child(3) {
+  background: var(--window-dot-green, #28c840);
 }
 
 .title {

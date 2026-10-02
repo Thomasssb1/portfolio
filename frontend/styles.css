@@ -4,6 +4,11 @@
   --ink: #1b2732;
   --accent: #2764a4;
   --line: #dedfdc;
+  --window-dot-size: 9px;
+  --window-dot-gap: 7px;
+  --window-dot-red: #ff6059;
+  --window-dot-yellow: #ffbd2e;
+  --window-dot-green: #28c840;
 }
 
 * {
@@ -40,7 +45,6 @@ a:focus-visible {
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   min-height: 76px;
   border-bottom: 1px solid var(--line);
 }
@@ -52,6 +56,7 @@ a:focus-visible {
 .site-nav {
   display: flex;
   align-items: center;
+  width: 100%;
   gap: clamp(16px, 3vw, 38px);
 }
 .cv-link {
@@ -65,6 +70,7 @@ a:focus-visible {
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
+  margin-left: auto;
 }
 .cv-link:hover {
   border-color: var(--accent);
@@ -77,7 +83,11 @@ a:focus-visible {
   padding: clamp(40px, 5vw, 70px) 0 clamp(50px, 6vw, 80px);
 }
 .intro-copy {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 16px 0 0;
 }
 .intro-label {
   display: flex;
@@ -109,18 +119,13 @@ h1 scramble-text:focus-visible {
 .social-links {
   display: flex;
   gap: 14px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 .intro-details {
   border-left: 1px solid var(--line);
 }
-.experience,
-.contact {
-  padding-left: clamp(26px, 4vw, 52px);
-}
 .experience {
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--line);
+  padding-left: clamp(26px, 4vw, 52px);
 }
 .detail-label {
   margin: 0;
@@ -221,25 +226,19 @@ h1 scramble-text:focus-visible {
   line-height: 1.55;
 }
 .contact {
-  padding-top: 27px;
   font-style: normal;
 }
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 12px 20px;
-  margin-top: 12px;
-}
-.contact-links a {
+.contact-email {
+  display: inline-block;
+  margin-top: 10px;
   color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
-.contact-links a:is(:hover, :focus-visible) {
+.contact-email:is(:hover, :focus-visible) {
   color: var(--accent);
 }
 .work {
@@ -1777,22 +1776,19 @@ h2 {
 }
 .extension-browser-dots {
   display: flex;
-  gap: 5px;
+  gap: var(--window-dot-gap);
 }
 .extension-browser-dots i {
-  width: 7px;
-  height: 7px;
+  width: var(--window-dot-size);
+  height: var(--window-dot-size);
   border-radius: 50%;
-  background: #aab9ac;
-}
-.extension-browser-dots i:first-child {
-  background: #df8e83;
+  background: var(--window-dot-red);
 }
 .extension-browser-dots i:nth-child(2) {
-  background: #e2bd6f;
+  background: var(--window-dot-yellow);
 }
 .extension-browser-dots i:nth-child(3) {
-  background: #83b99a;
+  background: var(--window-dot-green);
 }
 .extension-browser-nav {
   color: #87958b;
@@ -2304,8 +2300,6 @@ h2 {
     min-height: 68px;
   }
   .site-nav {
-    width: 100%;
-    justify-content: space-between;
     gap: 10px;
   }
   .cv-link {
@@ -2318,6 +2312,10 @@ h2 {
     gap: 32px;
     padding: 40px 0 60px;
   }
+  .intro-copy {
+    gap: 32px;
+    padding: 0;
+  }
   h1 {
     font-size: clamp(3.1rem, 12vw, 4.4rem);
   }
@@ -2325,8 +2323,7 @@ h2 {
     border-top: 1px solid var(--line);
     border-left: 0;
   }
-  .experience,
-  .contact {
+  .experience {
     padding-left: 0;
   }
   .experience {
