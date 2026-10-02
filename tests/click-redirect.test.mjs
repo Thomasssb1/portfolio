@@ -8,6 +8,8 @@ const destinations = {
   linkedin: "https://www.linkedin.com/in/thomas-beer04/",
   idbs: "https://www.idbs.com/",
   "reddit-2-video": "https://github.com/Thomasssb1/reddit-2-video",
+  "mass-image-downloader": "https://github.com/red-shock/Mass-Image-Downloader",
+  "table-to-csv": "https://github.com/red-shock/Table-To-CSV",
   "reddit-2-video-docs": "https://thomasssb1.github.io/reddit-2-video/",
   "reddit-2-video-releases":
     "https://github.com/Thomasssb1/reddit-2-video/releases",
