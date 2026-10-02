@@ -1,1421 +1,827 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Thomas Beer's portfolio and work." />
-    <meta name="theme-color" content="#f8f6f1" />
-    <title>Thomas Beer</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script
-      type="module"
-      src="./components/scramble-text/scramble-text.js"
-    ></script>
-    <script
-      type="module"
-      src="./components/icon-button/icon-button.js"
-    ></script>
-    <script
-      type="module"
-      src="./components/site-button/site-button.js"
-    ></script>
-    <script type="module" src="./components/experience-carousel.js"></script>
-    <script type="module" src="./components/video-studio.js"></script>
-    <script type="module" src="./components/case-study.js"></script>
-    <script type="module" src="./components/extension-demo.js"></script>
-    <script type="module" src="./components/visual-cues.js"></script>
-    <script type="module" src="./components/github-activity.js"></script>
-  </head>
 
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <nav class="site-nav" aria-label="Main navigation">
-          <site-button variant="transparent" href="#experience"
-            >Experience</site-button
-          >
-          <site-button variant="transparent" href="#work">Work</site-button>
-          <site-button variant="transparent" href="#contact"
-            >Contact</site-button
-          >
-        </nav>
-        <div
-          class="github-activity"
-          data-github-activity
-          data-github-activity-preview
-          hidden
-        >
-          <a
-            class="github-activity-link"
-            href="/go/github"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub activity by day. Open my GitHub profile"
-            data-github-activity-link
-          ></a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thomas Beer's portfolio and work." />
+  <meta name="theme-color" content="#f8f6f1" />
+  <title>Thomas Beer</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="module" src="./components/scramble-text/scramble-text.js"></script>
+  <script type="module" src="./components/icon-button/icon-button.js"></script>
+  <script type="module" src="./components/site-button/site-button.js"></script>
+  <script type="module" src="./components/experience-carousel.js"></script>
+  <script type="module" src="./components/video-studio.js"></script>
+  <script type="module" src="./components/case-study.js"></script>
+  <script type="module" src="./components/extension-demo.js"></script>
+  <script type="module" src="./components/visual-cues.js"></script>
+  <script type="module" src="./components/github-activity.js"></script>
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <site-button variant="transparent" href="#experience">Experience</site-button>
+        <site-button variant="transparent" href="#work">Work</site-button>
+        <site-button variant="transparent" href="#contact">Contact</site-button>
+      </nav>
+      <div class="github-activity" data-github-activity data-github-activity-preview hidden>
+        <a class="github-activity-link" href="/go/github" target="_blank" rel="noopener noreferrer"
+          aria-label="GitHub activity by day. Open my GitHub profile" data-github-activity-link></a>
+      </div>
+      <a class="cv-link" href="./Thomas-Beer-CV.pdf" target="_blank" rel="noopener noreferrer">CV ↗</a>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <div class="intro-identity">
+            <p class="intro-label">
+              <span class="intro-label-rule"></span> Software developer /
+              computer science student
+            </p>
+            <h1 id="intro-title">
+              <scramble-text tabindex="0">Thomas Beer</scramble-text><span class="wordmark-cursor"
+                aria-hidden="true">_</span>
+            </h1>
+          </div>
+
+          <div class="intro-contact">
+            <address class="contact" id="contact">
+              <p class="detail-label">Contact</p>
+              <a class="contact-email" href="mailto:thomas.beer04@outlook.com">thomas.beer04@outlook.com ↗</a>
+            </address>
+            <nav class="social-links" aria-label="Find me online">
+              <icon-button icon="github" href="/go/github" target="_blank" label="GitHub">GitHub</icon-button>
+              <icon-button icon="linkedin" href="/go/linkedin" target="_blank" label="LinkedIn">LinkedIn</icon-button>
+            </nav>
+          </div>
         </div>
-        <a
-          class="cv-link"
-          href="./Thomas-Beer-CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          >CV ↗</a
-        >
-      </header>
 
-      <main id="top">
-        <section class="intro" aria-labelledby="intro-title">
-          <div class="intro-copy">
-            <div class="intro-identity">
-              <p class="intro-label">
-                <span class="intro-label-rule"></span> Software developer /
-                computer science student
-              </p>
-              <h1 id="intro-title">
-                <scramble-text tabindex="0">Thomas Beer</scramble-text
-                ><span class="wordmark-cursor" aria-hidden="true">_</span>
-              </h1>
+        <div class="intro-details">
+          <section class="experience" id="experience" aria-label="Experience">
+            <div class="experience-carousel" data-experience-carousel>
+              <div class="experience-track" id="experience-track" data-experience-track tabindex="0">
+                <article class="experience-card">
+                  <p class="experience-role">Software Developer Intern</p>
+                  <h2>
+                    <a href="/go/idbs" target="_blank" rel="noopener noreferrer">IDBS</a>
+                  </h2>
+                  <p class="experience-meta">
+                    <span>Woking, UK</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Aug 2025 - Aug 2026</span>
+                  </p>
+                  <p class="experience-description">
+                    Built production features for Polar, a GxP-compliant
+                    enterprise SaaS platform, across TypeScript and Python
+                    services, GraphQL, user interfaces, and AWS
+                    infrastructure. Also delivered access control for data
+                    integrations and vulnerability-remediation tooling.
+                  </p>
+                </article>
+
+                <article class="experience-card">
+                  <p class="experience-role">
+                    Game Developer Research Panelist
+                  </p>
+                  <h2>Good Gamer Group / Meta Research Panels</h2>
+                  <p class="experience-meta">
+                    <span>Remote</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Mar 2025 - Present</span>
+                  </p>
+                  <p class="experience-description">
+                    Selected for Meta-commissioned game developer and
+                    invite-only
+                    <a href="/go/meta-research" target="_blank" rel="noopener noreferrer">AR/VR research panels</a>. I
+                    provide structured feedback on pre-release tooling,
+                    developer workflows, and usability.
+                  </p>
+                </article>
+              </div>
             </div>
+            <button class="carousel-next experience-next" type="button" aria-label="Show next experience"
+              aria-controls="experience-track">
+              <span aria-hidden="true">→</span>
+            </button>
+          </section>
+        </div>
+      </section>
 
-            <div class="intro-contact">
-              <address class="contact" id="contact">
-                <p class="detail-label">Contact</p>
-                <a class="contact-email" href="mailto:thomas.beer04@outlook.com"
-                  >thomas.beer04@outlook.com ↗</a
-                >
-              </address>
-              <nav class="social-links" aria-label="Find me online">
-                <icon-button
-                  icon="github"
-                  href="/go/github"
-                  target="_blank"
-                  label="GitHub"
-                  >GitHub</icon-button
-                >
-                <icon-button
-                  icon="linkedin"
-                  href="/go/linkedin"
-                  target="_blank"
-                  label="LinkedIn"
-                  >LinkedIn</icon-button
-                >
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="work-heading">
+          <h2 id="work-title">A few things I have been making.</h2>
+        </div>
+        <svg class="sketch-arrow work-project-arrow" data-work-project-arrow aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg">
+          <path data-arrow-curve fill="none" />
+          <path data-arrow-head fill="none" />
+        </svg>
+
+        <div class="featured-projects">
+          <article class="featured-project">
+            <div class="project-card project-card--featured project-card--studio">
+              <app-window class="studio-window" title="reddit-2-video / preview" data-video-studio>
+                <div class="studio-body">
+                  <div class="studio-settings">
+                    <label class="studio-field">
+                      <span>Subreddit</span>
+                      <select data-studio-sample>
+                        <option value="example-1">r/AskReddit</option>
+                        <option value="example-2">r/nosleep</option>
+                        <option value="example-3-1">r/pettyrevenge</option>
+                        <option value="example-4">r/dadjokes</option>
+                        <option value="example-5">r/TrueOffMyChest</option>
+                      </select>
+                    </label>
+                    <fieldset class="studio-options" disabled>
+                      <legend>Generation options</legend>
+                      <div class="studio-options-grid" data-studio-options>
+                        <label class="studio-option">
+                          <span>Type</span>
+                          <input type="text" value="comments" disabled />
+                        </label>
+                        <label class="studio-option">
+                          <span>Count</span>
+                          <input type="text" value="10" disabled />
+                        </label>
+                        <label class="studio-option">
+                          <span>Alternate</span>
+                          <input type="text" value="on,on" disabled />
+                        </label>
+                        <label class="studio-option">
+                          <span>Title colour</span>
+                          <input type="text" value="H0000FF" disabled />
+                        </label>
+                        <label class="studio-option">
+                          <span>Output</span>
+                          <input type="text" value="example-1" disabled />
+                        </label>
+                      </div>
+                    </fieldset>
+                    <button class="studio-generate-button" type="button" data-studio-generate>
+                      Generate video
+                    </button>
+                    <p class="studio-note">
+                      Pre-generated examples. No video is rendered here.
+                    </p>
+                    <app-terminal title="reddit-2-video"></app-terminal>
+                  </div>
+                  <div class="studio-preview-pane">
+                    <div class="studio-preview-heading">
+                      <span>Output preview</span>
+                      <span>9:16</span>
+                      <div class="studio-preview-clips" data-studio-clip-picker hidden>
+                        <span>Clip</span>
+                        <div class="studio-clip-options" role="group" aria-label="Output clip">
+                          <button type="button" data-studio-clip="example-3-1" aria-pressed="true">
+                            1
+                          </button>
+                          <button type="button" data-studio-clip="example-3-2" aria-pressed="false">
+                            2
+                          </button>
+                          <button type="button" data-studio-clip="example-3-3" aria-pressed="false">
+                            3
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="studio-preview-frame">
+                      <video class="studio-video" data-studio-video playsinline preload="none"></video>
+                      <div class="studio-play-cover">
+                        <span class="studio-cover-community" data-studio-community>r/AskReddit</span>
+                        <span class="studio-cover-action" data-studio-action>Ready to generate</span>
+                      </div>
+                      <div class="studio-generation-overlay" data-studio-generating role="status" aria-live="polite"
+                        hidden>
+                        <span class="studio-generation-spinner" aria-hidden="true"></span>
+                        <span data-studio-loading-label>Generating...</span>
+                      </div>
+                    </div>
+                    <div class="studio-transport" role="group" aria-label="Video controls">
+                      <div class="studio-transport-row">
+                        <button class="studio-transport-button studio-transport-play" type="button" data-studio-toggle
+                          aria-label="Play preview" disabled>
+                          <svg class="studio-icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m8 5 11 7-11 7z" fill="currentColor"></path>
+                          </svg>
+                          <svg class="studio-icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 5h3v14H7zm7 0h3v14h-3z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                        <span class="studio-transport-time" aria-live="off">
+                          <span data-studio-current>0:00</span>
+                          <span aria-hidden="true">/</span>
+                          <span data-studio-duration>--:--</span>
+                        </span>
+                        <span class="studio-transport-spacer"></span>
+                        <button class="studio-transport-button studio-transport-mute" type="button" data-studio-mute
+                          aria-label="Mute preview" aria-pressed="false">
+                          <svg class="studio-icon-volume" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 9v6h4l5 4V5L8 9H4Zm12-2a7 7 0 0 1 0 10M18 4a11 11 0 0 1 0 16" fill="none"
+                              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                          </svg>
+                          <svg class="studio-icon-muted" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 9v6h4l5 4V5L8 9H4Zm12 1 5 5m0-5-5 5" fill="none" stroke="currentColor"
+                              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <input class="studio-transport-seek" type="range" min="0" max="100" value="0" step="0.1"
+                        data-studio-seek aria-label="Seek video" disabled />
+                    </div>
+                    <p class="studio-preview-note" role="status" data-studio-status></p>
+                  </div>
+                </div>
+              </app-window>
+            </div>
+            <div class="project-info">
+              <h3>reddit-2-video</h3>
+              <p class="project-description">
+                An open-source Dart CLI that turns Reddit posts into
+                short-form videos with AWS Polly and FFmpeg. It has packaged
+                releases, around 92% test coverage, and human-reviewed video
+                QA.
+              </p>
+              <nav class="project-links" aria-label="reddit-2-video links">
+                <icon-button icon="github" href="/go/reddit-2-video" target="_blank"
+                  label="View reddit-2-video on GitHub">GitHub</icon-button>
+                <a href="/go/reddit-2-video-docs" target="_blank" rel="noopener noreferrer">Docs</a>
+                <a href="/go/reddit-2-video-releases" target="_blank" rel="noopener noreferrer">Releases</a>
+                <a href="/go/reddit-2-video-workings" target="_blank" rel="noopener noreferrer">How it works</a>
               </nav>
             </div>
-          </div>
+          </article>
 
-          <div class="intro-details">
-            <section class="experience" id="experience" aria-label="Experience">
-              <div class="experience-carousel" data-experience-carousel>
-                <div
-                  class="experience-track"
-                  id="experience-track"
-                  data-experience-track
-                  tabindex="0"
-                >
-                  <article class="experience-card">
-                    <p class="experience-role">Software Developer Intern</p>
-                    <h2>
-                      <a
-                        href="/go/idbs"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >IDBS</a
-                      >
-                    </h2>
-                    <p class="experience-meta">
-                      <span>Woking, UK</span>
-                      <span aria-hidden="true">·</span>
-                      <span>Aug 2025 - Aug 2026</span>
-                    </p>
-                    <p class="experience-description">
-                      Built production features for Polar, a GxP-compliant
-                      enterprise SaaS platform, across TypeScript and Python
-                      services, GraphQL, user interfaces, and AWS
-                      infrastructure. Also delivered access control for data
-                      integrations and vulnerability-remediation tooling.
-                    </p>
-                  </article>
-
-                  <article class="experience-card">
-                    <p class="experience-role">
-                      Game Developer Research Panelist
-                    </p>
-                    <h2>Good Gamer Group / Meta Research Panels</h2>
-                    <p class="experience-meta">
-                      <span>Remote</span>
-                      <span aria-hidden="true">·</span>
-                      <span>Mar 2025 - Present</span>
-                    </p>
-                    <p class="experience-description">
-                      Selected for Meta-commissioned game developer and
-                      invite-only
-                      <a
-                        href="/go/meta-research"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >AR/VR research panels</a
-                      >. I provide structured feedback on pre-release tooling,
-                      developer workflows, and usability.
-                    </p>
-                  </article>
-                </div>
-              </div>
-              <button
-                class="carousel-next experience-next"
-                type="button"
-                aria-label="Show next experience"
-                aria-controls="experience-track"
-              >
-                <span aria-hidden="true">→</span>
-              </button>
-            </section>
-          </div>
-        </section>
-
-        <section class="work" id="work" aria-labelledby="work-title">
-          <div class="work-heading">
-            <h2 id="work-title">A few things I have been making.</h2>
-          </div>
-          <svg
-            class="sketch-arrow work-project-arrow"
-            data-work-project-arrow
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path data-arrow-curve fill="none" />
-            <path data-arrow-head fill="none" />
-          </svg>
-
-          <div class="featured-projects">
-            <article class="featured-project">
-              <div
-                class="project-card project-card--featured project-card--studio"
-              >
-                <app-window
-                  class="studio-window"
-                  title="reddit-2-video / preview"
-                  data-video-studio
-                >
-                  <div class="studio-body">
-                    <div class="studio-settings">
-                      <label class="studio-field">
-                        <span>Subreddit</span>
-                        <select data-studio-sample>
-                          <option value="example-1">r/AskReddit</option>
-                          <option value="example-2">r/nosleep</option>
-                          <option value="example-3-1">r/pettyrevenge</option>
-                          <option value="example-4">r/dadjokes</option>
-                          <option value="example-5">r/TrueOffMyChest</option>
-                        </select>
-                      </label>
-                      <fieldset class="studio-options" disabled>
-                        <legend>Generation options</legend>
-                        <div class="studio-options-grid" data-studio-options>
-                          <label class="studio-option">
-                            <span>Type</span>
-                            <input type="text" value="comments" disabled />
-                          </label>
-                          <label class="studio-option">
-                            <span>Count</span>
-                            <input type="text" value="10" disabled />
-                          </label>
-                          <label class="studio-option">
-                            <span>Alternate</span>
-                            <input type="text" value="on,on" disabled />
-                          </label>
-                          <label class="studio-option">
-                            <span>Title colour</span>
-                            <input type="text" value="H0000FF" disabled />
-                          </label>
-                          <label class="studio-option">
-                            <span>Output</span>
-                            <input type="text" value="example-1" disabled />
-                          </label>
-                        </div>
-                      </fieldset>
-                      <button
-                        class="studio-generate-button"
-                        type="button"
-                        data-studio-generate
-                      >
-                        Generate video
-                      </button>
-                      <p class="studio-note">
-                        Pre-generated examples. No video is rendered here.
-                      </p>
-                      <app-terminal title="reddit-2-video"></app-terminal>
-                    </div>
-                    <div class="studio-preview-pane">
-                      <div class="studio-preview-heading">
-                        <span>Output preview</span>
-                        <span>9:16</span>
-                        <div
-                          class="studio-preview-clips"
-                          data-studio-clip-picker
-                          hidden
-                        >
-                          <span>Clip</span>
-                          <div
-                            class="studio-clip-options"
-                            role="group"
-                            aria-label="Output clip"
-                          >
-                            <button
-                              type="button"
-                              data-studio-clip="example-3-1"
-                              aria-pressed="true"
-                            >
-                              1
-                            </button>
-                            <button
-                              type="button"
-                              data-studio-clip="example-3-2"
-                              aria-pressed="false"
-                            >
-                              2
-                            </button>
-                            <button
-                              type="button"
-                              data-studio-clip="example-3-3"
-                              aria-pressed="false"
-                            >
-                              3
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="studio-preview-frame">
-                        <video
-                          class="studio-video"
-                          data-studio-video
-                          playsinline
-                          preload="none"
-                        ></video>
-                        <div class="studio-play-cover">
-                          <span
-                            class="studio-cover-community"
-                            data-studio-community
-                            >r/AskReddit</span
-                          >
-                          <span class="studio-cover-action" data-studio-action
-                            >Ready to generate</span
-                          >
-                        </div>
-                        <div
-                          class="studio-generation-overlay"
-                          data-studio-generating
-                          role="status"
-                          aria-live="polite"
-                          hidden
-                        >
-                          <span
-                            class="studio-generation-spinner"
-                            aria-hidden="true"
-                          ></span>
-                          <span data-studio-loading-label>Generating...</span>
-                        </div>
-                      </div>
-                      <div
-                        class="studio-transport"
-                        role="group"
-                        aria-label="Video controls"
-                      >
-                        <div class="studio-transport-row">
-                          <button
-                            class="studio-transport-button studio-transport-play"
-                            type="button"
-                            data-studio-toggle
-                            aria-label="Play preview"
-                            disabled
-                          >
-                            <svg
-                              class="studio-icon-play"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                            >
-                              <path
-                                d="m8 5 11 7-11 7z"
-                                fill="currentColor"
-                              ></path>
-                            </svg>
-                            <svg
-                              class="studio-icon-pause"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                            >
-                              <path
-                                d="M7 5h3v14H7zm7 0h3v14h-3z"
-                                fill="currentColor"
-                              ></path>
-                            </svg>
-                          </button>
-                          <span class="studio-transport-time" aria-live="off">
-                            <span data-studio-current>0:00</span>
-                            <span aria-hidden="true">/</span>
-                            <span data-studio-duration>--:--</span>
-                          </span>
-                          <span class="studio-transport-spacer"></span>
-                          <button
-                            class="studio-transport-button studio-transport-mute"
-                            type="button"
-                            data-studio-mute
-                            aria-label="Mute preview"
-                            aria-pressed="false"
-                          >
-                            <svg
-                              class="studio-icon-volume"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                            >
-                              <path
-                                d="M4 9v6h4l5 4V5L8 9H4Zm12-2a7 7 0 0 1 0 10M18 4a11 11 0 0 1 0 16"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></path>
-                            </svg>
-                            <svg
-                              class="studio-icon-muted"
-                              viewBox="0 0 24 24"
-                              aria-hidden="true"
-                            >
-                              <path
-                                d="M4 9v6h4l5 4V5L8 9H4Zm12 1 5 5m0-5-5 5"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              ></path>
-                            </svg>
-                          </button>
-                        </div>
-                        <input
-                          class="studio-transport-seek"
-                          type="range"
-                          min="0"
-                          max="100"
-                          value="0"
-                          step="0.1"
-                          data-studio-seek
-                          aria-label="Seek video"
-                          disabled
-                        />
-                      </div>
-                      <p
-                        class="studio-preview-note"
-                        role="status"
-                        data-studio-status
-                      ></p>
-                    </div>
-                  </div>
-                </app-window>
-              </div>
-              <div class="project-info">
-                <h3>reddit-2-video</h3>
-                <p class="project-description">
-                  An open-source Dart CLI that turns Reddit posts into
-                  short-form videos with AWS Polly and FFmpeg. It has packaged
-                  releases, around 92% test coverage, and human-reviewed video
-                  QA.
-                </p>
-                <nav class="project-links" aria-label="reddit-2-video links">
-                  <icon-button
-                    icon="github"
-                    href="/go/reddit-2-video"
-                    target="_blank"
-                    label="View reddit-2-video on GitHub"
-                    >GitHub</icon-button
-                  >
-                  <a
-                    href="/go/reddit-2-video-docs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Docs</a
-                  >
-                  <a
-                    href="/go/reddit-2-video-releases"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Releases</a
-                  >
-                  <a
-                    href="/go/reddit-2-video-workings"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >How it works</a
-                  >
-                </nav>
-              </div>
-            </article>
-
-            <article
-              class="featured-project featured-project--reverse case-study-project"
-              id="avatar-outfit-shop"
-            >
-              <div
-                class="project-card project-card--featured project-card--media"
-              >
-                <div class="case-study-video-frame" data-case-study-video-frame>
-                  <video
-                    id="case-study-gameplay-video"
-                    class="case-study-video"
-                    controls
-                    playsinline
-                    preload="none"
-                    poster="./assets/avatar-outfit-shop/gameplay-poster.png"
-                    aria-label="Avatar Outfit Shop gameplay walkthrough"
-                  >
-                    <source
-                      data-src="./assets/avatar-outfit-shop/gameplay.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                  <div class="case-study-player-ui" data-video-ui>
-                    <button
-                      class="case-study-player-main"
-                      type="button"
-                      data-video-toggle
-                      aria-controls="case-study-gameplay-video"
-                      aria-label="Play gameplay video"
-                    >
-                      <span
-                        class="case-study-play-glyph"
-                        aria-hidden="true"
-                      ></span>
-                      <span data-video-main-label>Watch gameplay</span>
+          <article class="featured-project featured-project--reverse case-study-project" id="avatar-outfit-shop">
+            <div class="project-card project-card--featured project-card--media">
+              <div class="case-study-video-frame" data-case-study-video-frame>
+                <video id="case-study-gameplay-video" class="case-study-video" controls playsinline preload="none"
+                  poster="./assets/avatar-outfit-shop/gameplay-poster.webp"
+                  aria-label="Avatar Outfit Shop gameplay walkthrough">
+                  <source data-src="./assets/avatar-outfit-shop/gameplay.mp4" type="video/mp4" />
+                </video>
+                <div class="case-study-player-ui" data-video-ui>
+                  <button class="case-study-player-main" type="button" data-video-toggle
+                    aria-controls="case-study-gameplay-video" aria-label="Play gameplay video">
+                    <span class="case-study-play-glyph" aria-hidden="true"></span>
+                    <span data-video-main-label>Watch gameplay</span>
+                  </button>
+                  <div class="case-study-player-controls" role="group" aria-label="Gameplay video controls">
+                    <button class="case-study-player-control case-study-player-toggle" type="button" data-video-toggle
+                      aria-controls="case-study-gameplay-video" aria-label="Play gameplay video"></button>
+                    <span class="case-study-player-time" data-video-time>0:00 / 0:00</span>
+                    <input class="case-study-player-seek" type="range" min="0" max="100" step="0.1" value="0" disabled
+                      data-video-seek aria-label="Seek in gameplay video" />
+                    <button class="case-study-player-control case-study-player-mute" type="button" data-video-mute
+                      aria-controls="case-study-gameplay-video" aria-label="Mute gameplay video">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 9h4l5-4v14l-5-4H4z"></path>
+                        <path class="case-study-sound-wave" d="M16 8c2 2 2 6 0 8"></path>
+                        <path class="case-study-sound-wave" d="M19 5c4 4 4 10 0 14"></path>
+                        <path class="case-study-mute-mark" d="M17 9l5 6m0-6-5 6"></path>
+                      </svg>
                     </button>
-                    <div
-                      class="case-study-player-controls"
-                      role="group"
-                      aria-label="Gameplay video controls"
-                    >
-                      <button
-                        class="case-study-player-control case-study-player-toggle"
-                        type="button"
-                        data-video-toggle
-                        aria-controls="case-study-gameplay-video"
-                        aria-label="Play gameplay video"
-                      ></button>
-                      <span class="case-study-player-time" data-video-time
-                        >0:00 / 0:00</span
-                      >
-                      <input
-                        class="case-study-player-seek"
-                        type="range"
-                        min="0"
-                        max="100"
-                        step="0.1"
-                        value="0"
-                        disabled
-                        data-video-seek
-                        aria-label="Seek in gameplay video"
-                      />
-                      <button
-                        class="case-study-player-control case-study-player-mute"
-                        type="button"
-                        data-video-mute
-                        aria-controls="case-study-gameplay-video"
-                        aria-label="Mute gameplay video"
-                      >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M4 9h4l5-4v14l-5-4H4z"></path>
-                          <path
-                            class="case-study-sound-wave"
-                            d="M16 8c2 2 2 6 0 8"
-                          ></path>
-                          <path
-                            class="case-study-sound-wave"
-                            d="M19 5c4 4 4 10 0 14"
-                          ></path>
-                          <path
-                            class="case-study-mute-mark"
-                            d="M17 9l5 6m0-6-5 6"
-                          ></path>
-                        </svg>
-                      </button>
-                      <button
-                        class="case-study-player-control case-study-player-fullscreen"
-                        type="button"
-                        data-video-fullscreen
-                        aria-controls="case-study-gameplay-video"
-                        aria-label="Enter fullscreen"
-                      >
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"></path>
-                        </svg>
-                      </button>
-                    </div>
+                    <button class="case-study-player-control case-study-player-fullscreen" type="button"
+                      data-video-fullscreen aria-controls="case-study-gameplay-video" aria-label="Enter fullscreen">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div class="project-info">
-                <h3>Avatar Outfit Shop</h3>
-                <div
-                  class="case-study-results"
-                  role="group"
-                  aria-label="Project results"
-                >
-                  <p><strong>100,000+</strong><span>visits</span></p>
-                  <p><strong>~£3,500</strong><span>revenue</span></p>
-                </div>
-                <p class="project-description">
-                  A Roblox experience that groups creator-made avatar items into
-                  complete, purchasable outfits. I built the custom interface,
-                  purchase tracking, and analytics behind it.
+            </div>
+            <div class="project-info">
+              <h3>Avatar Outfit Shop</h3>
+              <div class="case-study-results" role="group" aria-label="Project results">
+                <p><strong>100,000+</strong><span>visits</span></p>
+                <p><strong>~£3,500</strong><span>revenue</span></p>
+              </div>
+              <p class="project-description">
+                A Roblox experience that groups creator-made avatar items into
+                complete, purchasable outfits. I built the custom interface,
+                purchase tracking, and analytics behind it.
+              </p>
+              <nav class="case-study-actions" aria-label="Avatar Outfit Shop links">
+                <a class="case-study-play-button" href="https://www.roblox.com/games/start?placeId=4878804776"
+                  target="_blank" rel="noopener noreferrer" aria-label="Launch Avatar Outfit Shop in Roblox">
+                  <span class="case-study-play-icon" aria-hidden="true"></span>
+                  <span>Play</span>
+                </a>
+                <a href="https://www.roblox.com/games/4878804776/Avatar-Outfit-Shop" target="_blank"
+                  rel="noopener noreferrer">Game page</a>
+                <a href="#avatar-outfit-shop-story">How it works</a>
+              </nav>
+            </div>
+            <div class="case-study" id="avatar-outfit-shop-story">
+              <div class="case-study-heading">
+                <h4>Built around what players did.</h4>
+                <p>
+                  Players could shop complete looks assembled from matching
+                  creator-made items. Funnel analytics showed where they
+                  dropped off, while telemetry exposed latency from fetching
+                  assets through the catalog API.
                 </p>
-                <nav
-                  class="case-study-actions"
-                  aria-label="Avatar Outfit Shop links"
-                >
-                  <a
-                    class="case-study-play-button"
-                    href="https://www.roblox.com/games/start?placeId=4878804776"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Launch Avatar Outfit Shop in Roblox"
-                  >
-                    <span
-                      class="case-study-play-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span>Play</span>
-                  </a>
-                  <a
-                    href="https://www.roblox.com/games/4878804776/Avatar-Outfit-Shop"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Game page</a
-                  >
-                  <a href="#avatar-outfit-shop-story">How it works</a>
-                </nav>
               </div>
-              <div class="case-study" id="avatar-outfit-shop-story">
-                <div class="case-study-heading">
-                  <h4>Built around what players did.</h4>
-                  <p>
-                    Players could shop complete looks assembled from matching
-                    creator-made items. Funnel analytics showed where they
-                    dropped off, while telemetry exposed latency from fetching
-                    assets through the catalog API.
-                  </p>
-                </div>
-                <svg
-                  class="sketch-arrow case-study-arrow"
-                  aria-hidden="true"
-                  data-case-study-arrow
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path data-arrow-curve fill="none" />
-                  <path data-arrow-head fill="none" />
-                </svg>
-                <div class="case-study-engineering">
-                  <p>
-                    <strong>Persistent data and purchases</strong>
-                    DataStore kept player data across sessions. I also built
-                    atomic purchase tracking and funnel analytics to measure
-                    player engagement and revenue.
-                  </p>
-                  <p>
-                    <strong>Shopping flow</strong>
-                    I made mannequins clickable for individual try-ons, kept
-                    Quick Buy visible on mobile, and added basket feedback and
-                    safeguards after tracking empty checkout attempts. Players
-                    could also buy a whole outfit while exploring the world.
-                  </p>
-                  <p>
-                    <strong>Asset delivery</strong>
-                    I started with live API requests, then cached the responses.
-                    When caching still left noticeable latency, I pre-baked the
-                    assets into the game so clients could load them as needed
-                    without live catalog requests for those assets.
-                  </p>
-                </div>
-                <div
-                  class="case-study-gallery"
-                  role="group"
-                  aria-label="Avatar Outfit Shop images"
-                >
-                  <figure class="case-study-gallery-item">
-                    <div
-                      class="case-study-image-frame"
-                      data-case-study-image-frame
-                    >
-                      <img
-                        src="./assets/avatar-outfit-shop/outfit-browser.webp"
-                        alt="Avatar Outfit Shop interface showing complete outfits"
-                        loading="lazy"
-                        data-case-study-image
-                      />
-                      <span class="case-study-image-placeholder"
-                        >Outfit browser preview unavailable</span
-                      >
-                    </div>
-                    <figcaption><strong>Outfit discovery</strong></figcaption>
-                  </figure>
-                  <figure class="case-study-gallery-item">
-                    <div
-                      class="case-study-image-frame"
-                      data-case-study-image-frame
-                    >
-                      <img
-                        src="./assets/avatar-outfit-shop/purchase-flow.webp"
-                        alt="Avatar Outfit Shop view showing the items in an outfit"
-                        loading="lazy"
-                        data-case-study-image
-                      />
-                      <span class="case-study-image-placeholder"
-                        >Purchase flow preview unavailable</span
-                      >
-                    </div>
-                    <figcaption>
-                      <strong>Matching items and purchase path</strong>
-                    </figcaption>
-                  </figure>
-                  <figure class="case-study-gallery-item">
-                    <button
-                      class="analytics-preview"
-                      type="button"
-                      data-analytics-open
-                      aria-haspopup="dialog"
-                      aria-controls="analytics-dialog"
-                      aria-label="Open analytics"
-                    >
-                      <span class="analytics-preview-period"
-                        >P99 change · 15–21 Mar 2026 export</span
-                      >
-                      <span class="analytics-preview-window">
-                        <span
-                          class="analytics-preview-slide"
-                          data-analytics-preview-slide
-                        >
-                          <span
-                            class="analytics-preview-title"
-                            data-analytics-preview-title
-                            >How asset delivery cut p99 load time</span
-                          >
-                          <span
-                            class="analytics-preview-chart"
-                            data-analytics-preview-chart
-                          >
-                            <span
-                              >Live API 100% → Cached 80% → Pre-baked 30%</span
-                            >
-                          </span>
-                        </span>
-                      </span>
-                      <span class="analytics-preview-footer"
-                        ><span data-analytics-preview-count>1 / 5</span
-                        ><span data-analytics-preview-note>P99 · 70% lower</span
-                        ><span class="analytics-preview-action"
-                          >Expand <span aria-hidden="true">↗</span></span
-                        ></span
-                      >
-                    </button>
-                    <figcaption>
-                      <strong>Performance and funnels</strong>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-            </article>
-            <article
-              class="featured-project extension-project"
-              id="bird-tracker-tools"
-            >
-              <hr class="project-divider" />
-              <div class="project-info">
-                <h3>Browser dev tools</h3>
-                <p class="project-description">
-                  Two cross-browser extensions for collecting page images and
-                  exporting tables. I built them alongside a Python and Selenium
-                  pipeline for <a href="#bird-tracker">Bird Tracker</a>, in
-                  order to create a 100,000+ image dataset.
-                </p>
-                <div class="extension-details">
-                  <p class="extension-result">
-                    <strong>8,700+</strong>
-                    <span>cumulative extension downloads</span>
-                  </p>
-                  <nav
-                    class="project-links"
-                    aria-label="Browser dev tool links"
-                  >
-                    <a
-                      href="/go/mass-image-downloader"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><img
-                        src="./assets/extension-demo/mass-image-logo.webp"
-                        alt=""
-                        width="24"
-                        height="24"
-                      />Image downloader ↗</a
-                    >
-                    <a
-                      href="/go/table-to-csv"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      ><img
-                        src="./assets/extension-demo/table-to-text-logo.webp"
-                        alt=""
-                        width="24"
-                        height="24"
-                      />Table exporter ↗</a
-                    >
-                  </nav>
-                </div>
-              </div>
-              <svg
-                class="sketch-arrow extension-try-arrow"
-                data-extension-try-arrow
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg class="sketch-arrow case-study-arrow" aria-hidden="true" data-case-study-arrow
+                xmlns="http://www.w3.org/2000/svg">
                 <path data-arrow-curve fill="none" />
                 <path data-arrow-head fill="none" />
               </svg>
-              <div
-                class="project-card extension-card"
-                data-extension-demo
-                data-mode="images"
-                data-open="false"
-              >
-                <div class="extension-browser">
-                  <div class="extension-browser-tabs" aria-hidden="true">
-                    <span class="extension-browser-dots"
-                      ><i></i><i></i><i></i
-                    ></span>
-                    <span class="extension-browser-tab"
-                      ><img
-                        src="./assets/extension-demo/mass-image-logo.webp"
-                        alt=""
-                        data-extension-tab-icon
-                      />
-                      <span>Garden birds | Bird Atlas</span><b>×</b></span
-                    >
-                    <span class="extension-browser-plus">+</span>
+              <div class="case-study-engineering">
+                <p>
+                  <strong>Persistent data and purchases</strong>
+                  DataStore kept player data across sessions. I also built
+                  atomic purchase tracking and funnel analytics to measure
+                  player engagement and revenue.
+                </p>
+                <p>
+                  <strong>Shopping flow</strong>
+                  I made mannequins clickable for individual try-ons, kept
+                  Quick Buy visible on mobile, and added basket feedback and
+                  safeguards after tracking empty checkout attempts. Players
+                  could also buy a whole outfit while exploring the world.
+                </p>
+                <p>
+                  <strong>Asset delivery</strong>
+                  I started with live API requests, then cached the responses.
+                  When caching still left noticeable latency, I pre-baked the
+                  assets into the game so clients could load them as needed
+                  without live catalog requests for those assets.
+                </p>
+              </div>
+              <div class="case-study-gallery" role="group" aria-label="Avatar Outfit Shop images">
+                <figure class="case-study-gallery-item">
+                  <div class="case-study-image-frame" data-case-study-image-frame>
+                    <img src="./assets/avatar-outfit-shop/outfit-browser.webp"
+                      alt="Avatar Outfit Shop interface showing complete outfits" loading="lazy"
+                      data-case-study-image />
+                    <span class="case-study-image-placeholder">Outfit browser preview unavailable</span>
                   </div>
-                  <div class="extension-browser-bar">
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >←</span
-                    >
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >→</span
-                    >
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >↻</span
-                    >
-                    <span class="extension-address"
-                      ><svg
-                        class="extension-address-lock"
-                        viewBox="0 0 16 16"
-                        aria-hidden="true"
-                      >
-                        <path d="M5 7V5a3 3 0 0 1 6 0v2" />
-                        <rect x="3.5" y="7" width="9" height="7" rx="1.3" />
-                      </svg>
-                      https://birdatlas.example/garden-birds</span
-                    >
-                    <span class="extension-invite" data-extension-invite
-                      >Try tools <span aria-hidden="true">→</span></span
-                    >
-                    <div
-                      class="extension-launchers"
-                      role="group"
-                      aria-label="Try a browser extension"
-                    >
-                      <button
-                        class="extension-launch"
-                        type="button"
-                        data-extension-launch="images"
-                        aria-label="Open Mass Image Downloader"
-                        title="Mass Image Downloader"
-                        aria-controls="extension-popup"
-                        aria-expanded="false"
-                        aria-pressed="true"
-                      >
-                        <img
-                          src="./assets/extension-demo/mass-image-logo.webp"
-                          alt=""
-                        />
-                      </button>
-                      <button
-                        class="extension-launch"
-                        type="button"
-                        data-extension-launch="tables"
-                        aria-label="Open Table to CSV"
-                        title="Table to CSV"
-                        aria-controls="extension-popup"
-                        aria-expanded="false"
-                        aria-pressed="false"
-                      >
-                        <img
-                          src="./assets/extension-demo/table-to-text-logo.webp"
-                          alt=""
-                        />
-                      </button>
-                    </div>
+                  <figcaption><strong>Outfit discovery</strong></figcaption>
+                </figure>
+                <figure class="case-study-gallery-item">
+                  <div class="case-study-image-frame" data-case-study-image-frame>
+                    <img src="./assets/avatar-outfit-shop/purchase-flow.webp"
+                      alt="Avatar Outfit Shop view showing the items in an outfit" loading="lazy"
+                      data-case-study-image />
+                    <span class="case-study-image-placeholder">Purchase flow preview unavailable</span>
                   </div>
-                  <section
-                    class="extension-browser-body"
-                    aria-label="Sample bird webpage, scroll to see the image gallery and both tables"
-                    tabindex="0"
-                    data-extension-page
-                  >
-                    <div class="extension-page-heading">
-                      <h4>Garden birds</h4>
-                      <p>Scroll this sample page to see both tables.</p>
-                    </div>
-                    <div
-                      class="extension-gallery"
-                      role="group"
-                      aria-label="Sample webpage images"
-                    >
-                      <figure data-demo-image="robin">
-                        <img
-                          src="./assets/extension-demo/robin.webp"
-                          alt="Photograph of a robin"
-                        />
-                        <figcaption>Robin</figcaption>
-                      </figure>
-                      <figure data-demo-image="blue-tit">
-                        <img
-                          src="./assets/extension-demo/blue-tit.webp"
-                          alt="Photograph of a blue tit"
-                        />
-                        <figcaption>Blue tit</figcaption>
-                      </figure>
-                      <figure data-demo-image="goldfinch">
-                        <img
-                          src="./assets/extension-demo/goldfinch.webp"
-                          alt="Photograph of a goldfinch"
-                        />
-                        <figcaption>Goldfinch</figcaption>
-                      </figure>
-                      <figure data-demo-image="robin">
-                        <img
-                          src="./assets/extension-demo/robin.webp"
-                          alt="Second copy of the robin photograph"
-                        />
-                        <figcaption>Robin</figcaption>
-                      </figure>
-                    </div>
-                    <div class="extension-page-table-wrap">
-                      <table
-                        class="extension-page-table"
-                        data-demo-table="sightings"
-                      >
-                        <caption>
-                          Recent sightings
-                        </caption>
-                        <thead>
-                          <tr>
-                            <th>Species</th>
-                            <th>Location</th>
-                            <th>Count</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Robin</td>
-                            <td>Sheffield</td>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                            <td>Blue tit</td>
-                            <td>York</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>Goldfinch</td>
-                            <td>Leeds</td>
-                            <td>3</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="extension-page-table-wrap">
-                      <table
-                        class="extension-page-table"
-                        data-demo-table="species"
-                      >
-                        <caption>
-                          Species reference
-                        </caption>
-                        <thead>
-                          <tr>
-                            <th>Species</th>
-                            <th>Family</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Robin</td>
-                            <td>Flycatcher</td>
-                            <td>Resident</td>
-                          </tr>
-                          <tr>
-                            <td>Blue tit</td>
-                            <td>Tit</td>
-                            <td>Resident</td>
-                          </tr>
-                          <tr>
-                            <td>Goldfinch</td>
-                            <td>Finch</td>
-                            <td>Resident</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </section>
+                  <figcaption>
+                    <strong>Matching items and purchase path</strong>
+                  </figcaption>
+                </figure>
+                <figure class="case-study-gallery-item">
+                  <button class="analytics-preview" type="button" data-analytics-open aria-haspopup="dialog"
+                    aria-controls="analytics-dialog" aria-label="Open analytics">
+                    <span class="analytics-preview-period">P99 change · 15–21 Mar 2026 export</span>
+                    <span class="analytics-preview-window">
+                      <span class="analytics-preview-slide" data-analytics-preview-slide>
+                        <span class="analytics-preview-title" data-analytics-preview-title>How asset delivery cut p99
+                          load time</span>
+                        <span class="analytics-preview-chart" data-analytics-preview-chart>
+                          <span>Live API 100% → Cached 80% → Pre-baked 30%</span>
+                        </span>
+                      </span>
+                    </span>
+                    <span class="analytics-preview-footer"><span data-analytics-preview-count>1 / 5</span><span
+                        data-analytics-preview-note>P99 · 70% lower</span><span class="analytics-preview-action">Expand
+                        <span aria-hidden="true">↗</span></span></span>
+                  </button>
+                  <figcaption>
+                    <strong>Performance and funnels</strong>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+          <article class="featured-project extension-project" id="bird-tracker-tools">
+            <hr class="project-divider" />
+            <div class="project-info">
+              <h3>Browser dev tools</h3>
+              <p class="project-description">
+                Two cross-browser extensions for collecting page images and
+                exporting tables. I built them alongside a Python and Selenium
+                pipeline for <a href="#bird-tracker">Bird Tracker</a>, in
+                order to create a 100,000+ image dataset.
+              </p>
+              <div class="extension-details">
+                <p class="extension-result">
+                  <strong>8,700+</strong>
+                  <span>cumulative extension downloads</span>
+                </p>
+                <nav class="project-links" aria-label="Browser dev tool links">
+                  <a href="/go/mass-image-downloader" target="_blank" rel="noopener noreferrer"><img
+                      src="./assets/extension-demo/mass-image-logo.webp" alt="" width="24" height="24" />Image
+                    downloader ↗</a>
+                  <a href="/go/table-to-csv" target="_blank" rel="noopener noreferrer"><img
+                      src="./assets/extension-demo/table-to-text-logo.webp" alt="" width="24" height="24" />Table
+                    exporter ↗</a>
+                </nav>
+              </div>
+            </div>
+            <svg class="sketch-arrow extension-try-arrow" data-extension-try-arrow aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg">
+              <path data-arrow-curve fill="none" />
+              <path data-arrow-head fill="none" />
+            </svg>
+            <div class="project-card extension-card" data-extension-demo data-mode="images" data-open="false">
+              <div class="extension-browser">
+                <div class="extension-browser-tabs" aria-hidden="true">
+                  <span class="extension-browser-dots"><i></i><i></i><i></i></span>
+                  <span class="extension-browser-tab"><img src="./assets/extension-demo/mass-image-logo.webp" alt=""
+                      width="60" height="60" loading="lazy" data-extension-tab-icon />
+                    <span>Garden birds | Bird Atlas</span><b>×</b></span>
+                  <span class="extension-browser-plus">+</span>
                 </div>
-                <section
-                  class="extension-popup"
-                  id="extension-popup"
-                  aria-label="Browser extension demo"
-                  data-extension-popup
-                  hidden
-                >
-                  <div class="extension-popup-heading">
-                    <img
-                      class="extension-popup-mark"
-                      src="./assets/extension-demo/mass-image-logo.webp"
-                      data-image-src="./assets/extension-demo/mass-image-logo.webp"
-                      data-table-src="./assets/extension-demo/table-to-text-logo.webp"
-                      alt=""
-                      data-extension-logo
-                    />
-                    <strong data-extension-title>Mass Image Downloader</strong>
-                    <button
-                      class="extension-popup-close"
-                      type="button"
-                      aria-label="Close extension panel"
-                      data-extension-close
-                    >
-                      ×
+                <div class="extension-browser-bar">
+                  <span class="extension-browser-nav" aria-hidden="true">←</span>
+                  <span class="extension-browser-nav" aria-hidden="true">→</span>
+                  <span class="extension-browser-nav" aria-hidden="true">↻</span>
+                  <span class="extension-address"><svg class="extension-address-lock" viewBox="0 0 16 16"
+                      aria-hidden="true">
+                      <path d="M5 7V5a3 3 0 0 1 6 0v2" />
+                      <rect x="3.5" y="7" width="9" height="7" rx="1.3" />
+                    </svg>
+                    https://birdatlas.example/garden-birds</span>
+                  <span class="extension-invite" data-extension-invite>Try tools <span
+                      aria-hidden="true">→</span></span>
+                  <div class="extension-launchers" role="group" aria-label="Try a browser extension">
+                    <button class="extension-launch" type="button" data-extension-launch="images"
+                      aria-label="Open Mass Image Downloader" title="Mass Image Downloader"
+                      aria-controls="extension-popup" aria-expanded="false" aria-pressed="true">
+                      <img src="./assets/extension-demo/mass-image-logo.webp" alt="" width="60" height="60"
+                        loading="lazy" />
+                    </button>
+                    <button class="extension-launch" type="button" data-extension-launch="tables"
+                      aria-label="Open Table to CSV" title="Table to CSV" aria-controls="extension-popup"
+                      aria-expanded="false" aria-pressed="false">
+                      <img src="./assets/extension-demo/table-to-text-logo.webp" alt="" width="60" height="60"
+                        loading="lazy" />
                     </button>
                   </div>
-                  <div
-                    class="extension-tabs"
-                    role="tablist"
-                    aria-label="Collection tool"
-                  >
-                    <button
-                      type="button"
-                      role="tab"
-                      id="extension-images-tab"
-                      aria-controls="extension-images-panel"
-                      aria-selected="true"
-                      data-extension-tab="images"
-                    >
-                      Image downloader
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      id="extension-tables-tab"
-                      aria-controls="extension-tables-panel"
-                      aria-selected="false"
-                      tabindex="-1"
-                      data-extension-tab="tables"
-                    >
-                      Table exporter
-                    </button>
+                </div>
+                <section class="extension-browser-body"
+                  aria-label="Sample bird webpage, scroll to see the image gallery and both tables" tabindex="0"
+                  data-extension-page>
+                  <div class="extension-page-heading">
+                    <h4>Garden birds</h4>
+                    <p>Scroll this sample page to see both tables.</p>
                   </div>
-                  <div
-                    class="extension-panel"
-                    id="extension-images-panel"
-                    role="tabpanel"
-                    aria-labelledby="extension-images-tab"
-                    data-extension-panel="images"
-                  >
-                    <p class="extension-panel-intro">
-                      Choose images from the sample page.
-                    </p>
-                    <label class="extension-check extension-dedupe"
-                      ><input type="checkbox" data-extension-dedupe checked />
-                      Remove duplicates <span data-extension-image-count></span
-                    ></label>
-                    <div
-                      class="extension-image-list"
-                      data-extension-image-list
-                    ></div>
-                    <div class="extension-output">
-                      <span>Output</span
-                      ><strong data-extension-image-output></strong>
-                    </div>
-                    <button
-                      class="extension-download"
-                      type="button"
-                      data-extension-image-download
-                    >
-                      Download images (.zip)
-                    </button>
+                  <div class="extension-gallery" role="group" aria-label="Sample webpage images">
+                    <figure data-demo-image="robin">
+                      <img src="./assets/extension-demo/robin.webp" alt="Photograph of a robin" />
+                      <figcaption>Robin</figcaption>
+                    </figure>
+                    <figure data-demo-image="blue-tit">
+                      <img src="./assets/extension-demo/blue-tit.webp" alt="Photograph of a blue tit" />
+                      <figcaption>Blue tit</figcaption>
+                    </figure>
+                    <figure data-demo-image="goldfinch">
+                      <img src="./assets/extension-demo/goldfinch.webp" alt="Photograph of a goldfinch" />
+                      <figcaption>Goldfinch</figcaption>
+                    </figure>
+                    <figure data-demo-image="robin">
+                      <img src="./assets/extension-demo/robin.webp" alt="Second copy of the robin photograph" />
+                      <figcaption>Robin</figcaption>
+                    </figure>
                   </div>
-                  <div
-                    class="extension-panel"
-                    id="extension-tables-panel"
-                    role="tabpanel"
-                    aria-labelledby="extension-tables-tab"
-                    data-extension-panel="tables"
-                    hidden
-                  >
-                    <p class="extension-panel-intro">
-                      Export a table from the sample page.
-                    </p>
-                    <label class="extension-field"
-                      >Table
-                      <select data-extension-table-select>
-                        <option value="sightings">Recent sightings</option>
-                        <option value="species">Species reference</option>
-                      </select>
-                    </label>
-                    <div
-                      class="extension-format"
-                      role="group"
-                      aria-label="Export format"
-                    >
-                      <button
-                        type="button"
-                        aria-pressed="true"
-                        data-extension-format="csv"
-                      >
-                        CSV
-                      </button>
-                      <button
-                        type="button"
-                        aria-pressed="false"
-                        data-extension-format="json"
-                      >
-                        JSON
-                      </button>
-                    </div>
-                    <div class="extension-output-heading">
-                      <span>Output preview</span
-                      ><span data-extension-filename></span>
-                    </div>
-                    <pre class="extension-code" data-extension-preview></pre>
-                    <button
-                      class="extension-download"
-                      type="button"
-                      data-extension-table-download
-                    >
-                      Download CSV
-                    </button>
+                  <div class="extension-page-table-wrap">
+                    <table class="extension-page-table" data-demo-table="sightings">
+                      <caption>
+                        Recent sightings
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th>Species</th>
+                          <th>Location</th>
+                          <th>Count</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Robin</td>
+                          <td>Sheffield</td>
+                          <td>2</td>
+                        </tr>
+                        <tr>
+                          <td>Blue tit</td>
+                          <td>York</td>
+                          <td>4</td>
+                        </tr>
+                        <tr>
+                          <td>Goldfinch</td>
+                          <td>Leeds</td>
+                          <td>3</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <p
-                    class="extension-status"
-                    role="status"
-                    aria-live="polite"
-                    data-extension-status
-                  ></p>
+                  <div class="extension-page-table-wrap">
+                    <table class="extension-page-table" data-demo-table="species">
+                      <caption>
+                        Species reference
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th>Species</th>
+                          <th>Family</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Robin</td>
+                          <td>Flycatcher</td>
+                          <td>Resident</td>
+                        </tr>
+                        <tr>
+                          <td>Blue tit</td>
+                          <td>Tit</td>
+                          <td>Resident</td>
+                        </tr>
+                        <tr>
+                          <td>Goldfinch</td>
+                          <td>Finch</td>
+                          <td>Resident</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </section>
               </div>
-            </article>
-
-            <section
-              class="mobile-projects"
-              aria-labelledby="mobile-apps-title"
-            >
-              <h3 id="mobile-apps-title">Mobile apps</h3>
-              <div class="mobile-project-grid">
-                <article class="mobile-project" id="bird-tracker">
-                  <div class="mobile-project-art mobile-project-art--birds">
-                    <div class="mobile-phone mobile-phone--bird-overview">
-                      <div class="mobile-phone-camera" aria-hidden="true"></div>
-                      <div class="mobile-phone-screen">
-                        <img
-                          src="./assets/bird-tracker/overview.webp"
-                          alt="Bird Tracker overview with sighting statistics and bird cards"
-                          width="887"
-                          height="1774"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                    <div class="mobile-phone mobile-phone--bird-prediction">
-                      <div class="mobile-phone-camera" aria-hidden="true"></div>
-                      <div class="mobile-phone-screen">
-                        <img
-                          src="./assets/bird-tracker/prediction.webp"
-                          alt="Bird Tracker identifying a woodpigeon with an image and species details"
-                          width="887"
-                          height="1774"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
+              <section class="extension-popup" id="extension-popup" aria-label="Browser extension demo"
+                data-extension-popup hidden>
+                <div class="extension-popup-heading">
+                  <img class="extension-popup-mark" src="./assets/extension-demo/mass-image-logo.webp"
+                    data-image-src="./assets/extension-demo/mass-image-logo.webp"
+                    data-table-src="./assets/extension-demo/table-to-text-logo.webp" alt="" width="60" height="60"
+                    loading="lazy" data-extension-logo />
+                  <strong data-extension-title>Mass Image Downloader</strong>
+                  <button class="extension-popup-close" type="button" aria-label="Close extension panel"
+                    data-extension-close>
+                    ×
+                  </button>
+                </div>
+                <div class="extension-tabs" role="tablist" aria-label="Collection tool">
+                  <button type="button" role="tab" id="extension-images-tab" aria-controls="extension-images-panel"
+                    aria-selected="true" data-extension-tab="images">
+                    Image downloader
+                  </button>
+                  <button type="button" role="tab" id="extension-tables-tab" aria-controls="extension-tables-panel"
+                    aria-selected="false" tabindex="-1" data-extension-tab="tables">
+                    Table exporter
+                  </button>
+                </div>
+                <div class="extension-panel" id="extension-images-panel" role="tabpanel"
+                  aria-labelledby="extension-images-tab" data-extension-panel="images">
+                  <p class="extension-panel-intro">
+                    Choose images from the sample page.
+                  </p>
+                  <label class="extension-check extension-dedupe"><input type="checkbox" data-extension-dedupe
+                      checked />
+                    Remove duplicates <span data-extension-image-count></span></label>
+                  <div class="extension-image-list" data-extension-image-list></div>
+                  <div class="extension-output">
+                    <span>Output</span><strong data-extension-image-output></strong>
                   </div>
-                  <div class="mobile-project-copy">
-                    <p class="mobile-project-type">
-                      Flutter · Python · TensorFlow
-                    </p>
-                    <h4>Bird Tracker</h4>
-                    <p>
-                      A bird identification app using photos and location to
-                      help recognise British species. It reached about 85%
-                      identification accuracy.
-                    </p>
-                    <nav
-                      class="mobile-project-links"
-                      aria-label="Bird Tracker video"
-                    >
-                      <a
-                        href="/go/bird-tracker-video"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Watch demo ↗</a
-                      >
-                    </nav>
+                  <button class="extension-download" type="button" data-extension-image-download>
+                    Download images (.zip)
+                  </button>
+                </div>
+                <div class="extension-panel" id="extension-tables-panel" role="tabpanel"
+                  aria-labelledby="extension-tables-tab" data-extension-panel="tables" hidden>
+                  <p class="extension-panel-intro">
+                    Export a table from the sample page.
+                  </p>
+                  <label class="extension-field">Table
+                    <select data-extension-table-select>
+                      <option value="sightings">Recent sightings</option>
+                      <option value="species">Species reference</option>
+                    </select>
+                  </label>
+                  <div class="extension-format" role="group" aria-label="Export format">
+                    <button type="button" aria-pressed="true" data-extension-format="csv">
+                      CSV
+                    </button>
+                    <button type="button" aria-pressed="false" data-extension-format="json">
+                      JSON
+                    </button>
                   </div>
-                </article>
-
-                <article class="mobile-project" id="offline-music">
-                  <div class="mobile-project-art mobile-project-art--music">
-                    <div class="mobile-phone">
-                      <div class="mobile-phone-camera" aria-hidden="true"></div>
-                      <div class="mobile-phone-screen">
-                        <img
-                          src="./assets/offline-music/playing.webp"
-                          alt="Offline Music playback screen with album art and controls"
-                          width="1080"
-                          height="2105"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                    <div class="mobile-app-icon" aria-hidden="true">
-                      <img
-                        src="./assets/offline-music/icon.webp"
-                        alt=""
-                        width="512"
-                        height="512"
-                        loading="lazy"
-                      />
-                    </div>
+                  <div class="extension-output-heading">
+                    <span>Output preview</span><span data-extension-filename></span>
                   </div>
-                  <div class="mobile-project-copy">
-                    <p class="mobile-project-type">Flutter</p>
-                    <h4>Offline Music</h4>
-                    <p>
-                      A simple music player that makes it easy to listen to
-                      local tracks without mobile data. It reached 1,000+
-                      downloads.
-                    </p>
-                  </div>
-                </article>
-
-                <article class="mobile-project" id="ytdl-app">
-                  <div class="mobile-project-art mobile-project-art--ytdl">
-                    <div class="mobile-phone">
-                      <div class="mobile-phone-camera" aria-hidden="true"></div>
-                      <div class="mobile-phone-screen">
-                        <img
-                          src="./assets/ytdl-app/page1.webp"
-                          alt="YT Downloader app showing a queue of video downloads"
-                          width="1080"
-                          height="2130"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                    <div class="mobile-app-icon" aria-hidden="true">
-                      <img
-                        src="./assets/ytdl-app/icon.webp"
-                        alt=""
-                        width="512"
-                        height="512"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <div class="mobile-project-copy">
-                    <p class="mobile-project-type">Flutter · Dart</p>
-                    <h4>YT Downloader</h4>
-                    <p>
-                      A mobile app built from my ytdl CLI. It queues YouTube
-                      videos for download directly to a phone.
-                    </p>
-                    <nav
-                      class="mobile-project-links"
-                      aria-label="YT Downloader source code"
-                    >
-                      <a
-                        href="/go/ytdl-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >App source ↗</a
-                      >
-                      <a
-                        href="/go/ytdl"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >CLI source ↗</a
-                      >
-                    </nav>
-                  </div>
-                </article>
-              </div>
-            </section>
-
-            <section class="libraries" aria-labelledby="libraries-title">
-              <div class="libraries-heading">
-                <h3 id="libraries-title">Libraries</h3>
-              </div>
-              <ul class="library-list">
-                <li>
-                  <a
-                    href="/go/overseer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span class="library-copy">
-                      <span class="library-name">Overseer</span>
-                      <span class="library-description"
-                        >A testing framework for reviewing media and AI
-                        outputs.</span
-                      >
-                    </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/go/behaviour-tree"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span class="library-copy">
-                      <span class="library-name">Behaviour Tree</span>
-                      <span class="library-description"
-                        >A behaviour tree library for Lua.</span
-                      >
-                    </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/go/title-carousel"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span class="library-copy">
-                      <span class="library-name">Title Carousel</span>
-                      <span class="library-description"
-                        >An image carousel with custom text.</span
-                      >
-                    </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/go/streamlit-editjson"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span class="library-copy">
-                      <span class="library-name">streamlit-editjson</span>
-                      <span class="library-description"
-                        >A Streamlit component for viewing and editing
-                        JSON.</span
-                      >
-                    </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
-                  </a>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </section>
-      </main>
-      <footer class="site-footer">
-        <div class="site-footer-info">
-          <div class="site-footer-meta">
-            <!-- deploy-preview:start -->
-            <a
-              class="site-footer-deploy"
-              href="/go/portfolio-deployments"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span class="site-footer-deploy-dot" aria-hidden="true"></span>
-              <span class="site-footer-deploy-label"
-                >Example production deploy</span
-              >
-              <span aria-hidden="true">·</span>
-              <time datetime="2026-10-02T14:20:00Z">2 Oct 2026, 15:20 BST</time>
-            </a>
-            <!-- deploy-preview:end -->
-          </div>
-          <a
-            class="site-footer-source"
-            href="/go/portfolio-source"
-            target="_blank"
-            rel="noopener noreferrer"
-            >This website's source on GitHub ↗</a
-          >
-        </div>
-        <details>
-          <summary>Privacy</summary>
-          <p>
-            This site counts page loads and some external-link clicks. A page
-            link can carry a short source tag, such as ?cv. The counters store
-            the tag or link name and time, not the full URL or visitor
-            identifiers. They use no analytics cookies or browser tracking
-            script. Cloudflare hosts the site and processes requests to deliver
-            it. Email links bypass the click counter. Project assets load from
-            this site, Cloudflare R2, or GitHub.
-          </p>
-        </details>
-      </footer>
-    </div>
-    <dialog
-      class="analytics-dialog"
-      id="analytics-dialog"
-      aria-labelledby="analytics-view-title"
-      data-analytics-dialog
-    >
-      <div class="analytics-dialog-inner">
-        <div class="analytics-navigation">
-          <div>
-            <p class="analytics-period" data-analytics-period>
-              P99 change · 15 Mar – 21 Mar 2026 timing export
-            </p>
-            <h2 id="analytics-view-title" data-analytics-view-title>
-              How asset delivery cut p99 load time
-            </h2>
-          </div>
-          <div class="analytics-actions">
-            <button
-              class="analytics-close"
-              type="button"
-              aria-label="Close analytics"
-              data-analytics-close
-            >
-              ×
-            </button>
-            <div class="analytics-next-wrap">
-              <span data-analytics-count></span>
-              <button
-                class="carousel-next"
-                type="button"
-                data-analytics-next
-                aria-label="Next analytics view"
-              >
-                <span aria-hidden="true">→</span>
-              </button>
+                  <pre class="extension-code" data-extension-preview></pre>
+                  <button class="extension-download" type="button" data-extension-table-download>
+                    Download CSV
+                  </button>
+                </div>
+                <p class="extension-status" role="status" aria-live="polite" data-extension-status></p>
+              </section>
             </div>
+          </article>
+
+          <section class="mobile-projects" aria-labelledby="mobile-apps-title">
+            <h3 id="mobile-apps-title">Mobile apps</h3>
+            <div class="mobile-project-grid">
+              <article class="mobile-project" id="bird-tracker">
+                <div class="mobile-project-art mobile-project-art--birds">
+                  <div class="mobile-phone mobile-phone--bird-overview">
+                    <div class="mobile-phone-camera" aria-hidden="true"></div>
+                    <div class="mobile-phone-screen">
+                      <img src="./assets/bird-tracker/overview.webp"
+                        alt="Bird Tracker overview with sighting statistics and bird cards" width="887" height="1774"
+                        loading="lazy" />
+                    </div>
+                  </div>
+                  <div class="mobile-phone mobile-phone--bird-prediction">
+                    <div class="mobile-phone-camera" aria-hidden="true"></div>
+                    <div class="mobile-phone-screen">
+                      <img src="./assets/bird-tracker/prediction.webp"
+                        alt="Bird Tracker identifying a woodpigeon with an image and species details" width="887"
+                        height="1774" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+                <div class="mobile-project-copy">
+                  <p class="mobile-project-type">
+                    Flutter · Python · TensorFlow
+                  </p>
+                  <h4>Bird Tracker</h4>
+                  <p>
+                    A bird identification app using photos and location to
+                    help recognise British species. It reached about 85%
+                    identification accuracy.
+                  </p>
+                  <nav class="mobile-project-links" aria-label="Bird Tracker video">
+                    <a href="/go/bird-tracker-video" target="_blank" rel="noopener noreferrer">Watch demo ↗</a>
+                  </nav>
+                </div>
+              </article>
+
+              <article class="mobile-project" id="offline-music">
+                <div class="mobile-project-art mobile-project-art--music">
+                  <div class="mobile-phone">
+                    <div class="mobile-phone-camera" aria-hidden="true"></div>
+                    <div class="mobile-phone-screen">
+                      <img src="./assets/offline-music/playing.webp"
+                        alt="Offline Music playback screen with album art and controls" width="1080" height="2105"
+                        loading="lazy" />
+                    </div>
+                  </div>
+                  <div class="mobile-app-icon" aria-hidden="true">
+                    <img src="./assets/offline-music/icon.webp" alt="" width="512" height="512" loading="lazy" />
+                  </div>
+                </div>
+                <div class="mobile-project-copy">
+                  <p class="mobile-project-type">Flutter</p>
+                  <h4>Offline Music</h4>
+                  <p>
+                    A simple music player that makes it easy to listen to
+                    local tracks without mobile data. It reached 1,000+
+                    downloads.
+                  </p>
+                </div>
+              </article>
+
+              <article class="mobile-project" id="ytdl-app">
+                <div class="mobile-project-art mobile-project-art--ytdl">
+                  <div class="mobile-phone">
+                    <div class="mobile-phone-camera" aria-hidden="true"></div>
+                    <div class="mobile-phone-screen">
+                      <img src="./assets/ytdl-app/page1.webp" alt="YT Downloader app showing a queue of video downloads"
+                        width="1080" height="2130" loading="lazy" />
+                    </div>
+                  </div>
+                  <div class="mobile-app-icon" aria-hidden="true">
+                    <img src="./assets/ytdl-app/icon.webp" alt="" width="512" height="512" loading="lazy" />
+                  </div>
+                </div>
+                <div class="mobile-project-copy">
+                  <p class="mobile-project-type">Flutter · Dart</p>
+                  <h4>YT Downloader</h4>
+                  <p>
+                    A mobile app built from my ytdl CLI. It queues YouTube
+                    videos for download directly to a phone.
+                  </p>
+                  <nav class="mobile-project-links" aria-label="YT Downloader source code">
+                    <a href="/go/ytdl-app" target="_blank" rel="noopener noreferrer">App source ↗</a>
+                    <a href="/go/ytdl" target="_blank" rel="noopener noreferrer">CLI source ↗</a>
+                  </nav>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="libraries" aria-labelledby="libraries-title">
+            <div class="libraries-heading">
+              <h3 id="libraries-title">Libraries</h3>
+            </div>
+            <ul class="library-list">
+              <li>
+                <a href="/go/overseer" target="_blank" rel="noopener noreferrer">
+                  <span class="library-copy">
+                    <span class="library-name">Overseer</span>
+                    <span class="library-description">A testing framework for reviewing media and AI
+                      outputs.</span>
+                  </span>
+                  <span class="library-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="/go/behaviour-tree" target="_blank" rel="noopener noreferrer">
+                  <span class="library-copy">
+                    <span class="library-name">Behaviour Tree</span>
+                    <span class="library-description">A behaviour tree library for Lua.</span>
+                  </span>
+                  <span class="library-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="/go/title-carousel" target="_blank" rel="noopener noreferrer">
+                  <span class="library-copy">
+                    <span class="library-name">Title Carousel</span>
+                    <span class="library-description">An image carousel with custom text.</span>
+                  </span>
+                  <span class="library-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a href="/go/streamlit-editjson" target="_blank" rel="noopener noreferrer">
+                  <span class="library-copy">
+                    <span class="library-name">streamlit-editjson</span>
+                    <span class="library-description">A Streamlit component for viewing and editing
+                      JSON.</span>
+                  </span>
+                  <span class="library-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-info">
+        <div class="site-footer-meta">
+          <!-- deploy-preview:start -->
+          <a class="site-footer-deploy" href="/go/portfolio-deployments" target="_blank" rel="noopener noreferrer">
+            <span class="site-footer-deploy-dot" aria-hidden="true"></span>
+            <span class="site-footer-deploy-label">Example production deploy</span>
+            <span aria-hidden="true">·</span>
+            <time datetime="2026-10-02T14:20:00Z">2 Oct 2026, 15:20 BST</time>
+          </a>
+          <!-- deploy-preview:end -->
+        </div>
+        <a class="site-footer-source" href="/go/portfolio-source" target="_blank" rel="noopener noreferrer">This
+          website's source on GitHub ↗</a>
+      </div>
+      <details>
+        <summary>Privacy</summary>
+        <p>
+          This site counts page loads and some external-link clicks. A page
+          link can carry a short source tag, such as ?cv. The counters store
+          the tag or link name and time, not the full URL or visitor
+          identifiers. They use no analytics cookies or browser tracking
+          script. Cloudflare hosts the site and processes requests to deliver
+          it. Email links bypass the click counter. Project assets load from
+          this site, Cloudflare R2, or GitHub.
+        </p>
+      </details>
+    </footer>
+  </div>
+  <dialog class="analytics-dialog" id="analytics-dialog" aria-labelledby="analytics-view-title" data-analytics-dialog>
+    <div class="analytics-dialog-inner">
+      <div class="analytics-navigation">
+        <div>
+          <p class="analytics-period" data-analytics-period>
+            P99 change · 15 Mar – 21 Mar 2026 timing export
+          </p>
+          <h2 id="analytics-view-title" data-analytics-view-title>
+            How asset delivery cut p99 load time
+          </h2>
+        </div>
+        <div class="analytics-actions">
+          <button class="analytics-close" type="button" aria-label="Close analytics" data-analytics-close>
+            ×
+          </button>
+          <div class="analytics-next-wrap">
+            <span data-analytics-count></span>
+            <button class="carousel-next" type="button" data-analytics-next aria-label="Next analytics view">
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
         </div>
-        <div class="analytics-content" data-analytics-content></div>
       </div>
-    </dialog>
-  </body>
+      <div class="analytics-content" data-analytics-content></div>
+    </div>
+  </dialog>
+</body>
+
 </html>
