@@ -1,6 +1,7 @@
 node_modules/
 .wrangler/
 .pages-dist/
+.dev.vars*
 .terraform/
 *.tfstate
 *.tfstate.*

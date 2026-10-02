@@ -32,4 +32,12 @@ Run `npm run dev` from the repository root to preview the site with Pages Functi
 
 Pages Functions count homepage views and outbound link clicks in the `portfolio_clicks` Analytics Engine dataset. `/?cv` and `/?linkedin` label views from those links. Use the [Analytics Engine SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/) to query counts.
 
+## GitHub activity
+
+The header loads weekly contribution counts from `/api/github-activity`. The Pages Function requests GitHub's GraphQL contribution calendar and caches the result for one hour. The strip stays hidden when the token is missing or GitHub cannot be reached.
+
+To enable it, create a fine-grained GitHub personal access token for `Thomasssb1` with only the permissions needed to read public profile activity. Add it to the Cloudflare Pages project's **production** environment as an encrypted secret named `GITHUB_ACTIVITY_TOKEN`, then deploy Pages again. Do not put the token in Terraform variables or the repository. Terraform ignores changes to production Pages environment variables, leaving the secret managed in Cloudflare.
+
+For a local preview, put `GITHUB_ACTIVITY_TOKEN=...` in an untracked `.dev.vars` file at the repository root before running `npm run dev`.
+
 Terraform's generated resource, input, and output tables are in [REFERENCE.md](REFERENCE.md).

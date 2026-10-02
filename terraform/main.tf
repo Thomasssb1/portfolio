@@ -13,6 +13,11 @@ resource "cloudflare_pages_project" "site" {
   name              = var.cloudflare_pages_project_name
   production_branch = var.cloudflare_pages_production_branch
 
+  lifecycle {
+    # Manage encrypted Pages secrets in Cloudflare, not through Terraform inputs.
+    ignore_changes = [deployment_configs.production.env_vars]
+  }
+
   deployment_configs = {
     preview = {
       fail_open = true

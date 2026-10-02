@@ -116,6 +116,47 @@ h1 scramble-text:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 6px;
 }
+.github-activity {
+  margin-top: 28px;
+}
+.github-activity[hidden] {
+  display: none;
+}
+.github-activity-label {
+  margin: 0 0 10px;
+  color: #5c6873;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.github-activity-link {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  width: fit-content;
+  height: 28px;
+  text-decoration: none;
+}
+.github-activity-week {
+  flex: 0 0 6px;
+  height: var(--activity-height);
+  border-radius: 2px 2px 0 0;
+  background: var(--accent);
+  opacity: var(--activity-opacity);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+.github-activity-week:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+@media (max-width: 1060px) {
+  .github-activity-week:nth-child(-n + 20) {
+    display: none;
+  }
+}
 .social-links {
   display: flex;
   gap: 14px;
@@ -1883,6 +1924,15 @@ h2 {
   color: var(--accent);
 }
 @media (max-width: 640px) {
+  .github-activity-week:nth-child(-n + 40) {
+    display: none;
+  }
+  .github-activity-week {
+    flex-basis: 8px;
+  }
+  .github-activity-link {
+    gap: 5px;
+  }
   .library-list a {
     grid-template-columns: minmax(0, 1fr) 38px;
     gap: 16px;
@@ -2737,6 +2787,9 @@ h2 {
   }
   .library-list a,
   .library-arrow {
+    transition: none;
+  }
+  .github-activity-week {
     transition: none;
   }
   .studio-generation-spinner {
