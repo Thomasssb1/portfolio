@@ -46,7 +46,9 @@ jobs:
       needs.verify-current-main.outputs.current == 'true'
     needs: verify-current-main
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: production
+      url: ${{ steps.terraform-outputs.outputs.url }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.TF_STATE_R2_ACCESS_KEY_ID }}
       AWS_REGION: auto
@@ -105,8 +107,10 @@ jobs:
           fail-on-stale: "true"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set asset deployment outputs
+      - name: Read Terraform deployment outputs
+        id: terraform-outputs
         run: |
+          echo "url=https://$(terraform -chdir=terraform output -raw pages_domain)" >> "$GITHUB_OUTPUT"
           echo "ASSET_R2_BUCKET=$(terraform -chdir=terraform output -raw asset_bucket_name)" >> "$GITHUB_ENV"
           echo "ASSET_CDN_BASE_URL=$(terraform -chdir=terraform output -raw asset_cdn_base_url)" >> "$GITHUB_ENV"
 

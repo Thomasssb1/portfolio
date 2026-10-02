@@ -6,6 +6,10 @@ const destinations = new Map([
   ["ytdl-app", "https://github.com/Thomasssb1/ytdl_app"],
   ["ytdl", "https://github.com/Thomasssb1/ytdl"],
   ["bird-tracker-video", "https://youtu.be/RZ105B2EbC4"],
+  ["overseer", "https://github.com/Thomasssb1/overseer"],
+  ["behaviour-tree", "https://github.com/red-shock/behaviour-tree"],
+  ["title-carousel", "https://github.com/Thomasssb1/title_carousel"],
+  ["streamlit-editjson", "https://github.com/Thomasssb1/streamlit-editjson"],
   [
     "mass-image-downloader",
     "https://github.com/red-shock/Mass-Image-Downloader",

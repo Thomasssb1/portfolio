@@ -61,4 +61,5 @@ jobs:
         with:
           config-file: .terraform-docs.yml
           fail-on-diff: "true"
+          output-file: REFERENCE.md
           working-dir: terraform

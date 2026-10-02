@@ -243,7 +243,7 @@ h1 scramble-text:focus-visible {
 }
 .work {
   position: relative;
-  padding: 0 0 clamp(100px, 13vw, 170px);
+  padding: 0 0 clamp(48px, 6vw, 80px);
 }
 .work-heading {
   margin-bottom: 42px;
@@ -285,7 +285,6 @@ h2 {
   display: grid;
   --project-gap: clamp(64px, 10vw, 140px);
   gap: var(--project-gap);
-  margin-bottom: clamp(64px, 10vw, 140px);
 }
 .project-divider {
   position: absolute;
@@ -1811,6 +1810,92 @@ h2 {
     row-gap: 78px;
   }
 }
+.libraries {
+  margin-top: calc(var(--project-gap) * -0.5);
+  padding-top: calc(var(--project-gap) * 0.5);
+  border-top: 1px solid var(--line);
+}
+.libraries-heading {
+  margin-bottom: 30px;
+}
+.libraries-heading h3 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+}
+.library-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.library-list li {
+  border-bottom: 1px solid var(--line);
+}
+.library-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 20px;
+  padding: 21px 12px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 180ms ease;
+}
+.library-list a:hover,
+.library-list a:focus-visible {
+  background: #e9eee7;
+}
+.library-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 24px;
+}
+.library-name {
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+.library-description {
+  color: #5c6873;
+  font-size: 0.91rem;
+  line-height: 1.45;
+}
+.library-arrow {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 1.15rem;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+.library-list a:hover .library-arrow,
+.library-list a:focus-visible .library-arrow {
+  transform: translate(2px, -2px);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+@media (max-width: 640px) {
+  .library-list a {
+    grid-template-columns: minmax(0, 1fr) 38px;
+    gap: 16px;
+    padding: 18px 8px;
+  }
+  .library-copy {
+    display: block;
+  }
+  .library-description {
+    display: block;
+    margin-top: 4px;
+  }
+}
 .extension-details {
   display: flex;
   flex-wrap: wrap;
@@ -2379,7 +2464,6 @@ h2 {
   outline-offset: 2px;
 }
 .site-footer {
-  margin-top: clamp(72px, 9vw, 120px);
   padding: 24px 0 36px;
   border-top: 1px solid var(--line);
   color: #52606c;
@@ -2610,6 +2694,10 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .library-list a,
+  .library-arrow {
+    transition: none;
   }
   .studio-generation-spinner {
     animation: none;
