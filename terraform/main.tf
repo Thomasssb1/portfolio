@@ -14,8 +14,10 @@ resource "cloudflare_pages_project" "site" {
   production_branch = var.cloudflare_pages_production_branch
 
   lifecycle {
-    # Manage encrypted Pages secrets in Cloudflare, not through Terraform inputs.
-    ignore_changes = [deployment_configs.production.env_vars]
+    # Cloudflare owns Pages settings after creation, including encrypted secrets.
+    # A project update can replace the whole deployment config and erase them.
+    ignore_changes  = all
+    prevent_destroy = true
   }
 
   deployment_configs = {

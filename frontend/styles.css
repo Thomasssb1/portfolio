@@ -62,6 +62,8 @@ a:focus-visible {
 }
 .cv-link {
   display: inline-flex;
+  grid-column: 3;
+  justify-self: end;
   align-items: center;
   justify-content: center;
   min-height: 38px;

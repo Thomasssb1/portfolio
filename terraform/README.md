@@ -1,6 +1,6 @@
 # Portfolio infrastructure
 
-Terraform manages the Cloudflare Pages project, its domain and DNS, and the R2 bucket for public media. GitHub Actions deploys the site after validation passes. Terraform state lives in a separate R2 bucket.
+Terraform creates the Cloudflare Pages project and manages its domain, DNS, and the R2 bucket for public media. Cloudflare owns changes to the Pages project's settings after creation, including its encrypted secrets. GitHub Actions deploys the site after validation passes. Terraform state lives in a separate R2 bucket.
 
 ## Set up production
 
@@ -36,7 +36,7 @@ Pages Functions count homepage views and outbound link clicks in the `portfolio_
 
 The header shows daily contribution squares grouped by week. The Pages Function requests GitHub's GraphQL contribution calendar at `/api/github-activity` and caches the result for one hour. Local development shows mock activity until live data loads. Production hides the grid if live activity is unavailable.
 
-To enable it, create a fine-grained GitHub personal access token for `Thomasssb1` with only the permissions needed to read public profile activity. Add it to the Cloudflare Pages project's **production** environment as an encrypted secret named `GITHUB_ACTIVITY_TOKEN`, then deploy Pages again. Do not put the token in Terraform variables or the repository. Terraform ignores changes to production Pages environment variables, leaving the secret managed in Cloudflare.
+To enable it, create a fine-grained GitHub personal access token for `Thomasssb1` with public repository read access and no additional permissions. In Cloudflare Pages, open the `portfolio` project, select the **production** environment, then go to **Settings > Variables and Secrets**. Add `GITHUB_ACTIVITY_TOKEN` and select **Encrypt**. Deploy Pages again so the Function receives it. Do not put the token in Terraform variables or the repository. Terraform no longer updates the Pages project after creation, so later applies leave Cloudflare-managed secrets in place.
 
 For a local preview, put `GITHUB_ACTIVITY_TOKEN=...` in an untracked `.dev.vars` file at the repository root before running `npm run dev`.
 
