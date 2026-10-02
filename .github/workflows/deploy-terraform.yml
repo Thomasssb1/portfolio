@@ -135,6 +135,8 @@ jobs:
         run: npm run sync:assets
 
       - name: Build frontend for Pages
+        env:
+          PORTFOLIO_PRODUCTION_BUILD: "true"
         run: npm run build:frontend
 
       - name: Confirm main is current before deploying Pages

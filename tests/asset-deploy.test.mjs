@@ -38,6 +38,35 @@ test("the Pages build points at R2 and leaves media out of the upload", async ()
   }
 });
 
+test("a production build stamps its own deploy time into the footer", async () => {
+  const temporary = await mkdtemp(
+    path.join(os.tmpdir(), "portfolio-deploy-stamp-test-"),
+  );
+  try {
+    const source = path.join(temporary, "frontend");
+    const output = path.join(temporary, "output");
+    await mkdir(source);
+    await writeFile(
+      path.join(source, "index.html"),
+      '<footer><div class="site-footer-meta" hidden><!-- production-deploy --></div></footer>',
+    );
+
+    await buildFrontend({
+      sourceDirectory: source,
+      outputDirectory: output,
+      productionBuildTime: "2026-10-02T14:20:00Z",
+    });
+
+    const html = await readFile(path.join(output, "index.html"), "utf8");
+    assert.match(html, /Latest production deploy/);
+    assert.match(html, /datetime="2026-10-02T14:20:00.000Z"/);
+    assert.doesNotMatch(html, /site-footer-meta" hidden/);
+    assert.doesNotMatch(html, /<!-- production-deploy -->/);
+  } finally {
+    await rm(temporary, { recursive: true, force: true });
+  }
+});
+
 test("the asset sync skips identical R2 objects and updates changed files", async () => {
   const temporary = await mkdtemp(
     path.join(os.tmpdir(), "portfolio-sync-test-"),

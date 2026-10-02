@@ -2464,11 +2464,37 @@ h2 {
   outline-offset: 2px;
 }
 .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 32px;
   padding: 24px 0 36px;
   border-top: 1px solid var(--line);
   color: #52606c;
   font-size: 0.85rem;
   line-height: 1.5;
+}
+.site-footer-deploy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+.site-footer-deploy-dot {
+  width: 7px;
+  height: 7px;
+  margin-right: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.site-footer-deploy-label {
+  color: var(--ink);
+  font-weight: 600;
+}
+.site-footer-deploy time {
+  font-variant-numeric: tabular-nums;
 }
 .site-footer summary {
   width: fit-content;
@@ -2478,7 +2504,7 @@ h2 {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
-.site-footer p {
+.site-footer details p {
   max-width: 65ch;
   margin: 12px 0 0;
 }
