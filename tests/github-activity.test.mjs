@@ -4,6 +4,7 @@ import test from "node:test";
 import { onRequest } from "../functions/api/github-activity.js";
 
 const request = new Request("https://thomasbeer.uk/api/github-activity");
+const cacheUrl = "https://thomasbeer.uk/api/github-activity?v=2";
 const calendar = {
   data: {
     user: {
@@ -13,13 +14,15 @@ const calendar = {
             {
               firstDay: "2026-09-20",
               contributionDays: [
-                { contributionCount: 2 },
-                { contributionCount: 3 },
+                { date: "2026-09-20", weekday: 0, contributionCount: 2 },
+                { date: "2026-09-21", weekday: 1, contributionCount: 3 },
               ],
             },
             {
               firstDay: "2026-09-27",
-              contributionDays: [{ contributionCount: 0 }],
+              contributionDays: [
+                { date: "2026-09-27", weekday: 0, contributionCount: 0 },
+              ],
             },
           ],
         },
@@ -35,7 +38,7 @@ test("the activity endpoint needs its server-side token", async () => {
   assert.doesNotMatch(await response.text(), /token/i);
 });
 
-test("the activity endpoint returns weekly counts without exposing the token", async (t) => {
+test("the activity endpoint returns daily squares and weekly totals without exposing the token", async (t) => {
   t.mock.method(globalThis, "fetch", async (url, options) => {
     assert.equal(url, "https://api.github.com/graphql");
     assert.equal(options.method, "POST");
@@ -54,8 +57,19 @@ test("the activity endpoint returns weekly counts without exposing the token", a
   assert.equal(response.headers.get("Cache-Control"), "public, max-age=3600");
   assert.deepEqual(await response.json(), {
     weeks: [
-      { start: "2026-09-20", count: 5 },
-      { start: "2026-09-27", count: 0 },
+      {
+        start: "2026-09-20",
+        count: 5,
+        days: [
+          { date: "2026-09-20", weekday: 0, count: 2 },
+          { date: "2026-09-21", weekday: 1, count: 3 },
+        ],
+      },
+      {
+        start: "2026-09-27",
+        count: 0,
+        days: [{ date: "2026-09-27", weekday: 0, count: 0 }],
+      },
     ],
   });
 });
@@ -66,11 +80,11 @@ test("a successful calendar is reused from the edge cache", async (t) => {
   globalThis.caches = {
     default: {
       match: async (key) => {
-        assert.equal(key.url, request.url);
+        assert.equal(key.url, cacheUrl);
         return cachedResponse?.clone();
       },
       put: async (key, response) => {
-        assert.equal(key.url, request.url);
+        assert.equal(key.url, cacheUrl);
         cachedResponse = response.clone();
       },
     },

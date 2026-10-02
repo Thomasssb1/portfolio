@@ -48,8 +48,13 @@ test("a production build stamps its own deploy time into the footer", async () =
     await mkdir(source);
     await writeFile(
       path.join(source, "index.html"),
-      '<footer><div class="site-footer-meta" hidden><!-- production-deploy --></div></footer>',
+      '<div data-github-activity data-github-activity-preview></div><footer><div class="site-footer-meta"><!-- deploy-preview:start --><a href="/go/portfolio-deployments">Example production deploy</a><!-- deploy-preview:end --></div></footer>',
     );
+
+    await buildFrontend({ sourceDirectory: source, outputDirectory: output });
+    const previewHtml = await readFile(path.join(output, "index.html"), "utf8");
+    assert.match(previewHtml, /Example production deploy/);
+    assert.match(previewHtml, /data-github-activity-preview/);
 
     await buildFrontend({
       sourceDirectory: source,
@@ -60,8 +65,10 @@ test("a production build stamps its own deploy time into the footer", async () =
     const html = await readFile(path.join(output, "index.html"), "utf8");
     assert.match(html, /Latest production deploy/);
     assert.match(html, /datetime="2026-10-02T14:20:00.000Z"/);
-    assert.doesNotMatch(html, /site-footer-meta" hidden/);
-    assert.doesNotMatch(html, /<!-- production-deploy -->/);
+    assert.match(html, /href="\/go\/portfolio-deployments"/);
+    assert.doesNotMatch(html, /Example production deploy/);
+    assert.doesNotMatch(html, /<!-- deploy-preview:/);
+    assert.doesNotMatch(html, /data-github-activity-preview/);
   } finally {
     await rm(temporary, { recursive: true, force: true });
   }

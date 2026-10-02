@@ -39,14 +39,29 @@
           <site-button variant="transparent" href="#contact"
             >Contact</site-button
           >
+        </nav>
+        <div
+          class="github-activity"
+          data-github-activity
+          data-github-activity-preview
+          hidden
+        >
           <a
-            class="cv-link"
-            href="./Thomas-Beer-CV.pdf"
+            class="github-activity-link"
+            href="/go/github"
             target="_blank"
             rel="noopener noreferrer"
-            >CV ↗</a
-          >
-        </nav>
+            aria-label="GitHub activity by day. Open my GitHub profile"
+            data-github-activity-link
+          ></a>
+        </div>
+        <a
+          class="cv-link"
+          href="./Thomas-Beer-CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >CV ↗</a
+        >
       </header>
 
       <main id="top">
@@ -61,17 +76,6 @@
                 <scramble-text tabindex="0">Thomas Beer</scramble-text
                 ><span class="wordmark-cursor" aria-hidden="true">_</span>
               </h1>
-              <div class="github-activity" data-github-activity hidden>
-                <p class="github-activity-label">GitHub activity</p>
-                <a
-                  class="github-activity-link"
-                  href="/go/github"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub activity by week. Open my GitHub profile"
-                  data-github-activity-link
-                ></a>
-              </div>
             </div>
 
             <div class="intro-contact">
@@ -1333,7 +1337,23 @@
       </main>
       <footer class="site-footer">
         <div class="site-footer-info">
-          <div class="site-footer-meta" hidden><!-- production-deploy --></div>
+          <div class="site-footer-meta">
+            <!-- deploy-preview:start -->
+            <a
+              class="site-footer-deploy"
+              href="/go/portfolio-deployments"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="site-footer-deploy-dot" aria-hidden="true"></span>
+              <span class="site-footer-deploy-label"
+                >Example production deploy</span
+              >
+              <span aria-hidden="true">·</span>
+              <time datetime="2026-10-02T14:20:00Z">2 Oct 2026, 15:20 BST</time>
+            </a>
+            <!-- deploy-preview:end -->
+          </div>
           <a
             class="site-footer-source"
             href="/go/portfolio-source"

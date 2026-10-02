@@ -34,7 +34,7 @@ Pages Functions count homepage views and outbound link clicks in the `portfolio_
 
 ## GitHub activity
 
-The header loads weekly contribution counts from `/api/github-activity`. The Pages Function requests GitHub's GraphQL contribution calendar and caches the result for one hour. The strip stays hidden when the token is missing or GitHub cannot be reached.
+The header shows daily contribution squares grouped by week. The Pages Function requests GitHub's GraphQL contribution calendar at `/api/github-activity` and caches the result for one hour. Local development shows mock activity until live data loads. Production hides the grid if live activity is unavailable.
 
 To enable it, create a fine-grained GitHub personal access token for `Thomasssb1` with only the permissions needed to read public profile activity. Add it to the Cloudflare Pages project's **production** environment as an encrypted secret named `GITHUB_ACTIVITY_TOKEN`, then deploy Pages again. Do not put the token in Terraform variables or the repository. Terraform ignores changes to production Pages environment variables, leaving the secret managed in Cloudflare.
 

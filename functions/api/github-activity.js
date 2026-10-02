@@ -7,14 +7,14 @@ const query = `query($login: String!) {
       contributionCalendar {
         weeks {
           firstDay
-          contributionDays { contributionCount }
+          contributionDays { date weekday contributionCount }
         }
       }
     }
   }
 }`;
 
-function weeklyCounts(data) {
+function calendarWeeks(data) {
   const weeks =
     data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks;
   if (!Array.isArray(weeks)) throw new Error("Missing contribution calendar");
@@ -25,6 +25,10 @@ function weeklyCounts(data) {
       !Array.isArray(week.contributionDays) ||
       week.contributionDays.some(
         (day) =>
+          !/^\d{4}-\d{2}-\d{2}$/.test(day.date) ||
+          !Number.isInteger(day.weekday) ||
+          day.weekday < 0 ||
+          day.weekday > 6 ||
           !Number.isSafeInteger(day.contributionCount) ||
           day.contributionCount < 0,
       )
@@ -32,12 +36,15 @@ function weeklyCounts(data) {
       throw new Error("Invalid contribution calendar");
     }
 
+    const days = week.contributionDays.map((day) => ({
+      date: day.date,
+      weekday: day.weekday,
+      count: day.contributionCount,
+    }));
     return {
       start: week.firstDay,
-      count: week.contributionDays.reduce(
-        (total, day) => total + day.contributionCount,
-        0,
-      ),
+      count: days.reduce((total, day) => total + day.count, 0),
+      days,
     };
   });
 }
@@ -58,7 +65,9 @@ export async function onRequest({ request, env }) {
   }
 
   const cache = globalThis.caches?.default;
-  const cacheKey = new Request(new URL("/api/github-activity", request.url));
+  const cacheKey = new Request(
+    new URL("/api/github-activity?v=2", request.url),
+  );
   const cached = await cache?.match(cacheKey).catch(() => undefined);
   if (cached) return cached;
 
@@ -79,7 +88,7 @@ export async function onRequest({ request, env }) {
     const data = await githubResponse.json();
     if (data.errors?.length) throw new Error("GitHub GraphQL error");
     const response = Response.json(
-      { weeks: weeklyCounts(data) },
+      { weeks: calendarWeeks(data) },
       { headers: { "Cache-Control": `public, max-age=${CACHE_SECONDS}` } },
     );
     if (cache) await cache.put(cacheKey, response.clone()).catch(() => {});

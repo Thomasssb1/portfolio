@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = path.join(root, "frontend");
 const destination = path.join(root, ".pages-dist");
-const deployMarker = "<!-- production-deploy -->";
+const deployPreview =
+  /<!-- deploy-preview:start -->[\s\S]*?<!-- deploy-preview:end -->/;
 
 function productionDeployMarkup(buildTime) {
   const date = new Date(buildTime);
@@ -25,7 +26,7 @@ function productionDeployMarkup(buildTime) {
     timeZoneName: "short",
   }).format(date);
 
-  return `<p class="site-footer-deploy"><span class="site-footer-deploy-dot" aria-hidden="true"></span><span class="site-footer-deploy-label">Latest production deploy</span> <span aria-hidden="true">·</span> <time datetime="${timestamp}">${label}</time></p>`;
+  return `<a class="site-footer-deploy" href="/go/portfolio-deployments" target="_blank" rel="noopener noreferrer"><span class="site-footer-deploy-dot" aria-hidden="true"></span><span class="site-footer-deploy-label">Latest production deploy</span> <span aria-hidden="true">·</span> <time datetime="${timestamp}">${label}</time></a>`;
 }
 
 export async function buildFrontend({
@@ -51,13 +52,14 @@ export async function buildFrontend({
   let html = await readFile(indexPath, "utf8");
   html = html.replaceAll("./assets/", `${base}/`);
   if (productionBuildTime !== null) {
-    const hiddenMeta = '<div class="site-footer-meta" hidden>';
-    if (!html.includes(hiddenMeta) || !html.includes(deployMarker)) {
-      throw new Error("Production deploy placeholder is missing");
+    if (!deployPreview.test(html)) {
+      throw new Error("Deploy preview placeholder is missing");
     }
-    html = html
-      .replace(hiddenMeta, '<div class="site-footer-meta">')
-      .replace(deployMarker, productionDeployMarkup(productionBuildTime));
+    html = html.replace(
+      deployPreview,
+      productionDeployMarkup(productionBuildTime),
+    );
+    html = html.replace(" data-github-activity-preview", "");
   }
   await writeFile(indexPath, html);
   return outputDirectory;
