@@ -76,7 +76,7 @@ function renderFunnel(funnel) {
     ])}
     ${renderFunnelChart(funnel)}
     ${renderWorkPanel(funnel.workTitle, funnel.work)}
-    <p class="analytics-note">Before: ${funnel.source}${funnel.id === "basket" ? " and purchaseattemptempty.csv" : ""}, ${analyticsPeriod}. After rates are approximate recollections with no post-change export; end-to-end after conversion is calculated from those step rates. Purchase or checkout initiation is not a completed sale.</p>
+    <p class="analytics-note">Before: ${funnel.source}${funnel.id === "basket" ? " and purchaseattemptempty.csv" : ""}, ${analyticsPeriod}. End-to-end after conversion is calculated from the step rates. Purchase or checkout initiation is not a completed sale.</p>
   `;
 }
 
@@ -85,7 +85,7 @@ function renderLoadTime() {
     ${renderLoadTimeBarChart(loadTime, analyticsPeriod)}
     ${renderP99TrendChart(loadTime.p99Stages)}
     ${renderWorkPanel("What I changed", "Tracking UI load time exposed the slow tail, so I moved from live catalog API requests to caching. Caching cut p99 by about 20% from the original, but the slowest loads were still noticeable. I then bundled the assets into the game so clients could load them locally. That cut p99 by about 70% from the original, at the cost of more server memory.")}
-    <p class="analytics-note">The bar chart comes from uiloadtime.csv, ${analyticsPeriod}. Median, p95 and p99 are estimates from the timing breakdown; the export has no per-cell frequencies or official percentiles. The highest value is outlined. The line shows the reported 20% and 70% p99 reductions relative to live API loading. The export does not contain separate measurements for each delivery approach.</p>
+    <p class="analytics-note">The first four bars show live API load times before the fixes, from uiloadtime.csv, ${analyticsPeriod}. Median, p95 and p99 are estimates from the timing breakdown; the export has no per-cell frequencies or official percentiles. The highest value is outlined. Cached and Pre-baked p99 are approximate values calculated from the reported 20% and 70% reductions shown below. The export does not contain separate measurements for those stages.</p>
   `;
 }
 
