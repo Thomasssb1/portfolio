@@ -25,6 +25,7 @@
     <script type="module" src="./components/case-study.js"></script>
     <script type="module" src="./components/extension-demo.js"></script>
     <script type="module" src="./components/visual-cues.js"></script>
+    <script type="module" src="./components/github-activity.js"></script>
   </head>
 
   <body>
@@ -38,14 +39,29 @@
           <site-button variant="transparent" href="#contact"
             >Contact</site-button
           >
+        </nav>
+        <div
+          class="github-activity"
+          data-github-activity
+          data-github-activity-preview
+          hidden
+        >
           <a
-            class="cv-link"
-            href="./Thomas-Beer-CV.pdf"
+            class="github-activity-link"
+            href="/go/github"
             target="_blank"
             rel="noopener noreferrer"
-            >CV ↗</a
-          >
-        </nav>
+            aria-label="GitHub activity by day. Open my GitHub profile"
+            data-github-activity-link
+          ></a>
+        </div>
+        <a
+          class="cv-link"
+          href="./Thomas-Beer-CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >CV ↗</a
+        >
       </header>
 
       <main id="top">
@@ -450,7 +466,7 @@
                     controls
                     playsinline
                     preload="none"
-                    poster="./assets/avatar-outfit-shop/gameplay-poster.png"
+                    poster="./assets/avatar-outfit-shop/gameplay-poster.webp"
                     aria-label="Avatar Outfit Shop gameplay walkthrough"
                   >
                     <source
@@ -777,6 +793,9 @@
                       ><img
                         src="./assets/extension-demo/mass-image-logo.webp"
                         alt=""
+                        width="60"
+                        height="60"
+                        loading="lazy"
                         data-extension-tab-icon
                       />
                       <span>Garden birds | Bird Atlas</span><b>×</b></span
@@ -825,6 +844,9 @@
                         <img
                           src="./assets/extension-demo/mass-image-logo.webp"
                           alt=""
+                          width="60"
+                          height="60"
+                          loading="lazy"
                         />
                       </button>
                       <button
@@ -840,6 +862,9 @@
                         <img
                           src="./assets/extension-demo/table-to-text-logo.webp"
                           alt=""
+                          width="60"
+                          height="60"
+                          loading="lazy"
                         />
                       </button>
                     </div>
@@ -972,6 +997,9 @@
                       data-image-src="./assets/extension-demo/mass-image-logo.webp"
                       data-table-src="./assets/extension-demo/table-to-text-logo.webp"
                       alt=""
+                      width="60"
+                      height="60"
+                      loading="lazy"
                       data-extension-logo
                     />
                     <strong data-extension-title>Mass Image Downloader</strong>
@@ -1320,6 +1348,32 @@
         </section>
       </main>
       <footer class="site-footer">
+        <div class="site-footer-info">
+          <div class="site-footer-meta">
+            <!-- deploy-preview:start -->
+            <a
+              class="site-footer-deploy"
+              href="/go/portfolio-deployments"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="site-footer-deploy-dot" aria-hidden="true"></span>
+              <span class="site-footer-deploy-label"
+                >Example production deploy</span
+              >
+              <span aria-hidden="true">·</span>
+              <time datetime="2026-10-02T14:20:00Z">2 Oct 2026, 15:20 BST</time>
+            </a>
+            <!-- deploy-preview:end -->
+          </div>
+          <a
+            class="site-footer-source"
+            href="/go/portfolio-source"
+            target="_blank"
+            rel="noopener noreferrer"
+            >This website's source on GitHub ↗</a
+          >
+        </div>
         <details>
           <summary>Privacy</summary>
           <p>
