@@ -292,7 +292,7 @@ if (demo) {
     } catch {
       status.textContent = "The image download failed. Please try again.";
     } finally {
-      imageDownload.disabled = false;
+      renderImageOutput();
     }
   });
 
