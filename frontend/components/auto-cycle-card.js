@@ -13,6 +13,7 @@ export function createAutoCycleCard({
   let hovering = root.matches(":hover");
   let sliding = false;
   let destroyed = false;
+  let revision = 0;
   let animation;
   let observer;
   let timer;
@@ -28,6 +29,7 @@ export function createAutoCycleCard({
   async function cycle() {
     if (sliding || paused()) return;
     sliding = true;
+    const cycleRevision = revision;
 
     try {
       if (slide.animate) {
@@ -41,10 +43,10 @@ export function createAutoCycleCard({
         animation = exit;
         await exit.finished.catch(() => {});
         exit.cancel();
-        animation = undefined;
+        if (animation === exit) animation = undefined;
       }
 
-      if (paused()) return;
+      if (cycleRevision !== revision || paused()) return;
       index = (index + 1) % views.length;
       render(views[index], index, views.length);
 
@@ -59,7 +61,7 @@ export function createAutoCycleCard({
         animation = enter;
         await enter.finished.catch(() => {});
         enter.cancel();
-        animation = undefined;
+        if (animation === enter) animation = undefined;
       }
     } finally {
       sliding = false;
@@ -93,10 +95,31 @@ export function createAutoCycleCard({
     get index() {
       return index;
     },
+    setIndex(nextIndex) {
+      if (
+        destroyed ||
+        !Number.isInteger(nextIndex) ||
+        nextIndex < 0 ||
+        nextIndex >= views.length
+      ) {
+        return;
+      }
+
+      revision += 1;
+      animation?.cancel();
+      animation = undefined;
+      index = nextIndex;
+      render(views[index], index, views.length);
+
+      if (timer !== undefined) {
+        window.clearInterval(timer);
+        timer = window.setInterval(() => void cycle(), intervalMs);
+      }
+    },
     destroy() {
       destroyed = true;
       animation?.cancel();
-      if (timer) window.clearInterval(timer);
+      if (timer !== undefined) window.clearInterval(timer);
       observer?.disconnect();
       root.removeEventListener("pointerenter", onPointerEnter);
       root.removeEventListener("pointerleave", onPointerLeave);

@@ -159,6 +159,9 @@ if (
     showAnalyticsView((activeIndex + 1) % analyticsViews.length);
   });
   analyticsClose.addEventListener("click", () => analyticsDialog.close());
+  analyticsDialog.addEventListener("close", () => {
+    previewCarousel.setIndex(activeIndex);
+  });
   analyticsDialog.addEventListener("click", (event) => {
     if (event.target === analyticsDialog) analyticsDialog.close();
   });

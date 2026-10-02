@@ -34,7 +34,7 @@ test("the preview stops cycling while hovered or while the dialog is open", () =
     const card = createAutoCycleCard({
       root,
       slide: {},
-      views: ["first", "second", "third"],
+      views: ["first", "second", "third", "fourth", "fifth"],
       render: (view) => rendered.push(view),
       isPaused: () => dialogOpen,
     });
@@ -57,9 +57,74 @@ test("the preview stops cycling while hovered or while the dialog is open", () =
     assert.deepEqual(rendered, ["first", "second", "third"]);
     assert.equal(card.index, 2);
 
+    dialogOpen = true;
+    card.setIndex(4);
+    assert.equal(card.index, 4);
+    assert.equal(rendered.at(-1), "fifth");
+    dialogOpen = false;
+    assert.equal(rendered.at(-1), "fifth");
+
     card.destroy();
     assert.equal(cleared, true);
     assert.equal(listeners.size, 0);
+  } finally {
+    if (oldWindow === undefined) delete globalThis.window;
+    else globalThis.window = oldWindow;
+    if (oldDocument === undefined) delete globalThis.document;
+    else globalThis.document = oldDocument;
+  }
+});
+
+test("setting a view interrupts a pending slide", async () => {
+  const oldWindow = globalThis.window;
+  const oldDocument = globalThis.document;
+  let tick;
+  let finishExit;
+  const rendered = [];
+
+  globalThis.window = {
+    matchMedia: () => ({ matches: false }),
+    setInterval(callback) {
+      tick = callback;
+      return 1;
+    },
+    clearInterval() {},
+  };
+  globalThis.document = { activeElement: null, visibilityState: "visible" };
+
+  const root = {
+    matches: () => false,
+    addEventListener() {},
+    removeEventListener() {},
+  };
+  const slide = {
+    animate() {
+      return {
+        finished: new Promise((resolve) => {
+          finishExit = resolve;
+        }),
+        cancel() {
+          finishExit();
+        },
+      };
+    },
+  };
+
+  try {
+    const card = createAutoCycleCard({
+      root,
+      slide,
+      views: ["first", "second", "third", "fourth", "fifth"],
+      render: (view) => rendered.push(view),
+    });
+
+    tick();
+    card.setIndex(4);
+    await new Promise((resolve) => setImmediate(resolve));
+
+    assert.equal(card.index, 4);
+    assert.deepEqual(rendered, ["first", "fifth"]);
+    card.destroy();
   } finally {
     if (oldWindow === undefined) delete globalThis.window;
     else globalThis.window = oldWindow;
