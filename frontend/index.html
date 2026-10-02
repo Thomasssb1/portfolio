@@ -14,10 +14,6 @@
     ></script>
     <script
       type="module"
-      src="./components/scroll-words/scroll-words.js"
-    ></script>
-    <script
-      type="module"
       src="./components/icon-button/icon-button.js"
     ></script>
     <script
@@ -28,16 +24,13 @@
     <script type="module" src="./components/video-studio.js"></script>
     <script type="module" src="./components/case-study.js"></script>
     <script type="module" src="./components/extension-demo.js"></script>
+    <script type="module" src="./components/visual-cues.js"></script>
   </head>
 
   <body>
     <div class="page-shell">
       <header class="site-header">
-        <a class="wordmark" href="#top" aria-label="Thomas Beer, back to top">
-          <scramble-text>Thomas Beer</scramble-text>
-          <span class="wordmark-cursor" aria-hidden="true">_</span>
-        </a>
-        <div class="site-nav">
+        <nav class="site-nav" aria-label="Main navigation">
           <site-button variant="transparent" href="#work">Work</site-button>
           <site-button variant="transparent" href="#experience"
             >Experience</site-button
@@ -45,7 +38,14 @@
           <site-button variant="transparent" href="#contact"
             >Contact</site-button
           >
-        </div>
+          <a
+            class="cv-link"
+            href="./Thomas-Beer-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CV ↗</a
+          >
+        </nav>
       </header>
 
       <main id="top">
@@ -56,8 +56,8 @@
               computer science student
             </p>
             <h1 id="intro-title">
-              I build
-              <scroll-words words="apps,tools,libraries">apps.</scroll-words>
+              <scramble-text tabindex="0">Thomas Beer</scramble-text
+              ><span class="wordmark-cursor" aria-hidden="true">_</span>
             </h1>
             <nav class="social-links" aria-label="Find me online">
               <icon-button
@@ -161,11 +161,17 @@
 
         <section class="work" id="work" aria-labelledby="work-title">
           <div class="work-heading">
-            <p class="section-label">
-              <span class="section-label-rule"></span> Selected work
-            </p>
             <h2 id="work-title">A few things I have been making.</h2>
           </div>
+          <svg
+            class="sketch-arrow work-project-arrow"
+            data-work-project-arrow
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path data-arrow-curve fill="none" />
+            <path data-arrow-head fill="none" />
+          </svg>
 
           <div class="featured-projects">
             <article class="featured-project">
@@ -584,13 +590,13 @@
                   </p>
                 </div>
                 <svg
-                  class="case-study-arrow"
+                  class="sketch-arrow case-study-arrow"
                   aria-hidden="true"
                   data-case-study-arrow
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path class="case-study-arrow-curve" fill="none" />
-                  <path class="case-study-arrow-head" fill="none" />
+                  <path data-arrow-curve fill="none" />
+                  <path data-arrow-head fill="none" />
                 </svg>
                 <div class="case-study-engineering">
                   <p>
@@ -708,11 +714,11 @@
             >
               <hr class="project-divider" />
               <div class="project-info">
-                <h3>Browser collection tools</h3>
+                <h3>Browser dev tools</h3>
                 <p class="project-description">
                   Two cross-browser extensions for collecting page images and
                   exporting tables. I built them alongside a Python and Selenium
-                  pipeline for Bird Tracker, which used a 100,000+ image
+                  pipeline for Bird Tracker, in order to create a 100,000+ image
                   dataset.
                 </p>
                 <div class="extension-details">
@@ -722,7 +728,7 @@
                   </p>
                   <nav
                     class="project-links"
-                    aria-label="Browser collection tool links"
+                    aria-label="Browser dev tool links"
                   >
                     <a
                       href="/go/mass-image-downloader"
@@ -749,6 +755,15 @@
                   </nav>
                 </div>
               </div>
+              <svg
+                class="sketch-arrow extension-try-arrow"
+                data-extension-try-arrow
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path data-arrow-curve fill="none" />
+                <path data-arrow-head fill="none" />
+              </svg>
               <div
                 class="project-card extension-card"
                 data-extension-demo
