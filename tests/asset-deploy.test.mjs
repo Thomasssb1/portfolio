@@ -38,6 +38,48 @@ test("the Pages build points at R2 and leaves media out of the upload", async ()
   }
 });
 
+test("the Pages build gives changed CSS a new URL", async () => {
+  const temporary = await mkdtemp(
+    path.join(os.tmpdir(), "portfolio-css-test-"),
+  );
+  try {
+    const source = path.join(temporary, "frontend");
+    const output = path.join(temporary, "output");
+    await mkdir(source);
+    await writeFile(
+      path.join(source, "index.html"),
+      '<link rel="stylesheet" href="./styles.css" />',
+    );
+    await writeFile(path.join(source, "styles.css"), "body { color: red; }");
+
+    await buildFrontend({ sourceDirectory: source, outputDirectory: output });
+    const firstHtml = await readFile(path.join(output, "index.html"), "utf8");
+    const firstHref = firstHtml.match(
+      /href="\.\/(styles\.[a-f0-9]{12}\.css)"/,
+    )?.[1];
+    assert.ok(firstHref);
+    assert.equal(
+      await readFile(path.join(output, firstHref), "utf8"),
+      "body { color: red; }",
+    );
+
+    await writeFile(path.join(source, "styles.css"), "body { color: blue; }");
+    await buildFrontend({ sourceDirectory: source, outputDirectory: output });
+    const secondHtml = await readFile(path.join(output, "index.html"), "utf8");
+    const secondHref = secondHtml.match(
+      /href="\.\/(styles\.[a-f0-9]{12}\.css)"/,
+    )?.[1];
+    assert.ok(secondHref);
+    assert.notEqual(secondHref, firstHref);
+    assert.equal(
+      await readFile(path.join(output, secondHref), "utf8"),
+      "body { color: blue; }",
+    );
+  } finally {
+    await rm(temporary, { recursive: true, force: true });
+  }
+});
+
 test("a production build stamps its own deploy time into the footer", async () => {
   const temporary = await mkdtemp(
     path.join(os.tmpdir(), "portfolio-deploy-stamp-test-"),

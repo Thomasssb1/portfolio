@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -51,6 +52,13 @@ export async function buildFrontend({
   const indexPath = path.join(outputDirectory, "index.html");
   let html = await readFile(indexPath, "utf8");
   html = html.replaceAll("./assets/", `${base}/`);
+  if (html.includes('href="./styles.css"')) {
+    const css = await readFile(path.join(outputDirectory, "styles.css"));
+    const hash = createHash("sha256").update(css).digest("hex").slice(0, 12);
+    const filename = `styles.${hash}.css`;
+    await writeFile(path.join(outputDirectory, filename), css);
+    html = html.replaceAll('href="./styles.css"', `href="./${filename}"`);
+  }
   if (productionBuildTime !== null) {
     if (!deployPreview.test(html)) {
       throw new Error("Deploy preview placeholder is missing");
