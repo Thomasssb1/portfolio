@@ -26,7 +26,7 @@ export function renderFunnelChart(funnel) {
   const first = funnel.steps[0].users;
   let afterTotal = 1;
 
-  return `<div class="analytics-legend" aria-label="Funnel comparison legend"><span><i class="analytics-legend-solid"></i>Before · CSV export</span><span><i class="analytics-legend-outline"></i>Approx. after</span></div>
+  return `<div class="analytics-legend" aria-label="Funnel comparison legend"><span><i class="analytics-legend-solid"></i>Before</span><span><i class="analytics-legend-outline"></i>After</span></div>
     <p class="analytics-table-hint">Scroll the table to see every column →</p>
     <div class="analytics-table-wrap" role="region" aria-label="${funnel.title} table" tabindex="0">
       <table class="analytics-table">
@@ -74,9 +74,11 @@ export function renderLoadTimeBarChart(loadTime, period) {
     { label: "P99", value: loadTime.p99, kind: "p99" },
     { label: "Highest exported", value: loadTime.max, kind: "maximum" },
   ];
+  const afterStages = loadTime.p99Stages.slice(1);
 
-  return `<h4 class="analytics-latency-heading">${period} export</h4>
-    <div class="analytics-latency-graph" role="group" aria-label="UI load time percentiles and highest exported value in seconds">
+  return `<h4 class="analytics-latency-heading">UI load times (seconds)</h4>
+    <div class="analytics-latency-graph" role="group" aria-label="Live API load times before fixes and approximate p99 after fixes, in seconds">
+      <p class="analytics-latency-stage-label">Before fixes · Live API (${period} export)</p>
       <div class="analytics-latency-axis">${Array.from({ length: 5 }, (_, index) => `<span>${((axisMax * index) / 4).toFixed(0)}s</span>`).join("")}</div>
       ${markers
         .map(
@@ -85,6 +87,17 @@ export function renderLoadTimeBarChart(loadTime, period) {
               <span class="analytics-latency-label">${label}</span>
               <div class="analytics-latency-track"><span class="analytics-latency-bar analytics-latency-bar--${kind}" style="width: ${((value / axisMax) * 100).toFixed(2)}%"></span></div>
               <strong>${kind === "p99" ? "≈" : ""}${value.toFixed(1)}s</strong>
+            </div>`,
+        )
+        .join("")}
+      <p class="analytics-latency-stage-label analytics-latency-stage-label--after">After fixes · Approximate p99 from reductions below</p>
+      ${afterStages
+        .map(
+          ({ label, relative }) => `
+            <div class="analytics-latency-row">
+              <span class="analytics-latency-label">${label}</span>
+              <div class="analytics-latency-track"><span class="analytics-latency-bar analytics-latency-bar--estimate" style="width: ${(((loadTime.p99 * relative) / axisMax) * 100).toFixed(2)}%"></span></div>
+              <strong>≈${(loadTime.p99 * relative).toFixed(1)}s</strong>
             </div>`,
         )
         .join("")}
