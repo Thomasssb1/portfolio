@@ -3,6 +3,9 @@ const destinations = new Map([
   ["linkedin", "https://www.linkedin.com/in/thomas-beer04/"],
   ["idbs", "https://www.idbs.com/"],
   ["reddit-2-video", "https://github.com/Thomasssb1/reddit-2-video"],
+  ["ytdl-app", "https://github.com/Thomasssb1/ytdl_app"],
+  ["ytdl", "https://github.com/Thomasssb1/ytdl"],
+  ["bird-tracker-video", "https://youtu.be/RZ105B2EbC4"],
   [
     "mass-image-downloader",
     "https://github.com/red-shock/Mass-Image-Downloader",
