@@ -2505,6 +2505,9 @@ h2 {
   }
 }
 @media (max-width: 640px) {
+  .extension-try-arrow {
+    display: none;
+  }
   .mobile-project-grid {
     grid-template-columns: 1fr;
   }
@@ -2674,6 +2677,9 @@ h2 {
 @media (max-width: 360px) {
   h1 {
     font-size: 2.8rem;
+  }
+  .mobile-project-art--birds .mobile-phone--bird-prediction {
+    left: 67%;
   }
 }
 @media (max-width: 400px) {
