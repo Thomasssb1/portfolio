@@ -5,6 +5,7 @@ import { onRequest } from "../functions/go/[slug].js";
 
 const destinations = {
   github: "https://github.com/Thomasssb1",
+  "portfolio-source": "https://github.com/Thomasssb1/portfolio",
   linkedin: "https://www.linkedin.com/in/thomas-beer04/",
   idbs: "https://www.idbs.com/",
   "reddit-2-video": "https://github.com/Thomasssb1/reddit-2-video",

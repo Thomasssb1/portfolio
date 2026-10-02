@@ -2475,6 +2475,20 @@ h2 {
   font-size: 0.85rem;
   line-height: 1.5;
 }
+.site-footer-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+}
+.site-footer-source {
+  color: var(--ink);
+  font-weight: 600;
+  text-underline-offset: 0.22em;
+}
+.site-footer-source:hover {
+  color: var(--accent);
+}
 .site-footer-deploy {
   display: flex;
   flex-wrap: wrap;
