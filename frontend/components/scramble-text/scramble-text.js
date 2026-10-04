@@ -31,7 +31,28 @@ class ScrambleText extends HTMLElement {
   }
 
   bind() {
-    this.visual.textContent = this.originalText;
+    this.visual.replaceChildren();
+    let word;
+    this.characters = [...this.originalText].map((character) => {
+      if (/\s/.test(character)) {
+        word = null;
+      } else if (!word) {
+        word = document.createElement("span");
+        word.className = "word";
+        this.visual.append(word);
+      }
+      const slot = document.createElement("span");
+      slot.className = "character";
+      const original = document.createElement("span");
+      original.className = "original";
+      original.textContent = character;
+      const glyph = document.createElement("span");
+      glyph.className = "glyph";
+      glyph.textContent = character;
+      slot.append(original, glyph);
+      (word || this.visual).append(slot);
+      return { original: character, glyph };
+    });
     this.accessible.textContent = this.originalText;
     this.trigger = this.closest("a, button") || this;
     this.trigger.addEventListener("pointerenter", this.startScramble);
@@ -53,7 +74,9 @@ class ScrambleText extends HTMLElement {
 
   restore() {
     cancelAnimationFrame(this.animationFrame);
-    this.visual.textContent = this.originalText;
+    this.characters.forEach(({ original, glyph }) => {
+      glyph.textContent = original;
+    });
   }
 
   scramble() {
@@ -68,17 +91,17 @@ class ScrambleText extends HTMLElement {
       const progress = Math.min((now - startedAt) / duration, 1);
       const revealed = Math.floor(progress * (this.originalText.length + 1));
 
-      this.visual.textContent = [...this.originalText]
-        .map((character, index) => {
-          if (character === " " || index < revealed) return character;
-          return characters[Math.floor(Math.random() * characters.length)];
-        })
-        .join("");
+      this.characters.forEach(({ original, glyph }, index) => {
+        glyph.textContent =
+          /\s/.test(original) || index < revealed
+            ? original
+            : characters[Math.floor(Math.random() * characters.length)];
+      });
 
       if (progress < 1) {
         this.animationFrame = requestAnimationFrame(update);
       } else {
-        this.visual.textContent = this.originalText;
+        this.restore();
       }
     };
 

@@ -38,7 +38,7 @@ test("the Pages build points at R2 and leaves media out of the upload", async ()
   }
 });
 
-test("the Pages build gives changed CSS a new URL", async () => {
+test("the Pages build minifies CSS and gives changed CSS a new URL", async () => {
   const temporary = await mkdtemp(
     path.join(os.tmpdir(), "portfolio-css-test-"),
   );
@@ -60,7 +60,7 @@ test("the Pages build gives changed CSS a new URL", async () => {
     assert.ok(firstHref);
     assert.equal(
       await readFile(path.join(output, firstHref), "utf8"),
-      "body { color: red; }",
+      "body{color:red}\n",
     );
 
     await writeFile(path.join(source, "styles.css"), "body { color: blue; }");
@@ -73,7 +73,7 @@ test("the Pages build gives changed CSS a new URL", async () => {
     assert.notEqual(secondHref, firstHref);
     assert.equal(
       await readFile(path.join(output, secondHref), "utf8"),
-      "body { color: blue; }",
+      "body{color:#00f}\n",
     );
   } finally {
     await rm(temporary, { recursive: true, force: true });

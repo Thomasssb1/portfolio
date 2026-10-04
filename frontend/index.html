@@ -8,6 +8,8 @@
     <title>Thomas Beer</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="describedby" type="text/plain" href="/llms.txt" />
+    <link rel="ai-catalog" type="application/json" href="/ai-catalog.json" />
     <script
       type="module"
       src="./components/scramble-text/scramble-text.js"
@@ -69,8 +71,17 @@
           <div class="intro-copy">
             <div class="intro-identity">
               <p class="intro-label">
-                <span class="intro-label-rule"></span> Software developer / CS ·
-                Graduating 2027
+                <span class="intro-label-rule" aria-hidden="true"></span>
+                <span>
+                  Software developer / CS · Graduating 2027
+                  <img
+                    class="intro-university-logo"
+                    src="./icons/university-of-sheffield.svg"
+                    alt="University of Sheffield"
+                    width="144"
+                    height="144"
+                  />
+                </span>
               </p>
               <h1 id="intro-title">
                 <scramble-text tabindex="0">Thomas Beer</scramble-text
@@ -167,7 +178,14 @@
                 aria-label="Show next experience"
                 aria-controls="experience-track"
               >
-                <span aria-hidden="true">→</span>
+                <svg
+                  class="arrow-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-7-7 7 7-7 7" />
+                </svg>
               </button>
             </section>
           </div>
@@ -466,7 +484,7 @@
                     controls
                     playsinline
                     preload="none"
-                    poster="./assets/avatar-outfit-shop/gameplay-poster.webp"
+                    poster="./assets/avatar-outfit-shop/gameplay-poster-768.webp"
                     aria-label="Avatar Outfit Shop gameplay walkthrough"
                   >
                     <source
@@ -645,7 +663,15 @@
                       data-case-study-image-frame
                     >
                       <img
-                        src="./assets/avatar-outfit-shop/outfit-browser.webp"
+                        src="./assets/avatar-outfit-shop/outfit-browser-480.webp"
+                        srcset="
+                          ./assets/avatar-outfit-shop/outfit-browser-480.webp  480w,
+                          ./assets/avatar-outfit-shop/outfit-browser-900.webp  900w,
+                          ./assets/avatar-outfit-shop/outfit-browser.webp     1920w
+                        "
+                        sizes="auto, (max-width: 640px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 80px), (max-width: 1320px) calc((100vw - 116px) / 3), 402px"
+                        width="1920"
+                        height="1009"
                         alt="Avatar Outfit Shop interface showing complete outfits"
                         loading="lazy"
                         data-case-study-image
@@ -662,7 +688,15 @@
                       data-case-study-image-frame
                     >
                       <img
-                        src="./assets/avatar-outfit-shop/purchase-flow.webp"
+                        src="./assets/avatar-outfit-shop/purchase-flow-480.webp"
+                        srcset="
+                          ./assets/avatar-outfit-shop/purchase-flow-480.webp  480w,
+                          ./assets/avatar-outfit-shop/purchase-flow-900.webp  900w,
+                          ./assets/avatar-outfit-shop/purchase-flow.webp     1920w
+                        "
+                        sizes="auto, (max-width: 640px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 80px), (max-width: 1320px) calc((100vw - 116px) / 3), 402px"
+                        width="1920"
+                        height="1009"
                         alt="Avatar Outfit Shop view showing the items in an outfit"
                         loading="lazy"
                         data-case-study-image
@@ -711,9 +745,15 @@
                         ><span data-analytics-preview-count>1 / 5</span
                         ><span data-analytics-preview-note>P99 · 70% lower</span
                         ><span class="analytics-preview-action"
-                          >Expand <span aria-hidden="true">↗</span></span
-                        ></span
-                      >
+                          >Expand
+                          <svg
+                            class="arrow-icon"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                      ></span>
                     </button>
                     <figcaption>
                       <strong>Performance and funnels</strong>
@@ -803,15 +843,52 @@
                     <span class="extension-browser-plus">+</span>
                   </div>
                   <div class="extension-browser-bar">
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >←</span
-                    >
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >→</span
-                    >
-                    <span class="extension-browser-nav" aria-hidden="true"
-                      >↻</span
-                    >
+                    <span class="extension-browser-nav" aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        focusable="false"
+                      >
+                        <path d="M20 12H4m7-7-7 7 7 7" />
+                      </svg>
+                    </span>
+                    <span class="extension-browser-nav" aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        focusable="false"
+                      >
+                        <path d="M4 12h16m-7-7 7 7-7 7" />
+                      </svg>
+                    </span>
+                    <span class="extension-browser-nav" aria-hidden="true">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        focusable="false"
+                      >
+                        <path d="M20 9a8 8 0 1 0-2 9" />
+                        <path d="m17 8 3 1 1-3" />
+                      </svg>
+                    </span>
                     <span class="extension-address"
                       ><svg
                         class="extension-address-lock"
@@ -824,8 +901,15 @@
                       https://birdatlas.example/garden-birds</span
                     >
                     <span class="extension-invite" data-extension-invite
-                      >Try tools <span aria-hidden="true">→</span></span
-                    >
+                      >Try tools
+                      <svg
+                        class="arrow-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M4 12h16m-7-7 7 7-7 7" /></svg
+                    ></span>
                     <div
                       class="extension-launchers"
                       role="group"
@@ -886,28 +970,64 @@
                     >
                       <figure data-demo-image="robin">
                         <img
-                          src="./assets/extension-demo/robin.webp"
+                          src="./assets/extension-demo/robin-160.webp"
+                          srcset="
+                            ./assets/extension-demo/robin-160.webp 160w,
+                            ./assets/extension-demo/robin-320.webp 320w,
+                            ./assets/extension-demo/robin-640.webp 640w
+                          "
+                          sizes="auto, (max-width: 640px) 40vw, (max-width: 1320px) 22vw, 286px"
+                          width="160"
+                          height="120"
+                          loading="lazy"
                           alt="Photograph of a robin"
                         />
                         <figcaption>Robin</figcaption>
                       </figure>
                       <figure data-demo-image="blue-tit">
                         <img
-                          src="./assets/extension-demo/blue-tit.webp"
+                          src="./assets/extension-demo/blue-tit-160.webp"
+                          srcset="
+                            ./assets/extension-demo/blue-tit-160.webp 160w,
+                            ./assets/extension-demo/blue-tit-320.webp 320w,
+                            ./assets/extension-demo/blue-tit-640.webp 640w
+                          "
+                          sizes="auto, (max-width: 640px) 40vw, (max-width: 1320px) 22vw, 286px"
+                          width="160"
+                          height="120"
+                          loading="lazy"
                           alt="Photograph of a blue tit"
                         />
                         <figcaption>Blue tit</figcaption>
                       </figure>
                       <figure data-demo-image="goldfinch">
                         <img
-                          src="./assets/extension-demo/goldfinch.webp"
+                          src="./assets/extension-demo/goldfinch-160.webp"
+                          srcset="
+                            ./assets/extension-demo/goldfinch-160.webp 160w,
+                            ./assets/extension-demo/goldfinch-320.webp 320w,
+                            ./assets/extension-demo/goldfinch-640.webp 640w
+                          "
+                          sizes="auto, (max-width: 640px) 40vw, (max-width: 1320px) 22vw, 286px"
+                          width="160"
+                          height="120"
+                          loading="lazy"
                           alt="Photograph of a goldfinch"
                         />
                         <figcaption>Goldfinch</figcaption>
                       </figure>
                       <figure data-demo-image="robin">
                         <img
-                          src="./assets/extension-demo/robin.webp"
+                          src="./assets/extension-demo/robin-160.webp"
+                          srcset="
+                            ./assets/extension-demo/robin-160.webp 160w,
+                            ./assets/extension-demo/robin-320.webp 320w,
+                            ./assets/extension-demo/robin-640.webp 640w
+                          "
+                          sizes="auto, (max-width: 640px) 40vw, (max-width: 1320px) 22vw, 286px"
+                          width="160"
+                          height="120"
+                          loading="lazy"
                           alt="Second copy of the robin photograph"
                         />
                         <figcaption>Robin</figcaption>
@@ -1293,7 +1413,15 @@
                         outputs.</span
                       >
                     </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
+                    <span class="library-arrow" aria-hidden="true"
+                      ><svg
+                        class="arrow-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span>
                   </a>
                 </li>
                 <li>
@@ -1308,7 +1436,15 @@
                         >A behaviour tree library for Lua.</span
                       >
                     </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
+                    <span class="library-arrow" aria-hidden="true"
+                      ><svg
+                        class="arrow-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span>
                   </a>
                 </li>
                 <li>
@@ -1323,7 +1459,15 @@
                         >An image carousel with custom text.</span
                       >
                     </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
+                    <span class="library-arrow" aria-hidden="true"
+                      ><svg
+                        class="arrow-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span>
                   </a>
                 </li>
                 <li>
@@ -1339,7 +1483,15 @@
                         JSON.</span
                       >
                     </span>
-                    <span class="library-arrow" aria-hidden="true">↗</span>
+                    <span class="library-arrow" aria-hidden="true"
+                      ><svg
+                        class="arrow-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg
+                    ></span>
                   </a>
                 </li>
               </ul>
@@ -1413,7 +1565,14 @@
                 data-analytics-next
                 aria-label="Next analytics view"
               >
-                <span aria-hidden="true">→</span>
+                <svg
+                  class="arrow-icon"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M4 12h16m-7-7 7 7-7 7" />
+                </svg>
               </button>
             </div>
             <button

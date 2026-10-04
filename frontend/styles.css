@@ -38,6 +38,24 @@ a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
+.arrow-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.125em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.carousel-next .arrow-icon,
+.library-arrow .arrow-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
 .page-shell {
   width: min(100% - 80px, 1240px);
   margin: 0 auto;
@@ -106,6 +124,12 @@ a:focus-visible {
   width: 30px;
   height: 1px;
   background: currentColor;
+}
+.intro-university-logo {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
 }
 h1 {
   margin: 0;
@@ -2164,8 +2188,7 @@ h2 {
 .extension-invite[hidden] {
   display: none;
 }
-.extension-invite span {
-  display: inline-block;
+.extension-invite .arrow-icon {
   animation: extension-invite-arrow 1.2s ease-in-out 3;
 }
 @keyframes extension-invite-arrow {
@@ -2262,6 +2285,7 @@ h2 {
 .extension-gallery img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
@@ -2835,7 +2859,7 @@ h2 {
   .studio-generation-spinner {
     animation: none;
   }
-  .extension-invite span {
+  .extension-invite .arrow-icon {
     animation: none;
   }
 }
