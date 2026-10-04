@@ -94,7 +94,7 @@ resource "cloudflare_ruleset" "asset_cache" {
       cache = true
       edge_ttl = {
         mode    = "override_origin"
-        default = 3600
+        default = 604800 # Seven days.
         status_code_ttl = [{
           status_code = 404
           value       = 0

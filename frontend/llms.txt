@@ -1,0 +1,17 @@
+# Thomas Beer
+
+> Thomas Beer's personal portfolio, featuring software projects, work experience, and contact information.
+
+Projects include reddit-2-video, Avatar Outfit Shop, browser developer tools, mobile apps, and open-source libraries.
+
+## Portfolio
+
+- [Portfolio](https://thomasbeer.uk/): Project descriptions, demos, and work experience.
+- [CV](https://thomasbeer.uk/Thomas-Beer-CV.pdf): Downloadable CV in PDF format.
+- [Contact](https://thomasbeer.uk/#contact): Contact details.
+
+## Profiles and source code
+
+- [GitHub](https://github.com/Thomasssb1): Public projects and source code.
+- [LinkedIn](https://www.linkedin.com/in/thomas-beer04/): Professional profile.
+- [Portfolio source](https://github.com/Thomasssb1/portfolio): Source code for this website.
