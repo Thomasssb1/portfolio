@@ -125,6 +125,12 @@ a:focus-visible {
   height: 1px;
   background: currentColor;
 }
+.intro-university-logo {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
 h1 {
   margin: 0;
   font-size: clamp(3.2rem, 5vw, 5.2rem);
