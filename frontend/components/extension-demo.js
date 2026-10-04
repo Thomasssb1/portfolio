@@ -49,12 +49,16 @@ if (demo) {
   const tabs = [...demo.querySelectorAll("[data-extension-tab]")];
   const panels = [...demo.querySelectorAll("[data-extension-panel]")];
   const images = [...demo.querySelectorAll("[data-demo-image]")].map(
-    (figure, index) => ({
-      index,
-      name: figure.querySelector("figcaption").firstChild.textContent.trim(),
-      src: figure.querySelector("img").src,
-      selected: true,
-    }),
+    (figure, index) => {
+      const image = figure.querySelector("img");
+      return {
+        index,
+        name: figure.querySelector("figcaption").firstChild.textContent.trim(),
+        src: image.src,
+        downloadSrc: image.dataset.downloadSrc || image.src,
+        selected: true,
+      };
+    },
   );
   const dedupe = demo.querySelector("[data-extension-dedupe]");
   const imageList = demo.querySelector("[data-extension-image-list]");
@@ -277,7 +281,7 @@ if (demo) {
     try {
       const files = await Promise.all(
         selected.map(async (item, index) => {
-          const response = await fetch(item.src);
+          const response = await fetch(item.downloadSrc);
           if (!response.ok)
             throw new Error(`Image request failed: ${response.status}`);
           const data = new Uint8Array(await response.arrayBuffer());
