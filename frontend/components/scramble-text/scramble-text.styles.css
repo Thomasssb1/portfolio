@@ -2,6 +2,26 @@
   display: inline;
 }
 
+.word {
+  white-space: nowrap;
+}
+
+.character {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+}
+
+.original {
+  visibility: hidden;
+}
+
+.glyph {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+}
+
 .accessible {
   position: absolute;
   width: 1px;
