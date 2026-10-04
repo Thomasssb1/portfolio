@@ -136,6 +136,7 @@ test("the asset sync skips identical R2 objects and updates changed files", asyn
 
     const objects = new Map();
     let uploads = 0;
+    const cacheControls = [];
     const runAws = (args) => {
       const key = args[args.indexOf("--key") + 1];
       if (args[1] === "head-object") {
@@ -153,6 +154,7 @@ test("the asset sync skips identical R2 objects and updates changed files", asyn
       if (args[1] === "cp") {
         const objectKey = args[3].split("/assets-test/")[1];
         const metadata = args[args.indexOf("--metadata") + 1];
+        cacheControls.push(args[args.indexOf("--cache-control") + 1]);
         objects.set(objectKey, {
           body: Buffer.from(args[2] === filename ? content : ""),
           sha256: metadata.split("=")[1],
@@ -183,6 +185,10 @@ test("the asset sync skips identical R2 objects and updates changed files", asyn
     await writeFile(filename, content);
     assert.deepEqual(await syncAssets(config), { uploaded: 1, skipped: 0 });
     assert.equal(uploads, 2);
+    assert.deepEqual(cacheControls, [
+      "public, max-age=0, must-revalidate",
+      "public, max-age=0, must-revalidate",
+    ]);
     assert.equal(objects.size, 1);
   } finally {
     await rm(temporary, { recursive: true, force: true });

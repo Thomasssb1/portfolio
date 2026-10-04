@@ -101,8 +101,7 @@ resource "cloudflare_ruleset" "asset_cache" {
         }]
       }
       browser_ttl = {
-        mode    = "override_origin"
-        default = 604800 # Also applies to existing R2 objects.
+        mode = "respect_origin"
       }
     }
   }]
