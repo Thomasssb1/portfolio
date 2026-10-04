@@ -141,7 +141,7 @@ export async function syncAssets({
           "--content-type",
           contentType,
           "--cache-control",
-          "public, max-age=3600",
+          "public, max-age=604800",
           "--metadata",
           `sha256=${digest}`,
           "--no-progress",
