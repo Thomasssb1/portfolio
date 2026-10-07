@@ -22,9 +22,11 @@ The asset bucket is created by Terraform. If you want to limit its access keys t
 
 ## Deploy
 
-Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. The proxied WWW DNS record and redirect rule are managed by Terraform, so Cloudflare redirects these requests before contacting the origin.
+Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. Terraform manages the proxied WWW DNS record and Pages custom domain. Pages middleware redirects WWW requests before page views or outbound clicks are counted.
 
 ## Local preview
+
+The frontend build reads `TF_VAR_cloudflare_zone_name` and writes the canonical hostname to `site-config.json` in the Pages output. WWW redirect middleware reads that file through the Pages asset binding, so its source and destination match the Terraform-managed domains. Local builds without that variable use `frontend/site-config.json`. When building locally for another zone, set `TF_VAR_cloudflare_zone_name` to the same domain used for Terraform before running `npm run build:frontend`.
 
 Run `npm run dev` from the repository root to preview the site with Pages Functions. Local views and clicks do not appear in Analytics Engine.
 

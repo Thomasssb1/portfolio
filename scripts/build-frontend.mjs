@@ -35,8 +35,23 @@ export async function buildFrontend({
   sourceDirectory = source,
   outputDirectory = destination,
   assetBaseUrl = "https://assets.thomasbeer.uk",
+  canonicalHostname,
   productionBuildTime = null,
 } = {}) {
+  const hostname =
+    canonicalHostname ??
+    JSON.parse(await readFile(path.join(source, "site-config.json"), "utf8"))
+      .canonicalHostname;
+  if (
+    typeof hostname !== "string" ||
+    hostname.length > 253 ||
+    !hostname
+      .split(".")
+      .every((label) => /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i.test(label))
+  ) {
+    throw new Error("TF_VAR_cloudflare_zone_name must be a DNS hostname");
+  }
+
   const base = assetBaseUrl.replace(/\/+$/, "");
   if (!/^https:\/\/[^/]+$/.test(base)) {
     throw new Error("ASSET_CDN_BASE_URL must be an HTTPS origin");
@@ -49,6 +64,10 @@ export async function buildFrontend({
     filter: (entry) =>
       path.resolve(entry) !== path.join(sourceDirectory, "assets"),
   });
+  await writeFile(
+    path.join(outputDirectory, "site-config.json"),
+    `${JSON.stringify({ canonicalHostname: hostname.toLowerCase() }, null, 2)}\n`,
+  );
 
   const indexPath = path.join(outputDirectory, "index.html");
   let html = await readFile(indexPath, "utf8");
@@ -83,6 +102,7 @@ if (
 ) {
   const output = await buildFrontend({
     assetBaseUrl: process.env.ASSET_CDN_BASE_URL,
+    canonicalHostname: process.env.TF_VAR_cloudflare_zone_name,
     productionBuildTime:
       process.env.PORTFOLIO_PRODUCTION_BUILD === "true" ? new Date() : null,
   });

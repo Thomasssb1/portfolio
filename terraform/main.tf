@@ -56,33 +56,17 @@ resource "cloudflare_dns_record" "www" {
   zone_id = data.cloudflare_zone.site.id
   type    = "CNAME"
   name    = "www.${var.cloudflare_zone_name}"
-  content = var.cloudflare_zone_name
+  content = cloudflare_pages_project.site.subdomain
   ttl     = 1
   proxied = true
 }
 
-resource "cloudflare_ruleset" "www_redirect" {
-  zone_id = data.cloudflare_zone.site.id
-  name    = "Redirect WWW to the canonical site"
-  kind    = "zone"
-  phase   = "http_request_dynamic_redirect"
+resource "cloudflare_pages_domain" "www" {
+  account_id   = var.cloudflare_account_id
+  project_name = cloudflare_pages_project.site.name
+  name         = "www.${var.cloudflare_zone_name}"
 
-  rules = [{
-    ref         = "redirect_www_to_apex"
-    description = "Permanently redirect WWW to HTTPS on the root domain"
-    expression  = "(http.host eq \"www.${var.cloudflare_zone_name}\")"
-    action      = "redirect"
-    enabled     = true
-    action_parameters = {
-      from_value = {
-        status_code = 301
-        target_url = {
-          expression = "concat(\"https://${var.cloudflare_zone_name}\", http.request.uri.path)"
-        }
-        preserve_query_string = true
-      }
-    }
-  }]
+  depends_on = [cloudflare_dns_record.www]
 }
 
 resource "cloudflare_r2_bucket" "assets" {
