@@ -26,6 +26,8 @@ Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. Af
 
 ## Local preview
 
+The frontend build reads `TF_VAR_cloudflare_zone_name` and writes the canonical hostname to `site-config.json` in the Pages output. WWW redirect middleware reads that file through the Pages asset binding, so its source and destination match the Terraform-managed domains. Local builds without that variable use `frontend/site-config.json`. When building locally for another zone, set `TF_VAR_cloudflare_zone_name` to the same domain used for Terraform before running `npm run build:frontend`.
+
 Run `npm run dev` from the repository root to preview the site with Pages Functions. Local views and clicks do not appear in Analytics Engine.
 
 ## Analytics

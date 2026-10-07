@@ -7,6 +7,51 @@ import test from "node:test";
 
 import { buildFrontend } from "../scripts/build-frontend.mjs";
 import { syncAssets } from "../scripts/sync-assets.mjs";
+import { onRequest } from "../functions/_middleware.js";
+
+test("the deployed WWW redirect uses the configured zone from the build", async () => {
+  const temporary = await mkdtemp(
+    path.join(os.tmpdir(), "portfolio-domain-test-"),
+  );
+  try {
+    const source = path.join(temporary, "frontend");
+    const output = path.join(temporary, "output");
+    await mkdir(source);
+    await writeFile(path.join(source, "index.html"), "<html></html>");
+    await writeFile(
+      path.join(source, "site-config.json"),
+      JSON.stringify({ canonicalHostname: "thomasbeer.uk" }),
+    );
+    await buildFrontend({
+      sourceDirectory: source,
+      outputDirectory: output,
+      canonicalHostname: "example.com",
+    });
+
+    const response = await onRequest({
+      request: new Request("http://www.example.com:8080/projects?value=a%2Fb"),
+      env: {
+        ASSETS: {
+          fetch: async (request) =>
+            new Response(
+              await readFile(
+                path.join(output, new URL(request.url).pathname),
+                "utf8",
+              ),
+            ),
+        },
+      },
+      next: () => assert.fail("The deployed WWW hostname must redirect"),
+    });
+    assert.equal(response.status, 301);
+    assert.equal(
+      response.headers.get("location"),
+      "https://example.com/projects?value=a%2Fb",
+    );
+  } finally {
+    await rm(temporary, { recursive: true, force: true });
+  }
+});
 
 test("the Pages build points at R2 and leaves media out of the upload", async () => {
   const temporary = await mkdtemp(
