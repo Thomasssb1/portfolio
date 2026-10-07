@@ -22,7 +22,7 @@ The asset bucket is created by Terraform. If you want to limit its access keys t
 
 ## Deploy
 
-Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. The proxied WWW DNS record and redirect rule are managed by Terraform, so Cloudflare redirects these requests before contacting the origin.
+Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. Terraform manages the proxied WWW DNS record and Pages custom domain. Pages middleware redirects WWW requests before page views or outbound clicks are counted.
 
 ## Local preview
 
