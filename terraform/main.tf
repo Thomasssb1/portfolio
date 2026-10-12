@@ -96,6 +96,30 @@ resource "cloudflare_r2_bucket_cors" "assets" {
   }]
 }
 
+resource "cloudflare_ruleset" "asset_root_redirect" {
+  zone_id = data.cloudflare_zone.site.id
+  name    = "Asset root redirect"
+  kind    = "zone"
+  phase   = "http_request_dynamic_redirect"
+
+  rules = [{
+    ref         = "redirect_asset_root"
+    description = "Redirect the asset domain root to the portfolio"
+    expression  = "(http.host eq \"assets.${var.cloudflare_zone_name}\" and http.request.uri.path eq \"/\")"
+    action      = "redirect"
+    enabled     = true
+    action_parameters = {
+      from_value = {
+        status_code = 301
+        target_url = {
+          value = "https://${var.cloudflare_zone_name}/"
+        }
+        preserve_query_string = true
+      }
+    }
+  }]
+}
+
 resource "cloudflare_ruleset" "asset_cache" {
   zone_id = data.cloudflare_zone.site.id
   name    = "Asset CDN cache"

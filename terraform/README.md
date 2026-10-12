@@ -6,7 +6,7 @@ Terraform creates the Cloudflare Pages project and manages its domain, DNS, and 
 
 1. Add the domain as an active Cloudflare zone and delegate its nameservers. Remove any DNS records that conflict with the root domain or `assets.<zone-name>`.
 2. Create an R2 bucket for Terraform state. Create R2 access keys for that bucket and for media uploads to `assets-portfolio`.
-3. Create a Cloudflare API token with Pages and Workers R2 Storage write access for the account, plus DNS edit, Zone read, Cache Rules edit, Rulesets edit, and Filter Lists edit access for the zone and account as applicable.
+3. Create a Cloudflare API token with Pages and Workers R2 Storage write access for the account, plus DNS edit, Zone read, Cache Rules edit, Single Redirect edit, Rulesets edit, and Filter Lists edit access for the zone and account as applicable.
 4. In GitHub, create the `production` environment with these secrets:
    - `CLOUDFLARE_API_TOKEN`
    - `TF_STATE_R2_ACCESS_KEY_ID`
@@ -23,6 +23,16 @@ The asset bucket is created by Terraform. If you want to limit its access keys t
 ## Deploy
 
 Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. Terraform manages the proxied WWW DNS record and Pages custom domain. Pages middleware redirects WWW requests before page views or outbound clicks are counted.
+
+The asset domain root, `https://assets.thomasbeer.uk/`, receives a 301 redirect to
+the portfolio homepage, preserving its query string. Only `/` matches this rule;
+media paths continue to serve from R2, and missing objects still return 404.
+Terraform manages this redirect at Cloudflare's edge because the asset domain
+does not run Pages Functions.
+
+Google Search Console may list the asset root and `http://thomasbeer.uk/` as
+"Page with redirect". These are expected redirects to the HTTPS homepage, which
+is the canonical URL in the sitemap. They do not need to be indexed separately.
 
 ## Local preview
 
