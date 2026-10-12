@@ -28,7 +28,7 @@ function productionDeployMarkup(buildTime) {
     timeZoneName: "short",
   }).format(date);
 
-  return `<a class="site-footer-deploy" href="/go/portfolio-deployments" target="_blank" rel="noopener noreferrer"><span class="site-footer-deploy-dot" aria-hidden="true"></span><span class="site-footer-deploy-label">Latest production deploy</span> <span aria-hidden="true">·</span> <time datetime="${timestamp}">${label}</time></a>`;
+  return `<a class="site-footer-deploy" href="/go/portfolio-deployments" target="_blank" rel="noopener noreferrer nofollow"><span class="site-footer-deploy-dot" aria-hidden="true"></span><span class="site-footer-deploy-label">Latest production deploy</span> <span aria-hidden="true">·</span> <time datetime="${timestamp}">${label}</time></a>`;
 }
 
 export async function buildFrontend({

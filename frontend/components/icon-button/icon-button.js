@@ -6,7 +6,7 @@ const availableIcons = new Set(["github", "linkedin"]);
 
 class IconButton extends HTMLElement {
   static get observedAttributes() {
-    return ["icon", "href", "label", "target", "disabled"];
+    return ["icon", "href", "label", "target", "rel", "disabled"];
   }
 
   constructor() {
@@ -51,8 +51,13 @@ class IconButton extends HTMLElement {
       control.href = href;
       const target = this.getAttribute("target");
       if (target) control.target = target;
+      control.rel = [
+        this.getAttribute("rel"),
+        target === "_blank" ? "noopener noreferrer" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
       if (target === "_blank") {
-        control.rel = "noopener noreferrer";
         control.setAttribute("aria-label", `${label} (opens in a new tab)`);
       }
     } else {
