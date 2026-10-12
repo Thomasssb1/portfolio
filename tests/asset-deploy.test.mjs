@@ -153,6 +153,7 @@ test("a production build stamps its own deploy time into the footer", async () =
     assert.match(html, /Latest production deploy/);
     assert.match(html, /datetime="2026-10-02T14:20:00.000Z"/);
     assert.match(html, /href="\/go\/portfolio-deployments"/);
+    assert.match(html, /rel="noopener noreferrer nofollow"/);
     assert.doesNotMatch(html, /Example production deploy/);
     assert.doesNotMatch(html, /<!-- deploy-preview:/);
     assert.doesNotMatch(html, /data-github-activity-preview/);

@@ -42,6 +42,7 @@ for (const [slug, destination] of Object.entries(destinations)) {
     assert.equal(response.headers.get("Location"), destination);
     assert.equal(response.headers.get("Cache-Control"), "no-store");
     assert.equal(response.headers.get("Referrer-Policy"), "no-referrer");
+    assert.equal(response.headers.get("X-Robots-Tag"), "noindex, nofollow");
     assert.deepEqual(writes, [{ blobs: [slug] }]);
   });
 }

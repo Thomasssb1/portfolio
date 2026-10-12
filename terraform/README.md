@@ -6,7 +6,7 @@ Terraform creates the Cloudflare Pages project and manages its domain, DNS, and 
 
 1. Add the domain as an active Cloudflare zone and delegate its nameservers. Remove any DNS records that conflict with the root domain or `assets.<zone-name>`.
 2. Create an R2 bucket for Terraform state. Create R2 access keys for that bucket and for media uploads to `assets-portfolio`.
-3. Create a Cloudflare API token with Pages and Workers R2 Storage write access for the account, plus DNS edit, Zone read, Cache Rules edit, Rulesets edit, and Filter Lists edit access for the zone and account as applicable.
+3. Create a Cloudflare API token with Pages and Workers R2 Storage write access for the account, plus DNS edit, Zone read, Cache Rules edit, Single Redirect edit, Rulesets edit, and Filter Lists edit access for the zone and account as applicable.
 4. In GitHub, create the `production` environment with these secrets:
    - `CLOUDFLARE_API_TOKEN`
    - `TF_STATE_R2_ACCESS_KEY_ID`

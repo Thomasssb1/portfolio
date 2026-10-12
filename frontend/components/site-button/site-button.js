@@ -4,7 +4,7 @@ const templatePromise = loadTemplate(import.meta.url, "site-button");
 
 class SiteButton extends HTMLElement {
   static get observedAttributes() {
-    return ["href", "target", "type", "disabled"];
+    return ["href", "target", "rel", "type", "disabled"];
   }
 
   constructor() {
@@ -44,7 +44,12 @@ class SiteButton extends HTMLElement {
       control.href = href;
       const target = this.getAttribute("target");
       if (target) control.target = target;
-      if (target === "_blank") control.rel = "noopener noreferrer";
+      control.rel = [
+        this.getAttribute("rel"),
+        target === "_blank" ? "noopener noreferrer" : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
     } else {
       control.type = this.getAttribute("type") || "button";
       control.disabled = disabled;
