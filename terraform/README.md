@@ -24,16 +24,6 @@ The asset bucket is created by Terraform. If you want to limit its access keys t
 
 Push to `main`, or run the **Validate** workflow on `main` in GitHub Actions. After validation passes, **Deploy Terraform** applies the infrastructure, uploads media from `frontend/assets/` to R2, and deploys the frontend to Pages. The production site is <https://thomasbeer.uk>. HTTP and HTTPS requests to `www.thomasbeer.uk` receive a 301 redirect to the same path and query string on `https://thomasbeer.uk`. Terraform manages the proxied WWW DNS record and Pages custom domain. Pages middleware redirects WWW requests before page views or outbound clicks are counted.
 
-The asset domain root, `https://assets.thomasbeer.uk/`, receives a 301 redirect to
-the portfolio homepage, preserving its query string. Only `/` matches this rule;
-media paths continue to serve from R2, and missing objects still return 404.
-Terraform manages this redirect at Cloudflare's edge because the asset domain
-does not run Pages Functions.
-
-Google Search Console may list the asset root and `http://thomasbeer.uk/` as
-"Page with redirect". These are expected redirects to the HTTPS homepage, which
-is the canonical URL in the sitemap. They do not need to be indexed separately.
-
 ## Local preview
 
 The frontend build reads `TF_VAR_cloudflare_zone_name` and writes the canonical hostname to `site-config.json` in the Pages output. WWW redirect middleware reads that file through the Pages asset binding, so its source and destination match the Terraform-managed domains. Local builds without that variable use `frontend/site-config.json`. When building locally for another zone, set `TF_VAR_cloudflare_zone_name` to the same domain used for Terraform before running `npm run build:frontend`.
